@@ -13,6 +13,8 @@ struct Particle
 
 RWStructuredBuffer<Particle> _particles;
 
+// Variable Declarations 
+
 float particleMass = 2.0;
 float viscosity = 200;
 float gasConstant = 2000;
@@ -137,6 +139,7 @@ void ComputeForces (uint3 id: SV_DISPATCHTHREADID)
 void Integrate (uint3 id: SV_DISPATCHTHREADID)
 {
     // _particles[id.x].velocity += timestep * _particles[id.x].
+
     float3 topRight = boxSize / 2;
     float3 bottomLeft = -boxSize/2;
 
