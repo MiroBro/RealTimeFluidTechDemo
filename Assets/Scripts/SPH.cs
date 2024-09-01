@@ -3,16 +3,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-[System.Serializable]
-[StructLayout(LayoutKind.Sequential, Size = 44)]
-public struct Particle
-{
-    public float pressure;
-    public float density;
-    public Vector3 currentForce;
-    public Vector3 velocity;
-    public Vector3 position;
-}
 
 public class SPH : MonoBehaviour
 {
@@ -52,7 +42,7 @@ public class SPH : MonoBehaviour
 
     //Private variables
     private ComputeBuffer _argsBuffer;
-    private ComputeBuffer _particlesBuffer;
+    public ComputeBuffer _particlesBuffer;
     private int integralKernel;
     private int computeForceKernel;
     private int densityPressureKernel;
