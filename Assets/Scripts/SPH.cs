@@ -40,5 +40,91 @@ public class SPH : MonoBehaviour
     public ComputeShader shader;
     public Particle[] particles;
 
+    //Private variables
+    private ComputeBuffer _argsBuffer;
+    private ComputeBuffer _particlesBuffer;
+
+    private static readonly int SizeProperty = Shader.PropertyToID("_size");
+    private static readonly int ParticlesBuggerPropery = Shader.PropertyToID("_particlesBuffer");
+
+    private void Update()
+    {
+        // Render the particles
+        material.SetFloat(SizeProperty, particleRenderSize);
+        material.SetBuffer(ParticlesBuggerPropery, _particlesBuffer);
+
+        if (showSpheres) 
+        {
+            Graphics.DrawMeshInstancedIndirect(
+                particleMesh,
+                0,
+                material,
+                new Bounds(Vector3.zero, boxSize),
+                _argsBuffer,
+                castShadows: UnityEngine.Rendering.ShadowCastingMode.Off
+                );
+        }
+
+    }
+
+    private void Awake()
+    {
+        SpawnParticlesInBox();
+
+        // Setup Args for Instanced Particle Rendering
+        uint[] args =
+        {
+            particleMesh.GetIndexCount(0),
+            (uint)totalParticles,
+            particleMesh.GetIndexStart(0),
+            particleMesh.GetBaseVertex(0),
+            0
+        };
+
+        _argsBuffer = new ComputeBuffer(1, args.Length * sizeof(uint), ComputeBufferType.IndirectArguments);
+        _argsBuffer.SetData(args);
+
+        // Setup Particles
+        _particlesBuffer = new ComputeBuffer(totalParticles, 44);
+        _particlesBuffer.SetData(particles);
+    }
+
+
+    private void SpawnParticlesInBox()
+    {
+        Vector3 spawnPoint = spawnCenter;
+        List<Particle> _particles = new List<Particle>();
+
+        for (int x = 0; x < numToSpawn.x; x++)
+        {
+            for (int y = 0; y < numToSpawn.y; y++)
+            {
+                for (int z = 0; z < numToSpawn.z; z++)
+                {
+                    Vector3 spawnPos = spawnPoint + new Vector3(x * particleRadius * 2, y * particleRadius * 2, z * particleRadius * 2);
+                    Particle p = new Particle()
+                    {
+                        position = spawnPos,
+                    };
+
+                    _particles.Add(p);
+                }
+            }
+        }
+
+        particles = _particles.ToArray();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(Vector3.zero, boxSize);
+
+        if (!Application.isPlaying) {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(spawnCenter, 0.1f);
+        }
+
+    }
 
 }
