@@ -170,5 +170,4 @@ public class SPH_Compute : MonoBehaviour
             Gizmos.DrawWireCube(spawnBoxCenter, spawnBox);
         }
     }
-
 }
