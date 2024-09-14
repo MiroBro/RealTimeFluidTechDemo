@@ -33,10 +33,11 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
     public float radius => particleRadius;
     public float radius2 => particleRadius * particleRadius;
 
-    // NativeArray to store particles for use in jobs 
+    // NativeArray to store particles for use in jobs (Optimized)
     private NativeArray<Particle> particles;
     private NativeArray<Particle> newParticles;
 
+    // Particle struct
     private struct Particle
     {
         public float pressure;
@@ -52,7 +53,7 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
     {
         if (material != null)
         {
-            material.enableInstancing = true; 
+            material.enableInstancing = true; // Ensure instancing is enabled
         }
     }
 
@@ -66,7 +67,7 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Scheduling jobs to run in parallel
+        // Scheduling jobs to run in parallel (Optimized)
         var densityJob = new ComputeDensityPressureJob
         {
             particles = particles,
@@ -80,9 +81,8 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
 
         var forceJob = new ComputeForcesJob
         {
-            particles = particles,
-            newParticles = newParticles,
-            timestep = timestep,
+            particles = newParticles,
+            newParticles = particles,
             particleMass = particleMass,
             viscosity = viscosity,
             radius = radius,
@@ -98,15 +98,14 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
             timestep = timestep,
             particleMass = particleMass,
             boundDamping = boundDamping,
-            topRight = boxSize / 2,
-            bottomLeft = -boxSize / 2,
-            radius = radius,
-            boxSize = boxSize
+            boxSize = boxSize,
+            radius = radius
         };
         JobHandle integrationHandle = integrationJob.Schedule(totalParticles, 64, forceHandle);
 
         integrationHandle.Complete(); // Ensure all jobs are finished before moving on
 
+        // Swap the buffers for the next frame
         var temp = particles;
         particles = newParticles;
         newParticles = temp;
@@ -115,7 +114,7 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
     private void Awake()
     {
         particles = new NativeArray<Particle>(totalParticles, Allocator.Persistent); // Initialize NativeArray (Optimized)
-        newParticles = new NativeArray<Particle>(totalParticles, Allocator.Persistent); // Initialize NativeArray (Optimized)
+        newParticles = new NativeArray<Particle>(totalParticles, Allocator.Persistent);
         SpawnParticlesInBox();
         InitializeMatrices();
     }
@@ -126,7 +125,6 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
         {
             particles.Dispose(); // Dispose of NativeArray (Memory management)
         }
-
         if (newParticles.IsCreated)
         {
             newParticles.Dispose(); // Dispose of NativeArray (Memory management)
@@ -202,14 +200,12 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
         }
     }
 
-
+    // Job to compute density and pressure (Optimized with Burst)
     [BurstCompile]
     private struct ComputeDensityPressureJob : IJobParallelFor
     {
-        
         [ReadOnly] public NativeArray<Particle> particles;
         public NativeArray<Particle> newParticles;
-
         public float particleMass;
         public float gasConstant;
         public float restingDensity;
@@ -224,7 +220,6 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
         public void Execute(int id)
         {
             Particle particle = particles[id];
-
             Vector3 origin = particle.position;
             float sum = 0;
 
@@ -240,20 +235,18 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
             }
 
             particle.density = sum * particleMass;
-            particle.pressure = gasConstant * ( particle.density - restingDensity );
+            particle.pressure = gasConstant * (particle.density - restingDensity);
 
             newParticles[id] = particle;
         }
     }
 
-
+    // Job to compute forces (Optimized with Burst)
     [BurstCompile]
     private struct ComputeForcesJob : IJobParallelFor
     {
         [ReadOnly] public NativeArray<Particle> particles;
         public NativeArray<Particle> newParticles;
-
-        public float timestep;
         public float particleMass;
         public float viscosity;
         public float radius;
@@ -281,7 +274,7 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
         {
             Particle particle = particles[id];
             Vector3 origin = particle.position;
-            float density2 = particle.density * particles[id].density;
+            float density2 = particle.density * particle.density;
             Vector3 pressure = Vector3.zero;
             Vector3 visc = Vector3.zero;
             float mass2 = particleMass * particleMass;
@@ -293,9 +286,9 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
                 float dist = Vector3.Distance(particles[i].position, origin);
                 if (dist < radius * 2)
                 {
-                    Vector3 pressureGradientDirection = Vector3.Normalize(particle.position - particle.position);
-                    pressure += mass2 * (particle.pressure / density2 + particle.pressure / (particle.density * particle.density)) * SpikyKernelGradient(dist, pressureGradientDirection);
-                    visc += viscosity * mass2 * (particle.velocity - particle.velocity) / particle.density * SpikyKernelSecondDerivative(dist);
+                    Vector3 pressureGradientDirection = Vector3.Normalize(particle.position - particles[i].position);
+                    pressure += mass2 * (particle.pressure / density2 + particles[i].pressure / (particles[i].density * particles[i].density)) * SpikyKernelGradient(dist, pressureGradientDirection);
+                    visc += viscosity * mass2 * (particles[i].velocity - particle.velocity) / particles[i].density * SpikyKernelSecondDerivative(dist);
                 }
             }
 
@@ -312,30 +305,25 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
         }
     }
 
-
+    // Job to integrate particles (Optimized with Burst)
     [BurstCompile]
     private struct IntegrateJob : IJobParallelFor
     {
         [ReadOnly] public NativeArray<Particle> particles;
         public NativeArray<Particle> newParticles;
-        
         public float timestep;
         public float particleMass;
         public float boundDamping;
-        public Vector3 topRight;
-        public Vector3 bottomLeft;
-        public float radius;
         public Vector3 boxSize;
+        public float radius;
 
         public void Execute(int id)
         {
             Particle particle = particles[id];
-            
-            Vector3 topRight = boxSize / 2;
-            Vector3 bottomLeft = -boxSize / 2;
-
             Vector3 vel = particle.velocity + ((particle.currentForce / particleMass) * timestep);
             particle.position += vel * timestep;
+            Vector3 topRight = boxSize / 2;
+            Vector3 bottomLeft = -boxSize / 2;
 
             if (particle.position.x - radius < bottomLeft.x)
             {
