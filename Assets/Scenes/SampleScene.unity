@@ -640,7 +640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1232598847
 Transform:
   m_ObjectHideFlags: 0
@@ -693,7 +693,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1268171953}
-  - component: {fileID: 1268171955}
   - component: {fileID: 1268171954}
   m_Layer: 0
   m_Name: SPH_Simulator_Bursted_Csharp
@@ -727,18 +726,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f498aeab268e84479c21286f3d2defd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1268171955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268171952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecd5f08b96e1b03438dc7ecf71796e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   collisionSphere: {fileID: 397899431}
