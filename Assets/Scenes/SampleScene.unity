@@ -259,6 +259,7 @@ Transform:
   - {fileID: 871471017}
   - {fileID: 1232598847}
   - {fileID: 1268171953}
+  - {fileID: 1696443874}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
@@ -738,6 +739,66 @@ MonoBehaviour:
   particleMesh: {fileID: 2540817853737639666, guid: d2bcb9b63a067d643b56910fd449b51b, type: 3}
   particleRenderSize: 8
   material: {fileID: 2100000, guid: 48f77463cd88947469e285b252187b6a, type: 2}
+  boundDamping: -0.3
+  viscosity: -0.003
+  particleMass: 1
+  gasConstant: 2
+  restingDensity: 1
+  timestep: 0.007
+--- !u!1 &1696443873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1696443874}
+  - component: {fileID: 1696443875}
+  m_Layer: 0
+  m_Name: SPH_Simulator_Bursted_Csharp_Pretty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1696443874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696443873}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 472952023}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1696443875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696443873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a02d0faa3bfef409679037774d957e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSphere: {fileID: 397899431}
+  showSpheres: 1
+  numToSpawn: {x: 10, y: 10, z: 10}
+  boxSize: {x: 4, y: 10, z: 3}
+  spawnCenter: {x: 0, y: 0, z: 0}
+  particleRadius: 0.1
+  spawnJitter: 0.2
+  particleMesh: {fileID: 2540817853737639666, guid: d2bcb9b63a067d643b56910fd449b51b, type: 3}
+  particleRenderSize: 8
+  material: {fileID: 2100000, guid: a75f796e662ffdd47bff8d08e6de694e, type: 2}
   boundDamping: -0.3
   viscosity: -0.003
   particleMass: 1
