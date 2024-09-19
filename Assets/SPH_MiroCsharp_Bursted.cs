@@ -53,7 +53,7 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
     {
         if (material != null)
         {
-            material.enableInstancing = true; // Ensure instancing is enabled
+            material.enableInstancing = true; 
         }
     }
 
@@ -67,7 +67,7 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Scheduling jobs to run in parallel (Optimized)
+        // Scheduling jobs to run in parallel
         var densityJob = new ComputeDensityPressureJob
         {
             particles = particles,
@@ -103,7 +103,7 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
         };
         JobHandle integrationHandle = integrationJob.Schedule(totalParticles, 64, forceHandle);
 
-        integrationHandle.Complete(); // Ensure all jobs are finished before moving on
+        integrationHandle.Complete(); 
 
         // Swap the buffers for the next frame
         var temp = particles;
@@ -113,7 +113,7 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
 
     private void Awake()
     {
-        particles = new NativeArray<Particle>(totalParticles, Allocator.Persistent); // Initialize NativeArray (Optimized)
+        particles = new NativeArray<Particle>(totalParticles, Allocator.Persistent); 
         newParticles = new NativeArray<Particle>(totalParticles, Allocator.Persistent);
         SpawnParticlesInBox();
         InitializeMatrices();
@@ -200,7 +200,6 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
         }
     }
 
-    // Job to compute density and pressure (Optimized with Burst)
     [BurstCompile]
     private struct ComputeDensityPressureJob : IJobParallelFor
     {
@@ -241,7 +240,6 @@ public class SPH_MiroCsharp_Bursted : MonoBehaviour
         }
     }
 
-    // Job to compute forces (Optimized with Burst)
     [BurstCompile]
     private struct ComputeForcesJob : IJobParallelFor
     {

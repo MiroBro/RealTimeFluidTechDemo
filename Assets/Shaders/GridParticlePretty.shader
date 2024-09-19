@@ -1,4 +1,4 @@
-Shader "Instanced/GridParticlePretty" {
+Shader "Instanced/FluidParticleShader" {
     Properties {
         _MainTex("Albedo (RGB)", 2D) = "white" {}
         _Glossiness("Smoothness", Range(0, 1)) = 0.8
@@ -7,6 +7,7 @@ Shader "Instanced/GridParticlePretty" {
         _DensityRange("Density Range", Range(0, 500000)) = 1.0
         _FresnelColor("Fresnel Color", Color) = (1, 1, 1, 1)
         _Refraction("Refraction", Range(0.0, 1.0)) = 0.02
+        _BlendRadius("Blend Radius", Float) = 0.1
     }
     SubShader {
         Tags { "Queue" = "Transparent" "RenderType" = "Transparent" }
@@ -27,10 +28,12 @@ Shader "Instanced/GridParticlePretty" {
         float _DensityRange;
         float4 _FresnelColor; // Ensure this is a float4 to include alpha
         float _Refraction;
+        float _BlendRadius;
 
         struct Input {
             float2 uv_MainTex;
-            float3 viewDir; 
+            float3 viewDir;
+            float3 worldPos; 
         };
 
         struct Particle {
@@ -73,6 +76,11 @@ Shader "Instanced/GridParticlePretty" {
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
             o.Alpha = texColor.a * _Color.a;
+
+            // Soft edge blending based on distance to nearby particles
+            float distToEdge = length(IN.worldPos - _particlesBuffer[unity_InstanceID].position);
+            float blendFactor = smoothstep(0.0, _BlendRadius, distToEdge);
+            o.Alpha *= blendFactor;  // Use this factor to soften edges
 
             // Fresnel effect for the edges
             float fresnelEffect = pow(1.0f - dot(IN.viewDir, o.Normal), 3.0f);

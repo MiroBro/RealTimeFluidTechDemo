@@ -22,6 +22,7 @@ public class SPH_MiroCsharp_Bursted_Pretty : MonoBehaviour
     public Mesh particleMesh;
     public float particleRenderSize = 8f;
     public Material material;
+    ComputeBuffer particleBuffer;
 
     [Header("Fluid Constants")]
     public float boundDamping = -0.3f;
@@ -55,6 +56,11 @@ public class SPH_MiroCsharp_Bursted_Pretty : MonoBehaviour
         {
             material.enableInstancing = true; // Ensure instancing is enabled
         }
+
+        particleBuffer = new ComputeBuffer(particles.Length, 44);
+        particleBuffer.SetData(particles);
+        material.SetBuffer("_particlesBuffer", particleBuffer);
+
     }
 
     private void Update()
@@ -129,6 +135,8 @@ public class SPH_MiroCsharp_Bursted_Pretty : MonoBehaviour
         {
             newParticles.Dispose(); // Dispose of NativeArray (Memory management)
         }
+
+        particleBuffer.Release();
     }
 
     private void InitializeParticles()
