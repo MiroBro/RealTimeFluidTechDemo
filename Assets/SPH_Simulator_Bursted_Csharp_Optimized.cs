@@ -39,6 +39,10 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
     private NativeArray<Particle> particles;
     private NativeArray<Particle> newParticles;
 
+    private NativeParallelMultiHashMap<int3, int> particleGridMap;
+    private NativeArray<int3> neighborOffsets;
+    private SpatialHash spatialHash;
+
     // Particle struct
     private struct Particle
     {
@@ -51,13 +55,44 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
 
     private List<Matrix4x4> matrices;
 
+    [BurstCompile]
+    public struct SpatialHash
+    {
+        public float cellSize;
+
+        public int3 Hash(Vector3 position)
+        {
+            return new int3(
+                Mathf.FloorToInt(position.x / cellSize),
+                Mathf.FloorToInt(position.y / cellSize),
+                Mathf.FloorToInt(position.z / cellSize)
+            );
+        }
+
+        public int3[] NeighborOffsets()
+        {
+            return new int3[]
+            {
+            new int3( 0, 0, 0), new int3( 0, 0, 1), new int3( 0, 0,-1),
+            new int3( 0, 1, 0), new int3( 0, 1, 1), new int3( 0, 1,-1),
+            new int3( 0,-1, 0), new int3( 0,-1, 1), new int3( 0,-1,-1),
+            new int3( 1, 0, 0), new int3( 1, 0, 1), new int3( 1, 0,-1),
+            new int3( 1, 1, 0), new int3( 1, 1, 1), new int3( 1, 1,-1),
+            new int3( 1,-1, 0), new int3( 1,-1, 1), new int3( 1,-1,-1),
+            new int3(-1, 0, 0), new int3(-1, 0, 1), new int3(-1, 0,-1),
+            new int3(-1, 1, 0), new int3(-1, 1, 1), new int3(-1, 1,-1),
+            new int3(-1,-1, 0), new int3(-1,-1, 1), new int3(-1,-1,-1)
+            };
+        }
+    }
+
+
     private void Start()
     {
         if (material != null)
         {
             material.enableInstancing = true;
         }
-
     }
 
     private void Update()
@@ -70,20 +105,24 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Create and populate the spatial hash grid
-        NativeParallelMultiHashMap<int, int> grid = new NativeParallelMultiHashMap<int, int>(totalParticles, Allocator.TempJob);
-        float cellSize = radius * 2; // Adjust the cell size based on particle interaction radius
-
-        // Populate the grid
-        for (int i = 0; i < totalParticles; i++)
+        // Ensure particleGridMap is initialized before clearing
+        if (!particleGridMap.IsCreated)
         {
-            int3 cellIndex = GetCellIndex(particles[i].position, cellSize);
-            int hash = HashCellIndex(cellIndex);
-            grid.Add(hash, i);
+            Debug.LogError("particleGridMap has not been initialized.");
+            return;
         }
 
+        // Clear particleGridMap before use
+        particleGridMap.Clear();
 
-        // Scheduling jobs to run in parallel
+        // Populate particleGridMap with current particle positions
+        for (int i = 0; i < totalParticles; i++)
+        {
+            int3 gridPos = spatialHash.Hash(particles[i].position);
+            particleGridMap.Add(gridPos, i);
+        }
+
+        // Scheduling jobs as before
         var densityJob = new ComputeDensityPressureJob
         {
             particles = particles,
@@ -92,9 +131,11 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
             gasConstant = gasConstant,
             restingDensity = restingDensity,
             radius2 = radius2,
-            grid = grid, // Pass the spatial hash grid
-            cellSize = cellSize // Pass the cell size
+            spatialHash = spatialHash,
+            particleGridMap = particleGridMap,  // Pass the map
+            neighborOffsets = neighborOffsets  // Pass neighbor offsets
         };
+
         JobHandle densityHandle = densityJob.Schedule(totalParticles, 64);
 
         var forceJob = new ComputeForcesJob
@@ -106,9 +147,11 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
             radius = radius,
             collisionSphereCenter = collisionSphere.position,
             collisionSphereRadius = collisionSphere.localScale.x / 2,
-            grid = grid, // Pass the spatial hash grid
-            cellSize = cellSize // Pass the cell size
+            spatialHash = spatialHash,
+            particleGridMap = particleGridMap,  // Pass the map
+            neighborOffsets = neighborOffsets  // Pass neighbor offsets
         };
+
         JobHandle forceHandle = forceJob.Schedule(totalParticles, 64, densityHandle);
 
         var integrationJob = new IntegrateJob
@@ -121,52 +164,54 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
             boxSize = boxSize,
             radius = radius
         };
+
         JobHandle integrationHandle = integrationJob.Schedule(totalParticles, 64, forceHandle);
 
         integrationHandle.Complete();
-        // Dispose of the grid after all jobs are complete
-        grid.Dispose();
 
-
-        // Swap the buffers for the next frame
+        // Swap particle buffers for the next frame
         var temp = particles;
         particles = newParticles;
         newParticles = temp;
     }
 
+
     private void Awake()
     {
-        particles = new NativeArray<Particle>(totalParticles, Allocator.Persistent);
-        newParticles = new NativeArray<Particle>(totalParticles, Allocator.Persistent);
+        // Ensure the particle count is valid
+        int particleCount = totalParticles;
+        if (particleCount <= 0)
+        {
+            Debug.LogError("Total particles should be greater than zero.");
+            return;
+        }
+
+        // Allocate the particle arrays
+        particles = new NativeArray<Particle>(particleCount, Allocator.Persistent);
+        newParticles = new NativeArray<Particle>(particleCount, Allocator.Persistent);
+
+        // Initialize the particleGridMap with enough capacity
+        particleGridMap = new NativeParallelMultiHashMap<int3, int>(particleCount, Allocator.Persistent);
+
+        // Initialize the spatial hash with proper cell size
+        spatialHash = new SpatialHash { cellSize = particleRadius * 2.5f };
+
+        // Initialize the neighbor offsets as a NativeArray
+        neighborOffsets = new NativeArray<int3>(spatialHash.NeighborOffsets().Length, Allocator.Persistent);
+        neighborOffsets.CopyFrom(spatialHash.NeighborOffsets());
+
+        // Initialize particles and matrices
         SpawnParticlesInBox();
         InitializeMatrices();
     }
 
     private void OnDestroy()
     {
-        if (particles.IsCreated)
-        {
-            particles.Dispose(); // Dispose of NativeArray (Memory management)
-        }
-        if (newParticles.IsCreated)
-        {
-            newParticles.Dispose(); // Dispose of NativeArray (Memory management)
-        }
+        if (particles.IsCreated) particles.Dispose();
+        if (newParticles.IsCreated) newParticles.Dispose();
+        if (particleGridMap.IsCreated) particleGridMap.Dispose();
+        if (neighborOffsets.IsCreated) neighborOffsets.Dispose();
     }
-
-    public static int3 GetCellIndex(Vector3 position, float cellSize)
-    {
-        return new int3(Mathf.FloorToInt(position.x / cellSize),
-                        Mathf.FloorToInt(position.y / cellSize),
-                        Mathf.FloorToInt(position.z / cellSize));
-    }
-
-    public static int HashCellIndex(int3 cellIndex)
-    {
-        // A simple hash function for 3D grid cells
-        return (cellIndex.x * 73856093) ^ (cellIndex.y * 19349663) ^ (cellIndex.z * 83492791);
-    }
-
 
     private void InitializeParticles()
     {
@@ -246,9 +291,11 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
         public float gasConstant;
         public float restingDensity;
         public float radius2;
+        public SpatialHash spatialHash;
 
-        [ReadOnly] public NativeParallelMultiHashMap<int, int> grid; // Mark as ReadOnly
-        public float cellSize;
+        [ReadOnly] public NativeParallelMultiHashMap<int3, int> particleGridMap; // Mark as ReadOnly
+        [ReadOnly] public NativeArray<int3> neighborOffsets;  // Already ReadOnly
+
 
         private float StdKernel(float distanceSquared)
         {
@@ -262,39 +309,31 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
             Vector3 origin = particle.position;
             float sum = 0;
 
-            int3 originCell = GetCellIndex(origin, cellSize);
+            int3 gridPos = spatialHash.Hash(origin);
 
-            // Loop through surrounding cells (-1, 0, 1) range in each axis
-            for (int x = -1; x <= 1; x++)
+            for (int i = 0; i < neighborOffsets.Length; i++)
             {
-                for (int y = -1; y <= 1; y++)
+                int3 neighborPos = gridPos + neighborOffsets[i];
+                if (particleGridMap.TryGetFirstValue(neighborPos, out int neighborIndex, out var it))
                 {
-                    for (int z = -1; z <= 1; z++)
+                    do
                     {
-                        int3 neighborCell = originCell + new int3(x, y, z);
-                        int hash = HashCellIndex(neighborCell);
+                        Particle neighbor = particles[neighborIndex];
+                        Vector3 diff = origin - neighbor.position;
+                        float distanceSquared = Vector3.Dot(diff, diff);
 
-                        // Iterate over all particles in this grid cell
-                        if (grid.TryGetFirstValue(hash, out int otherId, out NativeParallelMultiHashMapIterator<int> it))
+                        if (radius2 > distanceSquared)
                         {
-                            do
-                            {
-                                Vector3 diff = origin - particles[otherId].position;
-                                float distanceSquared = Vector3.Dot(diff, diff);
-
-                                if (radius2 > distanceSquared)
-                                {
-                                    sum += StdKernel(distanceSquared);
-                                }
-
-                            } while (grid.TryGetNextValue(out otherId, ref it));
+                            sum += StdKernel(distanceSquared);
                         }
                     }
+                    while (particleGridMap.TryGetNextValue(out neighborIndex, ref it));
                 }
             }
 
             particle.density = sum * particleMass;
             particle.pressure = gasConstant * (particle.density - restingDensity);
+
             newParticles[id] = particle;
         }
     }
@@ -309,9 +348,10 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
         public float radius;
         public Vector3 collisionSphereCenter;
         public float collisionSphereRadius;
+        public SpatialHash spatialHash;
 
-        [ReadOnly] public NativeParallelMultiHashMap<int, int> grid; // Mark as ReadOnly
-        public float cellSize;
+        [ReadOnly] public NativeParallelMultiHashMap<int3, int> particleGridMap; // Mark as ReadOnly
+        [ReadOnly] public NativeArray<int3> neighborOffsets;  // Already ReadOnly
 
         private float SpikyKernelFirstDerivative(float distance)
         {
@@ -339,41 +379,32 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
             Vector3 visc = Vector3.zero;
             float mass2 = particleMass * particleMass;
 
-            int3 originCell = GetCellIndex(origin, cellSize);
+            int3 gridPos = spatialHash.Hash(origin);
 
-            // Loop through surrounding cells (-1, 0, 1) range in each axis
-            for (int x = -1; x <= 1; x++)
+            for (int i = 0; i < neighborOffsets.Length; i++)
             {
-                for (int y = -1; y <= 1; y++)
+                int3 neighborPos = gridPos + neighborOffsets[i];
+                if (particleGridMap.TryGetFirstValue(neighborPos, out int neighborIndex, out var it))
                 {
-                    for (int z = -1; z <= 1; z++)
+                    do
                     {
-                        int3 neighborCell = originCell + new int3(x, y, z);
-                        int hash = HashCellIndex(neighborCell);
+                        if (neighborIndex == id) continue;
 
-                        // Iterate over all particles in this grid cell
-                        if (grid.TryGetFirstValue(hash, out int otherId, out NativeParallelMultiHashMapIterator<int> it))
+                        Particle neighbor = particles[neighborIndex];
+                        Vector3 diff = origin - neighbor.position;
+
+                        float distSquared = diff.sqrMagnitude;
+                        if (distSquared < radius * radius)
                         {
-                            do
-                            {
-                                if (otherId == id) continue;
+                            float distance = Mathf.Sqrt(distSquared);
+                            Vector3 direction = diff.normalized;
 
-                                Vector3 diff = origin - particles[otherId].position;
-                                float distSquared = diff.sqrMagnitude;
-
-                                if (distSquared < radius * radius)
-                                {
-                                    float distance = Mathf.Sqrt(distSquared);
-                                    Vector3 direction = diff.normalized;
-
-                                    Vector3 pressureGradientDirection = Vector3.Normalize(particle.position - particles[otherId].position);
-                                    pressure += mass2 * (particle.pressure / density2 + particles[otherId].pressure / (particles[otherId].density * particles[otherId].density)) * SpikyKernelGradient(distSquared, pressureGradientDirection);
-                                    visc += viscosity * mass2 * (particles[otherId].velocity - particle.velocity) / particles[otherId].density * SpikyKernelSecondDerivative(distance);
-                                }
-
-                            } while (grid.TryGetNextValue(out otherId, ref it));
+                            Vector3 pressureGradientDirection = Vector3.Normalize(particle.position - neighbor.position);
+                            pressure += mass2 * (particle.pressure / density2 + neighbor.pressure / (neighbor.density * neighbor.density)) * SpikyKernelGradient(distSquared, pressureGradientDirection);
+                            visc += viscosity * mass2 * (neighbor.velocity - particle.velocity) / neighbor.density * SpikyKernelSecondDerivative(distance);
                         }
                     }
+                    while (particleGridMap.TryGetNextValue(out neighborIndex, ref it));
                 }
             }
 
