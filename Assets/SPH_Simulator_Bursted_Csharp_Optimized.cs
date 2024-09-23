@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
@@ -38,6 +39,10 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
     private NativeArray<Particle> particles;
     private NativeArray<Particle> newParticles;
 
+    private NativeParallelMultiHashMap<int3, int> particleGridMap;
+    private NativeArray<int3> neighborOffsets;
+    private SpatialHash spatialHash;
+
     // Particle struct
     private struct Particle
     {
@@ -49,6 +54,38 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
     }
 
     private List<Matrix4x4> matrices;
+
+    [BurstCompile]
+    public struct SpatialHash
+    {
+        public float cellSize;
+
+        public int3 Hash(Vector3 position)
+        {
+            return new int3(
+                Mathf.FloorToInt(position.x / cellSize),
+                Mathf.FloorToInt(position.y / cellSize),
+                Mathf.FloorToInt(position.z / cellSize)
+            );
+        }
+
+        public int3[] NeighborOffsets()
+        {
+            return new int3[]
+            {
+            new int3( 0, 0, 0), new int3( 0, 0, 1), new int3( 0, 0,-1),
+            new int3( 0, 1, 0), new int3( 0, 1, 1), new int3( 0, 1,-1),
+            new int3( 0,-1, 0), new int3( 0,-1, 1), new int3( 0,-1,-1),
+            new int3( 1, 0, 0), new int3( 1, 0, 1), new int3( 1, 0,-1),
+            new int3( 1, 1, 0), new int3( 1, 1, 1), new int3( 1, 1,-1),
+            new int3( 1,-1, 0), new int3( 1,-1, 1), new int3( 1,-1,-1),
+            new int3(-1, 0, 0), new int3(-1, 0, 1), new int3(-1, 0,-1),
+            new int3(-1, 1, 0), new int3(-1, 1, 1), new int3(-1, 1,-1),
+            new int3(-1,-1, 0), new int3(-1,-1, 1), new int3(-1,-1,-1)
+            };
+        }
+    }
+
 
     private void Start()
     {
@@ -68,7 +105,24 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Scheduling jobs to run in parallel
+        // Ensure particleGridMap is initialized before clearing
+        if (!particleGridMap.IsCreated)
+        {
+            Debug.LogError("particleGridMap has not been initialized.");
+            return;
+        }
+
+        // Clear particleGridMap before use
+        particleGridMap.Clear();
+
+        // Populate particleGridMap with current particle positions
+        for (int i = 0; i < totalParticles; i++)
+        {
+            int3 gridPos = spatialHash.Hash(particles[i].position);
+            particleGridMap.Add(gridPos, i);
+        }
+
+        // Scheduling jobs as before
         var densityJob = new ComputeDensityPressureJob
         {
             particles = particles,
@@ -76,8 +130,12 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
             particleMass = particleMass,
             gasConstant = gasConstant,
             restingDensity = restingDensity,
-            radius2 = radius2
+            radius2 = radius2,
+            spatialHash = spatialHash,
+            particleGridMap = particleGridMap,  // Pass the map
+            neighborOffsets = neighborOffsets  // Pass neighbor offsets
         };
+
         JobHandle densityHandle = densityJob.Schedule(totalParticles, 64);
 
         var forceJob = new ComputeForcesJob
@@ -88,8 +146,12 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
             viscosity = viscosity,
             radius = radius,
             collisionSphereCenter = collisionSphere.position,
-            collisionSphereRadius = collisionSphere.localScale.x / 2
+            collisionSphereRadius = collisionSphere.localScale.x / 2,
+            spatialHash = spatialHash,
+            particleGridMap = particleGridMap,  // Pass the map
+            neighborOffsets = neighborOffsets  // Pass neighbor offsets
         };
+
         JobHandle forceHandle = forceJob.Schedule(totalParticles, 64, densityHandle);
 
         var integrationJob = new IntegrateJob
@@ -102,34 +164,53 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
             boxSize = boxSize,
             radius = radius
         };
+
         JobHandle integrationHandle = integrationJob.Schedule(totalParticles, 64, forceHandle);
 
         integrationHandle.Complete();
 
-        // Swap the buffers for the next frame
+        // Swap particle buffers for the next frame
         var temp = particles;
         particles = newParticles;
         newParticles = temp;
     }
 
+
     private void Awake()
     {
-        particles = new NativeArray<Particle>(totalParticles, Allocator.Persistent);
-        newParticles = new NativeArray<Particle>(totalParticles, Allocator.Persistent);
+        // Ensure the particle count is valid
+        int particleCount = totalParticles;
+        if (particleCount <= 0)
+        {
+            Debug.LogError("Total particles should be greater than zero.");
+            return;
+        }
+
+        // Allocate the particle arrays
+        particles = new NativeArray<Particle>(particleCount, Allocator.Persistent);
+        newParticles = new NativeArray<Particle>(particleCount, Allocator.Persistent);
+
+        // Initialize the particleGridMap with enough capacity
+        particleGridMap = new NativeParallelMultiHashMap<int3, int>(particleCount, Allocator.Persistent);
+
+        // Initialize the spatial hash with proper cell size
+        spatialHash = new SpatialHash { cellSize = particleRadius * 2.5f };
+
+        // Initialize the neighbor offsets as a NativeArray
+        neighborOffsets = new NativeArray<int3>(spatialHash.NeighborOffsets().Length, Allocator.Persistent);
+        neighborOffsets.CopyFrom(spatialHash.NeighborOffsets());
+
+        // Initialize particles and matrices
         SpawnParticlesInBox();
         InitializeMatrices();
     }
 
     private void OnDestroy()
     {
-        if (particles.IsCreated)
-        {
-            particles.Dispose(); // Dispose of NativeArray (Memory management)
-        }
-        if (newParticles.IsCreated)
-        {
-            newParticles.Dispose(); // Dispose of NativeArray (Memory management)
-        }
+        if (particles.IsCreated) particles.Dispose();
+        if (newParticles.IsCreated) newParticles.Dispose();
+        if (particleGridMap.IsCreated) particleGridMap.Dispose();
+        if (neighborOffsets.IsCreated) neighborOffsets.Dispose();
     }
 
     private void InitializeParticles()
@@ -184,7 +265,7 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
                         y * particleRadius * 2,
                         z * particleRadius * 2);
 
-                    spawnPos += Random.insideUnitSphere * particleRadius * spawnJitter;
+                    spawnPos += UnityEngine.Random.insideUnitSphere * particleRadius * spawnJitter;
 
                     particles[index] = new Particle
                     {
@@ -210,6 +291,11 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
         public float gasConstant;
         public float restingDensity;
         public float radius2;
+        public SpatialHash spatialHash;
+
+        [ReadOnly] public NativeParallelMultiHashMap<int3, int> particleGridMap; // Mark as ReadOnly
+        [ReadOnly] public NativeArray<int3> neighborOffsets;  // Already ReadOnly
+
 
         private float StdKernel(float distanceSquared)
         {
@@ -223,14 +309,25 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
             Vector3 origin = particle.position;
             float sum = 0;
 
-            for (int i = 0; i < particles.Length; i++)
-            {
-                Vector3 diff = origin - particles[i].position;
-                float distanceSquared = Vector3.Dot(diff, diff);
+            int3 gridPos = spatialHash.Hash(origin);
 
-                if (radius2 > distanceSquared)
+            for (int i = 0; i < neighborOffsets.Length; i++)
+            {
+                int3 neighborPos = gridPos + neighborOffsets[i];
+                if (particleGridMap.TryGetFirstValue(neighborPos, out int neighborIndex, out var it))
                 {
-                    sum += StdKernel(distanceSquared);
+                    do
+                    {
+                        Particle neighbor = particles[neighborIndex];
+                        Vector3 diff = origin - neighbor.position;
+                        float distanceSquared = Vector3.Dot(diff, diff);
+
+                        if (radius2 > distanceSquared)
+                        {
+                            sum += StdKernel(distanceSquared);
+                        }
+                    }
+                    while (particleGridMap.TryGetNextValue(out neighborIndex, ref it));
                 }
             }
 
@@ -251,6 +348,10 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
         public float radius;
         public Vector3 collisionSphereCenter;
         public float collisionSphereRadius;
+        public SpatialHash spatialHash;
+
+        [ReadOnly] public NativeParallelMultiHashMap<int3, int> particleGridMap; // Mark as ReadOnly
+        [ReadOnly] public NativeArray<int3> neighborOffsets;  // Already ReadOnly
 
         private float SpikyKernelFirstDerivative(float distance)
         {
@@ -278,21 +379,32 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
             Vector3 visc = Vector3.zero;
             float mass2 = particleMass * particleMass;
 
-            for (int i = 0; i < particles.Length; i++)
+            int3 gridPos = spatialHash.Hash(origin);
+
+            for (int i = 0; i < neighborOffsets.Length; i++)
             {
-                if (i == id) continue;
-                Vector3 diff = origin - particles[i].position;
-
-                float distSquared = diff.sqrMagnitude;
-                if (distSquared < radius * radius)
+                int3 neighborPos = gridPos + neighborOffsets[i];
+                if (particleGridMap.TryGetFirstValue(neighborPos, out int neighborIndex, out var it))
                 {
-                    float distance = Mathf.Sqrt(distSquared);
-                    Vector3 direction = diff.normalized;
+                    do
+                    {
+                        if (neighborIndex == id) continue;
 
+                        Particle neighbor = particles[neighborIndex];
+                        Vector3 diff = origin - neighbor.position;
 
-                    Vector3 pressureGradientDirection = Vector3.Normalize(particle.position - particles[i].position);
-                    pressure += mass2 * (particle.pressure / density2 + particles[i].pressure / (particles[i].density * particles[i].density)) * SpikyKernelGradient(distSquared, pressureGradientDirection);
-                    visc += viscosity * mass2 * (particles[i].velocity - particle.velocity) / particles[i].density * SpikyKernelSecondDerivative(distance);
+                        float distSquared = diff.sqrMagnitude;
+                        if (distSquared < radius * radius)
+                        {
+                            float distance = Mathf.Sqrt(distSquared);
+                            Vector3 direction = diff.normalized;
+
+                            Vector3 pressureGradientDirection = Vector3.Normalize(particle.position - neighbor.position);
+                            pressure += mass2 * (particle.pressure / density2 + neighbor.pressure / (neighbor.density * neighbor.density)) * SpikyKernelGradient(distSquared, pressureGradientDirection);
+                            visc += viscosity * mass2 * (neighbor.velocity - particle.velocity) / neighbor.density * SpikyKernelSecondDerivative(distance);
+                        }
+                    }
+                    while (particleGridMap.TryGetNextValue(out neighborIndex, ref it));
                 }
             }
 
