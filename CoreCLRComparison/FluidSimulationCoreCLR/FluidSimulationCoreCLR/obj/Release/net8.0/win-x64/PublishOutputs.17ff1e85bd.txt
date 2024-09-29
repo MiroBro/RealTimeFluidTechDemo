@@ -1,0 +1,2 @@
+D:\GameDevProjectLocs\RealTimeFluidTechDemo\CoreCLRComparison\FluidSimulationCoreCLR\FluidSimulationCoreCLR\bin\Release\net8.0\win-x64\publish\FluidSimulationCoreCLR.exe
+D:\GameDevProjectLocs\RealTimeFluidTechDemo\CoreCLRComparison\FluidSimulationCoreCLR\FluidSimulationCoreCLR\bin\Release\net8.0\win-x64\publish\FluidSimulationCoreCLR.pdb

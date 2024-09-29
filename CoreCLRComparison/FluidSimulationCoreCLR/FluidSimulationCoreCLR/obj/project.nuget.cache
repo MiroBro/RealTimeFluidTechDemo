@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Dma2eF4xiKQ=",
+  "dgSpecHash": "5IprrAuInmk=",
   "success": true,
   "projectFilePath": "D:\\GameDevProjectLocs\\RealTimeFluidTechDemo\\CoreCLRComparison\\FluidSimulationCoreCLR\\FluidSimulationCoreCLR\\FluidSimulationCoreCLR.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Miro\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\8.0.8\\microsoft.dotnet.ilcompiler.8.0.8.nupkg.sha512",
+    "C:\\Users\\Miro\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.6\\microsoft.net.illink.tasks.8.0.6.nupkg.sha512",
+    "C:\\Users\\Miro\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\8.0.8\\runtime.win-x64.microsoft.dotnet.ilcompiler.8.0.8.nupkg.sha512"
+  ],
   "logs": []
 }
