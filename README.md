@@ -16,7 +16,7 @@ This Repository contains a Unity project that compares the performance of the Sm
 1. Pull down this project into a folder.
 2. Download Unity 2022.3.37f
 3. Open the project via Unity 2022.3.37f
-4. Open the scene called "SampleScene"
+4. Open the scene called "FluidSimulationScene"
 5. In the scene in hierarchy, inside "Liquid Simulation" gameobject toggle on the type of simulation/type of code you want to inspect/profile (see screenshot below).
    
    ![image](https://github.com/user-attachments/assets/e92694b0-7875-4418-b386-6da8008b795e)
