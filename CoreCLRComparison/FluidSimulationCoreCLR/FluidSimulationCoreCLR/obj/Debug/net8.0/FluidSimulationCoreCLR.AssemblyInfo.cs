@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FluidSimulationCoreCLR")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f82cbe3ff2c7e2df93f8ef87b29ee03b5d35fe14")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77926362e4261d67aa95b2993c164be026a51a39")]
 [assembly: System.Reflection.AssemblyProductAttribute("FluidSimulationCoreCLR")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FluidSimulationCoreCLR")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
