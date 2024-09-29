@@ -1,0 +1,14 @@
+C:\Users\Miro\source\repos\FluidSimulationCoreCLR\FluidSimulationCoreCLR\bin\Debug\net8.0\FluidSimulationCoreCLR.exe
+C:\Users\Miro\source\repos\FluidSimulationCoreCLR\FluidSimulationCoreCLR\bin\Debug\net8.0\FluidSimulationCoreCLR.deps.json
+C:\Users\Miro\source\repos\FluidSimulationCoreCLR\FluidSimulationCoreCLR\bin\Debug\net8.0\FluidSimulationCoreCLR.runtimeconfig.json
+C:\Users\Miro\source\repos\FluidSimulationCoreCLR\FluidSimulationCoreCLR\bin\Debug\net8.0\FluidSimulationCoreCLR.dll
+C:\Users\Miro\source\repos\FluidSimulationCoreCLR\FluidSimulationCoreCLR\bin\Debug\net8.0\FluidSimulationCoreCLR.pdb
+C:\Users\Miro\source\repos\FluidSimulationCoreCLR\FluidSimulationCoreCLR\obj\Debug\net8.0\FluidSimulationCoreCLR.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Miro\source\repos\FluidSimulationCoreCLR\FluidSimulationCoreCLR\obj\Debug\net8.0\FluidSimulationCoreCLR.AssemblyInfoInputs.cache
+C:\Users\Miro\source\repos\FluidSimulationCoreCLR\FluidSimulationCoreCLR\obj\Debug\net8.0\FluidSimulationCoreCLR.AssemblyInfo.cs
+C:\Users\Miro\source\repos\FluidSimulationCoreCLR\FluidSimulationCoreCLR\obj\Debug\net8.0\FluidSimulationCoreCLR.csproj.CoreCompileInputs.cache
+C:\Users\Miro\source\repos\FluidSimulationCoreCLR\FluidSimulationCoreCLR\obj\Debug\net8.0\FluidSimulationCoreCLR.dll
+C:\Users\Miro\source\repos\FluidSimulationCoreCLR\FluidSimulationCoreCLR\obj\Debug\net8.0\refint\FluidSimulationCoreCLR.dll
+C:\Users\Miro\source\repos\FluidSimulationCoreCLR\FluidSimulationCoreCLR\obj\Debug\net8.0\FluidSimulationCoreCLR.pdb
+C:\Users\Miro\source\repos\FluidSimulationCoreCLR\FluidSimulationCoreCLR\obj\Debug\net8.0\FluidSimulationCoreCLR.genruntimeconfig.cache
+C:\Users\Miro\source\repos\FluidSimulationCoreCLR\FluidSimulationCoreCLR\obj\Debug\net8.0\ref\FluidSimulationCoreCLR.dll

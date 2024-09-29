@@ -282,7 +282,7 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
         }
     }
 
-    [BurstCompile]
+    [BurstCompile]// (FloatMode = FloatMode.Fast)]
     private struct ComputeDensityPressureJob : IJobParallelFor
     {
         [ReadOnly] public NativeArray<Particle> particles;
@@ -338,7 +338,7 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
         }
     }
 
-    [BurstCompile]
+    [BurstCompile]// (FloatMode = FloatMode.Fast)]
     private struct ComputeForcesJob : IJobParallelFor
     {
         [ReadOnly] public NativeArray<Particle> particles;
@@ -421,8 +421,7 @@ public class SPH_MiroCsharp_Bursted_Optimized : MonoBehaviour
         }
     }
 
-    // Job to integrate particles (Optimized with Burst)
-    [BurstCompile]
+    [BurstCompile]// (FloatMode = FloatMode.Fast)]
     private struct IntegrateJob : IJobParallelFor
     {
         [ReadOnly] public NativeArray<Particle> particles;
