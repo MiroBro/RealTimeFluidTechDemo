@@ -10,6 +10,7 @@ using System;
 using TMPro;
 
 // Ensure the script is attached to a GameObject in your Unity scene
+[BurstCompile]
 public class SPHSimulation : MonoBehaviour
 {
     private NativeArray<Particle> particles;
@@ -34,10 +35,19 @@ public class SPHSimulation : MonoBehaviour
     private List<long> iterationTimes; // To store individual iteration times
 
     public TextMeshProUGUI resultsCompletedText;
+    public TextMeshProUGUI averagesText;
+
+    public int numberOfParticlesDesired;
+
+    [BurstCompile]
+    public void BurstedStuff(int a, int b)
+    {
+        var x = a+b;
+    }
 
     private void Start()
     {
-        int numberOfParticles = 500;
+        int numberOfParticles = numberOfParticlesDesired;
         particles = new NativeArray<Particle>(numberOfParticles, Allocator.Persistent);
         newParticles = new NativeArray<Particle>(numberOfParticles, Allocator.Persistent);
 
@@ -85,8 +95,8 @@ public class SPHSimulation : MonoBehaviour
         float remaining1000Average = remaining1000TotalTime / 1000.0f;
 
         // Print the average times to the Unity Console
-        UnityEngine.Debug.Log($"Burst SPH: Average time for the first 100 iterations: {first100Average} ms");
-        UnityEngine.Debug.Log($"Burst SPH: Average time for remaining 1000 iterations: {remaining1000Average} ms");
+        UnityEngine.Debug.Log($"Burst SPH, {numberOfParticlesDesired} particles: Average time for the first 100 iterations: {first100Average} ms");
+        UnityEngine.Debug.Log($"Burst SPH {numberOfParticlesDesired} particles:: Average time for remaining 1000 iterations: {remaining1000Average} ms");
 
         // Create a data object to hold the results
         SimulationResults results = new SimulationResults
@@ -108,6 +118,7 @@ public class SPHSimulation : MonoBehaviour
             File.WriteAllText(filePath, json);
             UnityEngine.Debug.Log($"Simulation results successfully written to: {filePath}");
             resultsCompletedText.text = $"Simulation results successfully written to: {filePath}";
+            averagesText.text = $"Burst SPH, {numberOfParticlesDesired} particles:: Average time for the first 100 iterations: {first100Average} ms" + $", \n Burst SPH, {numberOfParticlesDesired} particles:: Average time for remaining 1000 iterations: {remaining1000Average} ms";
 
         }
         catch (Exception ex)
