@@ -9,7 +9,6 @@ using System.IO;
 using System;
 using TMPro;
 
-// Ensure the script is attached to a GameObject in your Unity scene
 public class SPHSimulation : MonoBehaviour
 {
     private NativeArray<Particle> particles;
@@ -37,7 +36,6 @@ public class SPHSimulation : MonoBehaviour
     public TextMeshProUGUI resultsCompletedText;
     public TextMeshProUGUI averagesText;
 
-    // Number of particles, set via Inspector or default
     [SerializeField]
     public int numberOfParticlesDesired = 8000;
 

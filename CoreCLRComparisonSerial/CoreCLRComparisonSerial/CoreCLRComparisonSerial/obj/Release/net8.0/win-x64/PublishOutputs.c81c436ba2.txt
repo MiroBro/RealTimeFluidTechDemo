@@ -1,0 +1,2 @@
+D:\GameDevProjectLocs\RealTimeFluidTechDemo\CoreCLRComparisonSerial\CoreCLRComparisonSerial\CoreCLRComparisonSerial\bin\Release\net8.0\publish\win-x64\CoreCLRComparisonSerial.exe
+D:\GameDevProjectLocs\RealTimeFluidTechDemo\CoreCLRComparisonSerial\CoreCLRComparisonSerial\CoreCLRComparisonSerial\bin\Release\net8.0\publish\win-x64\CoreCLRComparisonSerial.pdb
