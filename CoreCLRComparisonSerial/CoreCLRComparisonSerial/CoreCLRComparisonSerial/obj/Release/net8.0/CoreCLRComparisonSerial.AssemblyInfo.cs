@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CoreCLRComparisonSerial")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db34b150a5e2eebbc23b4cc4678d87b54d4730b8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db7f9d52468d02169aac457480c387353dd419b6")]
 [assembly: System.Reflection.AssemblyProductAttribute("CoreCLRComparisonSerial")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CoreCLRComparisonSerial")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

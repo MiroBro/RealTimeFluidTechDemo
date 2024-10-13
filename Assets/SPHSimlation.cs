@@ -145,7 +145,8 @@ public class SPHSimulation : MonoBehaviour
         {
             First100Average = first100Average,
             Remaining1000Average = remaining1000Average,
-            IndividualIterationTimes = iterationTimes.ToArray()
+            IndividualIterationTimes = iterationTimes.ToArray(),
+            ParticleCount = numberOfParticlesDesired  // Set the particle count
         };
 
         // Serialize the results to JSON
@@ -176,6 +177,7 @@ public class SPHSimulation : MonoBehaviour
 
         UnityEngine.Debug.Log("Simulation complete!");
     }
+
 
     private void DisposeNativeCollections()
     {
@@ -457,8 +459,10 @@ public class SPHSimulation : MonoBehaviour
     [Serializable]
     private class SimulationResults
     {
+        public int ParticleCount;  // New field to store the number of particles
         public float First100Average;
         public float Remaining1000Average;
         public long[] IndividualIterationTimes;
     }
+
 }
