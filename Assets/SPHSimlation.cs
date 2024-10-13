@@ -1,9 +1,15 @@
 using Unity.Burst;
 using Unity.Collections;
+using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using System.Diagnostics;
+using System.Collections.Generic;
+using System.IO;
+using System;
+using TMPro;
 
+// Ensure the script is attached to a GameObject in your Unity scene
 public class SPHSimulation : MonoBehaviour
 {
     private NativeArray<Particle> particles;
@@ -25,10 +31,13 @@ public class SPHSimulation : MonoBehaviour
     private Stopwatch stopwatch;
     private long first100TotalTime = 0;
     private long remaining1000TotalTime = 0;
+    private List<long> iterationTimes; // To store individual iteration times
+
+    public TextMeshProUGUI resultsCompletedText;
 
     private void Start()
     {
-        int numberOfParticles = 1100;
+        int numberOfParticles = 500;
         particles = new NativeArray<Particle>(numberOfParticles, Allocator.Persistent);
         newParticles = new NativeArray<Particle>(numberOfParticles, Allocator.Persistent);
 
@@ -38,6 +47,9 @@ public class SPHSimulation : MonoBehaviour
 
         // Initialize particle grid map
         particleGridMap = new NativeParallelMultiHashMap<int3, int>(numberOfParticles, Allocator.Persistent);
+
+        // Initialize the list to store iteration times
+        iterationTimes = new List<long>(1100);
 
         // Spawn particles
         SpawnParticlesInBox(numberOfParticles);
@@ -54,30 +66,68 @@ public class SPHSimulation : MonoBehaviour
 
             stopwatch.Stop();
 
+            long elapsedTime = stopwatch.ElapsedMilliseconds;
+            iterationTimes.Add(elapsedTime);
+
             // Record timings for first 100 and remaining 1000 iterations
             if (i < 100)
             {
-                first100TotalTime += stopwatch.ElapsedMilliseconds;
+                first100TotalTime += elapsedTime;
             }
             else
             {
-                remaining1000TotalTime += stopwatch.ElapsedMilliseconds;
+                remaining1000TotalTime += elapsedTime;
             }
         }
 
-        // Print the average times for the first 100 and remaining 1000 iterations
-        UnityEngine.Debug.Log($"Burst SPH: Average time for SPH Bursted for the first 100 iterations: {first100TotalTime / 100.0f} ms");
-        UnityEngine.Debug.Log($"Burst SPH: Average time for remaining 1000 iterations: {remaining1000TotalTime / 1000.0f} ms");
+        // Compute average times
+        float first100Average = first100TotalTime / 100.0f;
+        float remaining1000Average = remaining1000TotalTime / 1000.0f;
+
+        // Print the average times to the Unity Console
+        UnityEngine.Debug.Log($"Burst SPH: Average time for the first 100 iterations: {first100Average} ms");
+        UnityEngine.Debug.Log($"Burst SPH: Average time for remaining 1000 iterations: {remaining1000Average} ms");
+
+        // Create a data object to hold the results
+        SimulationResults results = new SimulationResults
+        {
+            First100Average = first100Average,
+            Remaining1000Average = remaining1000Average,
+            IndividualIterationTimes = iterationTimes.ToArray()
+        };
+
+        // Serialize the results to JSON
+        string json = JsonUtility.ToJson(results, true);
+
+        // Define the file path (writes to the project's persistent data path)
+        string filePath = Path.Combine(Application.persistentDataPath, "sph_simulation_results.json");
+
+        // Write the JSON to the file
+        try
+        {
+            File.WriteAllText(filePath, json);
+            UnityEngine.Debug.Log($"Simulation results successfully written to: {filePath}");
+            resultsCompletedText.text = $"Simulation results successfully written to: {filePath}";
+
+        }
+        catch (Exception ex)
+        {
+            UnityEngine.Debug.LogError($"Failed to write simulation results to JSON. Exception: {ex.Message}");
+        }
 
         UnityEngine.Debug.Log("Simulation complete!");
     }
 
     private void OnDestroy()
     {
-        particles.Dispose();
-        newParticles.Dispose();
-        neighborOffsets.Dispose();
-        particleGridMap.Dispose();
+        if (particles.IsCreated)
+            particles.Dispose();
+        if (newParticles.IsCreated)
+            newParticles.Dispose();
+        if (neighborOffsets.IsCreated)
+            neighborOffsets.Dispose();
+        if (particleGridMap.IsCreated)
+            particleGridMap.Dispose();
     }
 
     private void SpawnParticlesInBox(int numParticles)
@@ -289,6 +339,7 @@ public class SPHSimulation : MonoBehaviour
         newParticles[id] = particle;
     }
 
+    // Struct representing a particle
     private struct Particle
     {
         public float3 position;
@@ -297,4 +348,16 @@ public class SPHSimulation : MonoBehaviour
         public float density;
         public float pressure;
     }
+
+    // Serializable class for JSON export
+    [Serializable]
+    private class SimulationResults
+    {
+        public float First100Average;
+        public float Remaining1000Average;
+        public long[] IndividualIterationTimes;
+    }
+
+    // Method to write results to JSON (included within Start for simplicity)
+    // Alternatively, you could separate this logic if desired
 }
