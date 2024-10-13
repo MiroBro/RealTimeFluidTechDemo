@@ -85,6 +85,10 @@ namespace SPHSimulationCoreCLR
             simulation.Initialize();
             simulation.RunSimulation();
             simulation.PrintResults();
+
+            // Wait for user input before closing the console.
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
 
         private void Initialize()
