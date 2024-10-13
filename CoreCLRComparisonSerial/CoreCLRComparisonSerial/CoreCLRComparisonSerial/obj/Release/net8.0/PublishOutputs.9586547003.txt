@@ -1,5 +1,3 @@
-D:\GameDevProjectLocs\RealTimeFluidTechDemo\CoreCLRComparisonSerial\CoreCLRComparisonSerial\CoreCLRComparisonSerial\bin\Release\net8.0\publish\CoreCLRComparisonSerial.exe
-D:\GameDevProjectLocs\RealTimeFluidTechDemo\CoreCLRComparisonSerial\CoreCLRComparisonSerial\CoreCLRComparisonSerial\bin\Release\net8.0\publish\CoreCLRComparisonSerial.dll
-D:\GameDevProjectLocs\RealTimeFluidTechDemo\CoreCLRComparisonSerial\CoreCLRComparisonSerial\CoreCLRComparisonSerial\bin\Release\net8.0\publish\CoreCLRComparisonSerial.deps.json
-D:\GameDevProjectLocs\RealTimeFluidTechDemo\CoreCLRComparisonSerial\CoreCLRComparisonSerial\CoreCLRComparisonSerial\bin\Release\net8.0\publish\CoreCLRComparisonSerial.runtimeconfig.json
-D:\GameDevProjectLocs\RealTimeFluidTechDemo\CoreCLRComparisonSerial\CoreCLRComparisonSerial\CoreCLRComparisonSerial\bin\Release\net8.0\publish\CoreCLRComparisonSerial.pdb
+version https://git-lfs.github.com/spec/v1
+oid sha256:6e9221bf625cebe47b1fe336638e88116e8db7b4850b7561395930aded9d1060
+size 881

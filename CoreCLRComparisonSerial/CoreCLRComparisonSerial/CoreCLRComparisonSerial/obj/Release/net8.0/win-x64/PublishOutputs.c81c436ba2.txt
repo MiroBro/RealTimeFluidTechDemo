@@ -1,2 +1,3 @@
-D:\GameDevProjectLocs\RealTimeFluidTechDemo\CoreCLRComparisonSerial\CoreCLRComparisonSerial\CoreCLRComparisonSerial\bin\Release\net8.0\publish\win-x64\CoreCLRComparisonSerial.exe
-D:\GameDevProjectLocs\RealTimeFluidTechDemo\CoreCLRComparisonSerial\CoreCLRComparisonSerial\CoreCLRComparisonSerial\bin\Release\net8.0\publish\win-x64\CoreCLRComparisonSerial.pdb
+version https://git-lfs.github.com/spec/v1
+oid sha256:062d0894a61c80236ed517cad983edbad08b327b769a6aca8626c440ced478d1
+size 360
