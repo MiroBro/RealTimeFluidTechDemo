@@ -9,6 +9,10 @@ using System.IO;
 using System;
 using TMPro;
 
+// This class runs the SPH calculations without Viusally rendering anything in Unity
+// Addtionally, it runs all calculations in sequence (rather than parallel) so that
+// it is easier to compare to the CoreCLR equivalent code (also sequentially run)
+// also found in this project under the name "CoreCLRComparisonSerial"
 public class SPH_Simulation_Pure_Burst_No_Visuals : MonoBehaviour //Was previously called SPHSimulation
 {
     private NativeArray<Particle> particles;
