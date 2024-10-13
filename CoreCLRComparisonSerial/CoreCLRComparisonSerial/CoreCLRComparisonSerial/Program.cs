@@ -81,8 +81,19 @@ namespace SPHSimulationCoreCLR
 
         static void Main(string[] args)
         {
+            // Default number of particles
+            int numberOfParticles = 8000;
+
+            // If an argument is passed, parse the number of particles
+            if (args.Length > 0 && int.TryParse(args[0], out int parsedParticles))
+            {
+                numberOfParticles = parsedParticles;
+            }
+
+            Console.WriteLine($"Running simulation with {numberOfParticles} particles...");
+
             SPHSimulation simulation = new SPHSimulation();
-            simulation.Initialize();
+            simulation.Initialize(numberOfParticles);
             simulation.RunSimulation();
             simulation.PrintResults();
 
@@ -91,9 +102,8 @@ namespace SPHSimulationCoreCLR
             Console.ReadKey();
         }
 
-        private void Initialize()
+        private void Initialize(int numberOfParticles)
         {
-            int numberOfParticles = 8000;
             particles = new Particle[numberOfParticles];
             newParticles = new Particle[numberOfParticles];
             neighborOffsets = new Int3[27];

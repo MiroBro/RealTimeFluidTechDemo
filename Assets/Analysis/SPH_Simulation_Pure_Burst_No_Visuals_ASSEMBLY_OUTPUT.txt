@@ -1,0 +1,2463 @@
+        .def        @feat.00; ...
+burst.initialize:
+.Lfunc_begin0:
+.seh_proc burst.initialize
+        push              rbp
+        .seh_pushreg rbp
+        push              rsi
+        .seh_pushreg rsi
+        sub               rsp, 56
+        .seh_stackalloc 56
+        lea               rbp, [rsp + 48]
+        .seh_setframe rbp, 48
+        .seh_endprologue
+        mov               rsi, rcx
+        lea               rcx, [rip + burst.string.8e5903df5608b81698ce21d2808fbcf4]
+        call              rsi
+        mov               qword ptr [rip + "Unity.Jobs.LowLevel.Unsafe.JobsUtility::get_ThreadIndexCount_Ptr"], rax
+        lea               rcx, [rip + burst.string.ffbfa8f9468181ee01437772260f8c26]
+        call              rsi
+        mov               qword ptr [rip + "Unity.Collections.LowLevel.Unsafe.UnsafeUtility::MallocTracked_Ptr"], rax
+        lea               rcx, [rip + burst.string.22ec91e5bc43e7e512fc53c9ce97a8e0]
+        call              rsi
+        mov               qword ptr [rip + "Unity.Collections.LowLevel.Unsafe.UnsafeUtility::FreeTracked_Ptr"], rax
+        lea               rcx, [rip + burst.string.57a01b00185c83d1eb43aeca89f29647]
+        call              rsi
+        mov               rsi, rax
+        mov               qword ptr [rip + "Unity.Burst.LowLevel.BurstCompilerService::GetOrCreateSharedMemory_Ptr"], rax
+        movabs            rax, -1297938794087215229
+        mov               qword ptr [rbp - 8], rax
+        mov               qword ptr [rbp], 0
+        lea               rcx, [rbp - 8]
+        mov               edx, 524288
+        mov               r8d, 16
+        call              rsi
+        mov               qword ptr [rip + "Unity.Burst.SharedStatic`1<Unity.Collections.AllocatorManager/Array32768`1<Unity.Collections.AllocatorManager/TableEntry>> Unity.Collections.AllocatorManager/SharedStatics/TableEntry::Ref"], rax
+        movabs            rax, -130492041295693829
+        mov               qword ptr [rbp - 8], rax
+        mov               qword ptr [rbp], 0
+        lea               rcx, [rbp - 8]
+        mov               edx, 65536
+        mov               r8d, 16
+        call              rsi
+        mov               qword ptr [rip + "Unity.Burst.SharedStatic`1<Unity.Collections.AllocatorManager/Array32768`1<System.UInt16>> Unity.Collections.AllocatorManager/SharedStatics/Version::Ref"], rax
+        add               rsp, 56
+        pop               rsi
+        pop               rbp
+        ret
+.Lfunc_end0:
+        .seh_endproc
+
+        .def        burst.initialize.externals;
+        .scl        2;
+        .type        32;
+        .endef
+        .globl        burst.initialize.externals
+        .p2align        4, 0x90
+burst.initialize.externals:
+.Lfunc_begin1:
+.seh_proc burst.initialize.externals
+        push              rbp
+        .seh_pushreg rbp
+        push              rsi
+        .seh_pushreg rsi
+        sub               rsp, 40
+        .seh_stackalloc 40
+        lea               rbp, [rsp + 32]
+        .seh_setframe rbp, 32
+        .seh_endprologue
+        mov               rsi, rcx
+        lea               rcx, [rip + burst.string.8e5903df5608b81698ce21d2808fbcf4]
+        call              rsi
+        mov               qword ptr [rip + "Unity.Jobs.LowLevel.Unsafe.JobsUtility::get_ThreadIndexCount_Ptr"], rax
+        lea               rcx, [rip + burst.string.ffbfa8f9468181ee01437772260f8c26]
+        call              rsi
+        mov               qword ptr [rip + "Unity.Collections.LowLevel.Unsafe.UnsafeUtility::MallocTracked_Ptr"], rax
+        lea               rcx, [rip + burst.string.22ec91e5bc43e7e512fc53c9ce97a8e0]
+        call              rsi
+        mov               qword ptr [rip + "Unity.Collections.LowLevel.Unsafe.UnsafeUtility::FreeTracked_Ptr"], rax
+        lea               rcx, [rip + burst.string.57a01b00185c83d1eb43aeca89f29647]
+        call              rsi
+        mov               qword ptr [rip + "Unity.Burst.LowLevel.BurstCompilerService::GetOrCreateSharedMemory_Ptr"], rax
+        add               rsp, 40
+        pop               rsi
+        pop               rbp
+        ret
+.Lfunc_end1:
+        .seh_endproc
+
+        .def        burst.initialize.statics;
+        .scl        2;
+        .type        32;
+        .endef
+        .globl        burst.initialize.statics
+        .p2align        4, 0x90
+burst.initialize.statics:
+.Lfunc_begin2:
+.seh_proc burst.initialize.statics
+        push              rbp
+        .seh_pushreg rbp
+        push              rsi
+        .seh_pushreg rsi
+        sub               rsp, 56
+        .seh_stackalloc 56
+        lea               rbp, [rsp + 48]
+        .seh_setframe rbp, 48
+        .seh_endprologue
+        movabs            rax, -1297938794087215229
+        mov               qword ptr [rbp - 8], rax
+        mov               qword ptr [rbp], 0
+        mov               rsi, qword ptr [rip + "Unity.Burst.LowLevel.BurstCompilerService::GetOrCreateSharedMemory_Ptr"]
+        lea               rcx, [rbp - 8]
+        mov               edx, 524288
+        mov               r8d, 16
+        call              rsi
+        mov               qword ptr [rip + "Unity.Burst.SharedStatic`1<Unity.Collections.AllocatorManager/Array32768`1<Unity.Collections.AllocatorManager/TableEntry>> Unity.Collections.AllocatorManager/SharedStatics/TableEntry::Ref"], rax
+        movabs            rax, -130492041295693829
+        mov               qword ptr [rbp - 8], rax
+        mov               qword ptr [rbp], 0
+        lea               rcx, [rbp - 8]
+        mov               edx, 65536
+        mov               r8d, 16
+        call              rsi
+        mov               qword ptr [rip + "Unity.Burst.SharedStatic`1<Unity.Collections.AllocatorManager/Array32768`1<System.UInt16>> Unity.Collections.AllocatorManager/SharedStatics/Version::Ref"], rax
+        add               rsp, 56
+        pop               rsi
+        pop               rbp
+        ret
+.Lfunc_end2:
+        .seh_endproc
+
+        .def        f606490cd33d764dab2fd4ae8bd2bfea;
+        .scl        2;
+        .type        32;
+        .endef
+        .globl        f606490cd33d764dab2fd4ae8bd2bfea
+        .p2align        4, 0x90
+f606490cd33d764dab2fd4ae8bd2bfea:
+.Lfunc_begin3:
+.seh_proc f606490cd33d764dab2fd4ae8bd2bfea
+        push              rbp
+        .seh_pushreg rbp
+        sub               rsp, 48
+        .seh_stackalloc 48
+        lea               rbp, [rsp + 48]
+        .seh_setframe rbp, 48
+        .seh_endprologue
+        mov               eax, dword ptr [rbp + 48]
+        mov               dword ptr [rsp + 32], eax
+        call              "Unity.Jobs.IJobExtensions.JobStruct`1<SPHSimulation.RunCalculationsJob>.Execute(ref SPHSimulation.RunCalculationsJob data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, ref Unity.Jobs.LowLevel.Unsafe.JobRanges ranges, int jobIndex) -> void_7435d70d723590c51e89202ae2f9be71 from UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+        nop
+        add               rsp, 48
+        pop               rbp
+        ret
+.Lfunc_end3:
+        .seh_endproc
+
+        .def        "SPHSimulation+RunCalculationsJob, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.ComputeDensityPressure(SPHSimulation+RunCalculationsJob*, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null this, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 id) -> System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_7435d70d723590c51e89202ae2f9be71 from Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null@@16";
+        .scl        2;
+        .type        32;
+        .endef
+        .globl        __real@40800000
+        .section        .rdata,"dr",discard,__real@40800000
+        .p2align        2, 0x0
+__real@40800000: ...
+__xmm@00000000aac3c25d4822a3e94c7f6dd1: ...
+__real@3fc00000: ...
+__real@43490fdb: ...
+__real@439d8000: ...
+__real@3f800000: ...
+"SPHSimulation+RunCalculationsJob, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.ComputeDensityPressure(SPHSimulation+RunCalculationsJob*, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null this, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 id) -> System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_7435d70d723590c51e89202ae2f9be71 from Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null@@16":
+.Lfunc_begin4:
+        .cv_func_id 0
+# SPHSimlation.cs(329, 1)        {
+.seh_proc "SPHSimulation+RunCalculationsJob, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.ComputeDensityPressure(SPHSimulation+RunCalculationsJob*, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null this, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 id) -> System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_7435d70d723590c51e89202ae2f9be71 from Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null@@16"
+        push              rbp
+        .seh_pushreg rbp
+.Ltmp0:
+        push              r15
+        .seh_pushreg r15
+        push              r14
+        .seh_pushreg r14
+        push              r13
+        .seh_pushreg r13
+        push              r12
+        .seh_pushreg r12
+        push              rsi
+        .seh_pushreg rsi
+        push              rdi
+        .seh_pushreg rdi
+        push              rbx
+        .seh_pushreg rbx
+        sub               rsp, 264
+        .seh_stackalloc 264
+        lea               rbp, [rsp + 128]
+        .seh_setframe rbp, 128
+        vmovaps           xmmword ptr [rbp + 112], xmm15
+        .seh_savexmm xmm15, 240
+        vmovdqa           xmmword ptr [rbp + 96], xmm14
+        .seh_savexmm xmm14, 224
+        vmovdqa           xmmword ptr [rbp + 80], xmm13
+        .seh_savexmm xmm13, 208
+        vmovdqa           xmmword ptr [rbp + 64], xmm12
+        .seh_savexmm xmm12, 192
+        vmovaps           xmmword ptr [rbp + 48], xmm11
+        .seh_savexmm xmm11, 176
+        vmovaps           xmmword ptr [rbp + 32], xmm10
+        .seh_savexmm xmm10, 160
+        vmovaps           xmmword ptr [rbp + 16], xmm9
+        .seh_savexmm xmm9, 144
+        vmovaps           xmmword ptr [rbp], xmm8
+        .seh_savexmm xmm8, 128
+        vmovaps           xmmword ptr [rbp - 16], xmm7
+        .seh_savexmm xmm7, 112
+        vmovaps           xmmword ptr [rbp - 32], xmm6
+        .seh_savexmm xmm6, 96
+        .seh_endprologue
+        mov               r12, qword ptr [rcx]
+        movsxd            rax, edx
+        imul              rax, rax, 44
+        lea               rdx, [r12 + rax]
+        vmovsd            xmm8, qword ptr [r12 + rax]
+        vmovss            xmm9, dword ptr [r12 + rax + 8]
+.Ltmp1:
+        mov               r9d, dword ptr [rcx + 136]
+        test              r9, r9
+        vxorps            xmm11, xmm11, xmm11
+        mov               qword ptr [rbp - 96], rax
+        mov               qword ptr [rbp - 88], rdx
+        mov               qword ptr [rbp - 72], rcx
+.Ltmp2:
+# SPHSimlation.cs(336, 1)            for (int i = 0; i < neighborOffsets.Length; i++)
+        je                .LBB4_10
+        .cv_inline_site_id 1 within 0 inlined_at 1 340 0
+        .cv_inline_site_id 2 within 1 inlined_at 3 193 0
+        .cv_inline_site_id 3 within 2 inlined_at 4 161 0
+# UnsafeParallelHashMap.cs(895, 1)            if (data->allocatedIndexLength <= 0)
+        mov               rdx, qword ptr [rcx + 96]
+        cmp               dword ptr [rdx + 40], 0
+.Ltmp3:
+        jle               .LBB4_10
+.Ltmp4:
+        vinsertps         xmm10, xmm8, xmm9, 32
+        vmulss            xmm0, xmm8, dword ptr [rip + __real@40800000]
+        vroundss          xmm0, xmm0, xmm0, 9
+        vcvttss2si        eax, xmm0
+        vmovshdup         xmm0, xmm8
+        vinsertps         xmm0, xmm0, xmm9, 16
+        vbroadcastss        xmm1, dword ptr [rip + __real@40800000]
+        vmulps            xmm0, xmm0, xmm1
+        vroundps          xmm0, xmm0, 9
+        vcvttps2dq        xmm0, xmm0
+        vpshufd           xmm0, xmm0, 80
+        vpinsrd           xmm12, xmm0, eax, 0
+        mov               rax, qword ptr [rbp - 72]
+        mov               rdi, qword ptr [rax + 128]
+        mov               r10, qword ptr [rdx + 24]
+        movsxd            r11, dword ptr [rdx + 36]
+        xor               esi, esi
+        vmovdqa           xmm13, xmmword ptr [rip + __xmm@00000000aac3c25d4822a3e94c7f6dd1]
+        vmovss            xmm6, dword ptr [rip + __real@3fc00000]
+        vmovss            xmm15, dword ptr [rip + __real@439d8000]
+        mov               qword ptr [rbp - 64], r9
+        mov               qword ptr [rbp - 80], rdx
+        mov               qword ptr [rbp - 56], r10
+        mov               qword ptr [rbp - 48], r11
+        mov               qword ptr [rbp - 40], rdi
+        jmp               .LBB4_3
+        .p2align        4, 0x90
+.LBB4_8:
+        mov               r9, qword ptr [rbp - 64]
+        mov               r10, qword ptr [rbp - 56]
+        mov               r11, qword ptr [rbp - 48]
+        mov               rdi, qword ptr [rbp - 40]
+.LBB4_9:
+# SPHSimlation.cs(336, 1)            for (int i = 0; i < neighborOffsets.Length; i++)
+        inc               rsi
+        cmp               rsi, r9
+        je                .LBB4_10
+.LBB4_3:
+.Ltmp5:
+# SPHSimlation.cs(338, 1)                int3 neighborPos = gridPos + neighborOffsets[i];
+        lea               rax, [rsi + 2*rsi]
+        vmovq             xmm0, qword ptr [rdi + 4*rax]
+        vpinsrd           xmm0, xmm0, dword ptr [rdi + 4*rax + 8], 2
+.Ltmp6:
+        vpaddd            xmm14, xmm12, xmm0
+.Ltmp7:
+        .cv_inline_site_id 4 within 3 inlined_at 2 904 0
+        .cv_inline_site_id 5 within 4 inlined_at 5 1697 0
+# int3.gen.cs(1823, 1)            return csum(asuint(v) * uint3(0x4C7F6DD1u, 0x4822A3E9u, 0xAAC3C25Du)) + 0xD21D0945u;
+        vpmulld           xmm0, xmm14, xmm13
+        vmovd             eax, xmm0
+        vpextrd           ecx, xmm0, 1
+        add               ecx, eax
+        vpextrd           eax, xmm0, 2
+        lea               eax, [rax + rcx - 769849019]
+.Ltmp8:
+# UnsafeParallelHashMap.cs(905, 1)            it.EntryIndex = it.NextEntryIndex = buckets[bucket];
+        cdqe
+# UnsafeParallelHashMap.cs(904, 1)            int bucket = key.GetHashCode() & data->bucketCapacityMask;
+        and               rax, r11
+# UnsafeParallelHashMap.cs(905, 1)            it.EntryIndex = it.NextEntryIndex = buckets[bucket];
+        mov               ebx, dword ptr [r10 + 4*rax]
+.Ltmp9:
+        .cv_inline_site_id 6 within 3 inlined_at 2 906 0
+# UnsafeParallelHashMap.cs(915, 1)            if (entryIdx < 0 || entryIdx >= data->keyCapacity)
+        test              ebx, ebx
+        js                .LBB4_9
+        mov               r14d, dword ptr [rdx + 32]
+        cmp               ebx, r14d
+        jge               .LBB4_9
+# UnsafeParallelHashMap.cs(920, 1)            int* nextPtrs = (int*)data->next;
+        mov               r15, qword ptr [rdx + 8]
+        mov               rdi, qword ptr [rdx + 16]
+        .p2align        4, 0x90
+.LBB4_6:
+# UnsafeParallelHashMap.cs(921, 1)            while (!UnsafeUtility.ReadArrayElement<TKey>(data->keys, entryIdx).Equals(it.key))
+        mov               eax, ebx
+        lea               rcx, [rax + 2*rax]
+        vmovq             xmm0, qword ptr [r15 + 4*rcx]
+        vpinsrd           xmm0, xmm0, dword ptr [r15 + 4*rcx + 8], 2
+        vpcmpeqd          xmm0, xmm14, xmm0
+        vpshufd           xmm0, xmm0, 36
+        vmovmskps         ecx, xmm0
+        cmp               cl, 15
+        je                .LBB4_17
+# UnsafeParallelHashMap.cs(923, 1)                entryIdx = nextPtrs[entryIdx];
+        mov               ebx, dword ptr [rdi + 4*rax]
+# UnsafeParallelHashMap.cs(924, 1)                if (entryIdx < 0 || entryIdx >= data->keyCapacity)
+        test              ebx, ebx
+        js                .LBB4_8
+        cmp               ebx, r14d
+        jl                .LBB4_6
+        jmp               .LBB4_8
+.LBB4_17:
+# UnsafeParallelHashMap.cs(934, 1)            item = UnsafeUtility.ReadArrayElement<TValue>(data->values, entryIdx);
+        mov               r13, qword ptr [rdx]
+        mov               rax, qword ptr [rbp - 72]
+        vmovss            xmm7, dword ptr [rax + 176]
+        vmovaps           xmm0, xmm7
+        vmovaps           xmm1, xmm6
+        call              burst.Sleef_powf_u10_avx2@@16
+        vmulss            xmm0, xmm0, dword ptr [rip + __real@43490fdb]
+        vdivss            xmm0, xmm15, xmm0
+.Ltmp10:
+.LBB4_18:
+# SPHSimlation.cs(345, 1)                        float3 diff = origin - neighbor.position;
+        mov               eax, ebx
+        mov               ebx, dword ptr [rdi + 4*rax]
+        movsxd            rax, dword ptr [r13 + 4*rax]
+.Ltmp11:
+        imul              rax, rax, 44
+        vmovsd            xmm1, qword ptr [r12 + rax + 4]
+.Ltmp12:
+        vmovss            xmm2, dword ptr [r12 + rax]
+        vmovlhps          xmm2, xmm2, xmm1
+        vshufps           xmm1, xmm2, xmm1, 216
+        vsubps            xmm1, xmm10, xmm1
+.Ltmp13:
+        .cv_inline_site_id 7 within 0 inlined_at 1 346 0
+# math.cs(3461, 1)        public static float lengthsq(float3 x) { return dot(x, x); }
+        vmulps            xmm1, xmm1, xmm1
+        vmovshdup         xmm2, xmm1
+        vaddss            xmm2, xmm1, xmm2
+        vpermilpd         xmm1, xmm1, 1
+        vaddss            xmm1, xmm1, xmm2
+.Ltmp14:
+# SPHSimlation.cs(348, 1)                        if (distanceSquared < radius2)
+        vucomiss          xmm7, xmm1
+        jbe               .LBB4_12
+.Ltmp15:
+        .cv_inline_site_id 8 within 0 inlined_at 1 350 0
+# SPHSimlation.cs(312, 1)            float x = 1.0f - distanceSquared / radius2;
+        vdivss            xmm1, xmm1, xmm7
+        vmovss            xmm2, dword ptr [rip + __real@3f800000]
+        vsubss            xmm1, xmm2, xmm1
+# SPHSimlation.cs(313, 1)            return 315f / (64f * math.PI * math.pow(radius2, 1.5f)) * x * x * x;
+        vmulss            xmm2, xmm0, xmm1
+        vmulss            xmm2, xmm1, xmm2
+        vmulss            xmm1, xmm1, xmm2
+.Ltmp16:
+# SPHSimlation.cs(350, 1)                            densitySum += StandardKernel(distanceSquared);
+        vaddss            xmm11, xmm11, xmm1
+.LBB4_12:
+        mov               rdx, qword ptr [rbp - 80]
+.Ltmp17:
+        test              ebx, ebx
+        js                .LBB4_8
+        .p2align        4, 0x90
+.LBB4_14:
+        cmp               ebx, r14d
+        jge               .LBB4_8
+        .cv_inline_site_id 9 within 0 inlined_at 1 353 0
+        .cv_inline_site_id 10 within 9 inlined_at 3 205 0
+        .cv_inline_site_id 11 within 10 inlined_at 4 172 0
+# UnsafeParallelHashMap.cs(921, 1)            while (!UnsafeUtility.ReadArrayElement<TKey>(data->keys, entryIdx).Equals(it.key))
+        mov               eax, ebx
+        lea               rcx, [rax + 2*rax]
+        vmovq             xmm1, qword ptr [r15 + 4*rcx]
+        vpinsrd           xmm1, xmm1, dword ptr [r15 + 4*rcx + 8], 2
+        vpcmpeqd          xmm1, xmm14, xmm1
+        vpshufd           xmm1, xmm1, 36
+        vmovmskps         ecx, xmm1
+        cmp               cl, 15
+        je                .LBB4_18
+# UnsafeParallelHashMap.cs(923, 1)                entryIdx = nextPtrs[entryIdx];
+        mov               ebx, dword ptr [rdi + 4*rax]
+        test              ebx, ebx
+        jns               .LBB4_14
+        jmp               .LBB4_8
+.Ltmp18:
+.LBB4_10:
+# SPHSimlation.cs(357, 1)            particle.density = densitySum * particleMass;
+        mov               rax, qword ptr [rbp - 72]
+        vmulss            xmm0, xmm11, dword ptr [rax + 180]
+# SPHSimlation.cs(358, 1)            particle.pressure = gasConstant * (particle.density - restingDensity);
+        vsubss            xmm1, xmm0, dword ptr [rax + 188]
+        vmulss            xmm1, xmm1, dword ptr [rax + 184]
+.Ltmp19:
+        mov               rax, qword ptr [rax + 48]
+        mov               rdx, qword ptr [rbp - 96]
+        vmovlps           qword ptr [rax + rdx], xmm8
+        vmovss            dword ptr [rax + rdx + 8], xmm9
+        mov               rcx, qword ptr [rbp - 88]
+        vmovups           xmm2, xmmword ptr [rcx + 12]
+        vmovups           xmmword ptr [rax + rdx + 12], xmm2
+        mov               rcx, qword ptr [rcx + 28]
+        mov               qword ptr [rax + rdx + 28], rcx
+        vmovss            dword ptr [rax + rdx + 36], xmm0
+        vmovss            dword ptr [rax + rdx + 40], xmm1
+        vmovaps           xmm6, xmmword ptr [rbp - 32]
+        vmovaps           xmm7, xmmword ptr [rbp - 16]
+        vmovaps           xmm8, xmmword ptr [rbp]
+        vmovaps           xmm9, xmmword ptr [rbp + 16]
+        vmovaps           xmm10, xmmword ptr [rbp + 32]
+        vmovaps           xmm11, xmmword ptr [rbp + 48]
+        vmovaps           xmm12, xmmword ptr [rbp + 64]
+        vmovaps           xmm13, xmmword ptr [rbp + 80]
+        vmovaps           xmm14, xmmword ptr [rbp + 96]
+        vmovaps           xmm15, xmmword ptr [rbp + 112]
+.Ltmp20:
+# SPHSimlation.cs(360, 1)        }
+        add               rsp, 264
+        pop               rbx
+        pop               rdi
+        pop               rsi
+        pop               r12
+        pop               r13
+        pop               r14
+        pop               r15
+        pop               rbp
+        ret
+.Ltmp21: ...
+__real@bdcccccd: ...
+__real@c80be1dc: ...
+__real@4a2eda53: ...
+__real@c11cf5c3: ...
+"SPHSimulation+RunCalculationsJob, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.ComputeForces(SPHSimulation+RunCalculationsJob*, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null this, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 id) -> System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_7435d70d723590c51e89202ae2f9be71 from Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null@@16":
+.Lfunc_begin5:
+        .cv_func_id 12
+# SPHSimlation.cs(363, 1)        {
+.seh_proc "SPHSimulation+RunCalculationsJob, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.ComputeForces(SPHSimulation+RunCalculationsJob*, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null this, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 id) -> System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_7435d70d723590c51e89202ae2f9be71 from Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null@@16"
+        push              rbp
+        .seh_pushreg rbp
+.Ltmp22:
+        push              r15
+        .seh_pushreg r15
+        push              r14
+        .seh_pushreg r14
+        push              r13
+        .seh_pushreg r13
+        push              r12
+        .seh_pushreg r12
+        push              rsi
+        .seh_pushreg rsi
+        push              rdi
+        .seh_pushreg rdi
+        push              rbx
+        .seh_pushreg rbx
+        sub               rsp, 216
+        .seh_stackalloc 216
+        lea               rbp, [rsp + 128]
+        .seh_setframe rbp, 128
+        vmovaps           xmmword ptr [rbp + 64], xmm15
+        .seh_savexmm xmm15, 192
+        vmovaps           xmmword ptr [rbp + 48], xmm14
+        .seh_savexmm xmm14, 176
+        vmovdqa           xmmword ptr [rbp + 32], xmm13
+        .seh_savexmm xmm13, 160
+        vmovdqa           xmmword ptr [rbp + 16], xmm12
+        .seh_savexmm xmm12, 144
+        vmovaps           xmmword ptr [rbp], xmm11
+        .seh_savexmm xmm11, 128
+        vmovaps           xmmword ptr [rbp - 16], xmm10
+        .seh_savexmm xmm10, 112
+        vmovaps           xmmword ptr [rbp - 32], xmm9
+        .seh_savexmm xmm9, 96
+        vmovaps           xmmword ptr [rbp - 48], xmm8
+        .seh_savexmm xmm8, 80
+        vmovdqa           xmmword ptr [rbp - 64], xmm7
+        .seh_savexmm xmm7, 64
+        vmovaps           xmmword ptr [rbp - 80], xmm6
+        .seh_savexmm xmm6, 48
+        .seh_endprologue
+        mov               r10, qword ptr [rcx]
+        mov               dword ptr [rbp - 92], edx
+        movsxd            rax, edx
+        imul              rax, rax, 44
+        vmovups           xmm0, xmmword ptr [r10 + rax]
+        vmovsd            xmm1, qword ptr [r10 + rax + 16]
+        mov               rdx, qword ptr [r10 + rax + 36]
+.Ltmp23:
+# SPHSimlation.cs(364, 1)            Particle particle = particles[id];
+        mov               r8, rdx
+        shr               r8, 32
+        mov               qword ptr [rbp - 104], r8
+.Ltmp24:
+        mov               r11d, dword ptr [rcx + 136]
+        test              r11, r11
+        vxorps            xmm3, xmm3, xmm3
+        mov               qword ptr [rbp - 120], rax
+        mov               qword ptr [rbp - 88], rcx
+        mov               qword ptr [rbp - 112], rdx
+.Ltmp25:
+# SPHSimlation.cs(371, 1)            for (int i = 0; i < neighborOffsets.Length; i++)
+        je                .LBB5_1
+        .cv_inline_site_id 13 within 12 inlined_at 1 375 0
+        .cv_inline_site_id 14 within 13 inlined_at 3 193 0
+        .cv_inline_site_id 15 within 14 inlined_at 4 161 0
+# UnsafeParallelHashMap.cs(895, 1)            if (data->allocatedIndexLength <= 0)
+        mov               rsi, qword ptr [rcx + 96]
+        cmp               dword ptr [rsi + 40], 0
+        vxorps            xmm2, xmm2, xmm2
+.Ltmp26:
+        jle               .LBB5_11
+.Ltmp27:
+        vmulss            xmm2, xmm0, dword ptr [rip + __real@40800000]
+        vroundss          xmm2, xmm2, xmm2, 9
+        vcvttss2si        eax, xmm2
+        vpermilps         xmm2, xmm0, 233
+        vbroadcastss        xmm3, dword ptr [rip + __real@40800000]
+        vmulps            xmm2, xmm2, xmm3
+        vroundps          xmm2, xmm2, 9
+        vcvttps2dq        xmm2, xmm2
+        vpshufd           xmm2, xmm2, 80
+        vpinsrd           xmm4, xmm2, eax, 0
+        mov               rax, qword ptr [rbp - 88]
+        mov               rdi, qword ptr [rax + 128]
+        vmovss            xmm5, dword ptr [rbp - 104]
+        vblendps          xmm2, xmm0, xmm1, 3
+        vpermilps         xmm6, xmm2, 211
+        mov               rbx, qword ptr [rsi + 24]
+        movsxd            r14, dword ptr [rsi + 36]
+        vxorps            xmm2, xmm2, xmm2
+        xor               r15d, r15d
+        vmovdqa           xmm7, xmmword ptr [rip + __xmm@00000000aac3c25d4822a3e94c7f6dd1]
+        vxorps            xmm11, xmm11, xmm11
+        vxorps            xmm3, xmm3, xmm3
+        jmp               .LBB5_4
+        .p2align        4, 0x90
+.LBB5_10:
+# SPHSimlation.cs(371, 1)            for (int i = 0; i < neighborOffsets.Length; i++)
+        inc               r15
+        cmp               r15, r11
+        je                .LBB5_11
+.LBB5_4:
+.Ltmp28:
+# SPHSimlation.cs(373, 1)                int3 neighborPos = gridPos + neighborOffsets[i];
+        lea               rax, [r15 + 2*r15]
+        vmovq             xmm8, qword ptr [rdi + 4*rax]
+        vpinsrd           xmm8, xmm8, dword ptr [rdi + 4*rax + 8], 2
+.Ltmp29:
+        vpaddd            xmm13, xmm8, xmm4
+.Ltmp30:
+        .cv_inline_site_id 16 within 15 inlined_at 2 904 0
+        .cv_inline_site_id 17 within 16 inlined_at 5 1697 0
+# int3.gen.cs(1823, 1)            return csum(asuint(v) * uint3(0x4C7F6DD1u, 0x4822A3E9u, 0xAAC3C25Du)) + 0xD21D0945u;
+        vpmulld           xmm8, xmm13, xmm7
+        vmovd             eax, xmm8
+        vpextrd           ecx, xmm8, 1
+        add               ecx, eax
+        vpextrd           eax, xmm8, 2
+        lea               eax, [rax + rcx - 769849019]
+.Ltmp31:
+# UnsafeParallelHashMap.cs(905, 1)            it.EntryIndex = it.NextEntryIndex = buckets[bucket];
+        cdqe
+# UnsafeParallelHashMap.cs(904, 1)            int bucket = key.GetHashCode() & data->bucketCapacityMask;
+        and               rax, r14
+# UnsafeParallelHashMap.cs(905, 1)            it.EntryIndex = it.NextEntryIndex = buckets[bucket];
+        mov               eax, dword ptr [rbx + 4*rax]
+.Ltmp32:
+        .cv_inline_site_id 18 within 15 inlined_at 2 906 0
+# UnsafeParallelHashMap.cs(915, 1)            if (entryIdx < 0 || entryIdx >= data->keyCapacity)
+        test              eax, eax
+        js                .LBB5_10
+        mov               r12d, dword ptr [rsi + 32]
+        cmp               eax, r12d
+        jge               .LBB5_10
+# UnsafeParallelHashMap.cs(920, 1)            int* nextPtrs = (int*)data->next;
+        mov               r13, qword ptr [rsi + 8]
+        mov               r8, qword ptr [rsi + 16]
+        .p2align        4, 0x90
+.LBB5_7:
+# UnsafeParallelHashMap.cs(921, 1)            while (!UnsafeUtility.ReadArrayElement<TKey>(data->keys, entryIdx).Equals(it.key))
+        mov               edx, eax
+        lea               rcx, [rdx + 2*rdx]
+        vmovq             xmm8, qword ptr [r13 + 4*rcx]
+        vpinsrd           xmm8, xmm8, dword ptr [r13 + 4*rcx + 8], 2
+        vpcmpeqd          xmm8, xmm8, xmm13
+        vpshufd           xmm8, xmm8, 36
+        vmovmskps         ecx, xmm8
+        cmp               cl, 15
+        je                .LBB5_20
+# UnsafeParallelHashMap.cs(923, 1)                entryIdx = nextPtrs[entryIdx];
+        mov               eax, dword ptr [r8 + 4*rdx]
+# UnsafeParallelHashMap.cs(924, 1)                if (entryIdx < 0 || entryIdx >= data->keyCapacity)
+        test              eax, eax
+        js                .LBB5_10
+        cmp               eax, r12d
+        jl                .LBB5_7
+        jmp               .LBB5_10
+.LBB5_20:
+# UnsafeParallelHashMap.cs(934, 1)            item = UnsafeUtility.ReadArrayElement<TValue>(data->values, entryIdx);
+        mov               r9, qword ptr [rsi]
+.Ltmp33:
+.LBB5_21:
+# SPHSimlation.cs(379, 1)                        if (neighborIndex == id) continue;
+        mov               eax, eax
+        movsxd            rdx, dword ptr [r9 + 4*rax]
+        cmp               edx, dword ptr [rbp - 92]
+        je                .LBB5_13
+.Ltmp34:
+# SPHSimlation.cs(382, 1)                        float3 diff = origin - neighbor.position;
+        imul              rdx, rdx, 44
+        vmovsd            xmm9, qword ptr [r10 + rdx + 4]
+.Ltmp35:
+        vmovss            xmm10, dword ptr [r10 + rdx]
+        vmovlhps          xmm10, xmm10, xmm9
+        vshufps           xmm9, xmm10, xmm9, 216
+        vsubps            xmm14, xmm0, xmm9
+.Ltmp36:
+        .cv_inline_site_id 19 within 12 inlined_at 1 383 0
+# math.cs(3461, 1)        public static float lengthsq(float3 x) { return dot(x, x); }
+        vmulps            xmm9, xmm14, xmm14
+        vmovshdup         xmm10, xmm9
+        vaddss            xmm10, xmm9, xmm10
+        vpermilpd         xmm9, xmm9, 1
+        vaddss            xmm9, xmm9, xmm10
+        mov               rcx, qword ptr [rbp - 88]
+.Ltmp37:
+# SPHSimlation.cs(385, 1)                        if (distanceSquared < radius2)
+        vmovss            xmm10, dword ptr [rcx + 176]
+        vucomiss          xmm10, xmm9
+        jbe               .LBB5_13
+# SPHSimlation.cs(387, 1)                            float distance = math.sqrt(distanceSquared);
+        vsqrtss           xmm10, xmm9, xmm9
+# SPHSimlation.cs(388, 1)                            if (distance > 0f)
+        vucomiss          xmm10, xmm11
+        jbe               .LBB5_13
+# SPHSimlation.cs(390, 1)                                float3 pressureGrad = PressureKernelGradient(particle, neighbor, distance, diff);
+        vmovss            xmm15, dword ptr [r10 + rdx + 12]
+        vmovsd            xmm9, qword ptr [r10 + rdx + 16]
+        mov               rcx, qword ptr [r10 + rdx + 36]
+        vmovd             xmm11, ecx
+.Ltmp38:
+        .cv_inline_site_id 20 within 12 inlined_at 1 393 0
+# SPHSimlation.cs(325, 1)            return viscosity * secondDerivative * (neighbor.velocity - particle.velocity) / neighbor.density;
+        vmovd             xmm12, ecx
+.Ltmp39:
+        shr               rcx, 32
+.Ltmp40:
+        .cv_inline_site_id 21 within 12 inlined_at 1 390 0
+# SPHSimlation.cs(318, 1)            float gradValue = -45.0f / (math.PI * math.pow(radius, 4)) * math.pow(1.0f - distance / radius, 2);
+        vdivss            xmm10, xmm10, dword ptr [rip + __real@bdcccccd]
+        vaddss            xmm10, xmm10, dword ptr [rip + __real@3f800000]
+        vmulss            xmm8, xmm10, xmm10
+        vmulss            xmm8, xmm8, dword ptr [rip + __real@c80be1dc]
+# SPHSimlation.cs(319, 1)            return gradValue * direction * (particle.pressure + neighbor.pressure) / (2 * neighbor.density);
+        vbroadcastss        xmm8, xmm8
+        vmulps            xmm8, xmm14, xmm8
+.Ltmp41:
+# SPHSimlation.cs(390, 1)                                float3 pressureGrad = PressureKernelGradient(particle, neighbor, distance, diff);
+        vmovd             xmm14, ecx
+.Ltmp42:
+# SPHSimlation.cs(319, 1)            return gradValue * direction * (particle.pressure + neighbor.pressure) / (2 * neighbor.density);
+        vaddss            xmm14, xmm14, xmm5
+        vbroadcastss        xmm14, xmm14
+        vmulps            xmm8, xmm14, xmm8
+        vaddss            xmm11, xmm11, xmm11
+        vbroadcastss        xmm11, xmm11
+        vdivps            xmm8, xmm8, xmm11
+        vxorps            xmm11, xmm11, xmm11
+.Ltmp43:
+# SPHSimlation.cs(391, 1)                                pressureForce += pressureGrad;
+        vaddps            xmm2, xmm8, xmm2
+.Ltmp44:
+# SPHSimlation.cs(324, 1)            float secondDerivative = 90f / (math.PI * math.pow(radius, 5)) * (1.0f - distance / radius);
+        vmulss            xmm8, xmm10, dword ptr [rip + __real@4a2eda53]
+        mov               rcx, qword ptr [rbp - 88]
+# SPHSimlation.cs(325, 1)            return viscosity * secondDerivative * (neighbor.velocity - particle.velocity) / neighbor.density;
+        vmulss            xmm8, xmm8, dword ptr [rcx + 212]
+        vmovlhps          xmm10, xmm15, xmm9
+        vshufps           xmm9, xmm10, xmm9, 216
+        vsubps            xmm9, xmm9, xmm6
+        vbroadcastss        xmm8, xmm8
+        vmulps            xmm8, xmm9, xmm8
+        vpbroadcastd        xmm9, xmm12
+        vdivps            xmm8, xmm8, xmm9
+.Ltmp45:
+# SPHSimlation.cs(394, 1)                                viscousForce += viscousGrad;
+        vaddps            xmm3, xmm8, xmm3
+        .p2align        4, 0x90
+.LBB5_13:
+        mov               eax, dword ptr [r8 + 4*rax]
+.Ltmp46:
+        test              eax, eax
+        js                .LBB5_10
+        .p2align        4, 0x90
+.LBB5_15:
+        cmp               eax, r12d
+        jge               .LBB5_10
+        .cv_inline_site_id 22 within 12 inlined_at 1 398 0
+        .cv_inline_site_id 23 within 22 inlined_at 3 205 0
+        .cv_inline_site_id 24 within 23 inlined_at 4 172 0
+# UnsafeParallelHashMap.cs(921, 1)            while (!UnsafeUtility.ReadArrayElement<TKey>(data->keys, entryIdx).Equals(it.key))
+        mov               edx, eax
+        lea               rcx, [rdx + 2*rdx]
+        vmovq             xmm9, qword ptr [r13 + 4*rcx]
+        vpinsrd           xmm9, xmm9, dword ptr [r13 + 4*rcx + 8], 2
+        vpcmpeqd          xmm9, xmm9, xmm13
+        vpshufd           xmm9, xmm9, 36
+        vmovmskps         ecx, xmm9
+        cmp               cl, 15
+        je                .LBB5_21
+# UnsafeParallelHashMap.cs(923, 1)                entryIdx = nextPtrs[entryIdx];
+        mov               eax, dword ptr [r8 + 4*rdx]
+        test              eax, eax
+        jns               .LBB5_15
+        jmp               .LBB5_10
+.Ltmp47:
+.LBB5_1:
+        vxorps            xmm2, xmm2, xmm2
+.LBB5_11:
+# SPHSimlation.cs(403, 1)            float3 externalForce = new float3(0, -9.81f * particleMass, 0);
+        mov               rax, qword ptr [rbp - 88]
+        vmovss            xmm4, dword ptr [rax + 180]
+        vmulss            xmm4, xmm4, dword ptr [rip + __real@c11cf5c3]
+        vinsertps         xmm4, xmm0, xmm4, 29
+# SPHSimlation.cs(404, 1)            particle.currentForce = externalForce - pressureForce + viscousForce;
+        vsubps            xmm2, xmm4, xmm2
+        vaddps            xmm2, xmm3, xmm2
+.Ltmp48:
+        mov               rax, qword ptr [rax + 48]
+        mov               rcx, qword ptr [rbp - 120]
+        vmovups           xmmword ptr [rax + rcx], xmm0
+        vmovlhps          xmm0, xmm1, xmm2
+        vmovups           xmmword ptr [rax + rcx + 16], xmm0
+        vextractps        dword ptr [rax + rcx + 32], xmm2, 2
+        mov               rdx, qword ptr [rbp - 112]
+        mov               dword ptr [rax + rcx + 36], edx
+        mov               rdx, qword ptr [rbp - 104]
+        mov               dword ptr [rax + rcx + 40], edx
+        vmovaps           xmm6, xmmword ptr [rbp - 80]
+        vmovaps           xmm7, xmmword ptr [rbp - 64]
+        vmovaps           xmm8, xmmword ptr [rbp - 48]
+        vmovaps           xmm9, xmmword ptr [rbp - 32]
+        vmovaps           xmm10, xmmword ptr [rbp - 16]
+        vmovaps           xmm11, xmmword ptr [rbp]
+        vmovaps           xmm12, xmmword ptr [rbp + 16]
+        vmovaps           xmm13, xmmword ptr [rbp + 32]
+        vmovaps           xmm14, xmmword ptr [rbp + 48]
+        vmovaps           xmm15, xmmword ptr [rbp + 64]
+.Ltmp49:
+# SPHSimlation.cs(407, 1)        }
+        add               rsp, 216
+        pop               rbx
+        pop               rdi
+        pop               rsi
+        pop               r12
+        pop               r13
+        pop               r14
+        pop               r15
+        pop               rbp
+        ret
+.Ltmp50: ...
+"Unity.Collections.LowLevel.Unsafe.UnsafeParallelHashMapBase`2[[Unity.Mathematics.int3, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.TryAdd(Unity.Collections.LowLevel.Unsafe.UnsafeParallelHashMapData*, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null data, Unity.Mathematics.int3, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null key, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 item, System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 isMultiHashMap, Unity.Collections.AllocatorManager+AllocatorHandle, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null allocation) -> System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_7435d70d723590c51e89202ae2f9be71 from Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null@@48":
+.Lfunc_begin6:
+        .cv_func_id 25
+# UnsafeParallelHashMap.cs(696, 1)        {
+.seh_proc "Unity.Collections.LowLevel.Unsafe.UnsafeParallelHashMapBase`2[[Unity.Mathematics.int3, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.TryAdd(Unity.Collections.LowLevel.Unsafe.UnsafeParallelHashMapData*, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null data, Unity.Mathematics.int3, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null key, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 item, System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 isMultiHashMap, Unity.Collections.AllocatorManager+AllocatorHandle, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null allocation) -> System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_7435d70d723590c51e89202ae2f9be71 from Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null@@48"
+        push              rbp
+        .seh_pushreg rbp
+        push              rsi
+        .seh_pushreg rsi
+        push              rdi
+        .seh_pushreg rdi
+        sub               rsp, 64
+        .seh_stackalloc 64
+        lea               rbp, [rsp + 64]
+        .seh_setframe rbp, 64
+        vmovaps           xmmword ptr [rbp - 16], xmm6
+        .seh_savexmm xmm6, 48
+        .seh_endprologue
+        mov               edi, r8d
+        vmovdqa           xmm6, xmm1
+        mov               rsi, rcx
+.Ltmp51:
+        mov               eax, dword ptr [rcx + 40]
+# UnsafeParallelHashMap.cs(699, 1)            if (isMultiHashMap || !TryGetFirstValueAtomic(data, key, out tempItem, out tempIt))
+        test              r9b, r9b
+        jne               .LBB6_9
+        test              eax, eax
+        jle               .LBB6_9
+.Ltmp52:
+        .cv_inline_site_id 26 within 25 inlined_at 2 699 0
+# UnsafeParallelHashMap.cs(903, 1)            int* buckets = (int*)data->buckets;
+        mov               rcx, qword ptr [rsi + 24]
+.Ltmp53:
+        .cv_inline_site_id 27 within 26 inlined_at 2 904 0
+        .cv_inline_site_id 28 within 27 inlined_at 5 1697 0
+# int3.gen.cs(1823, 1)            return csum(asuint(v) * uint3(0x4C7F6DD1u, 0x4822A3E9u, 0xAAC3C25Du)) + 0xD21D0945u;
+        vpmulld           xmm0, xmm6, xmmword ptr [rip + __xmm@00000000aac3c25d4822a3e94c7f6dd1]
+        vmovd             edx, xmm0
+        vpextrd           r8d, xmm0, 1
+        add               r8d, edx
+        vpextrd           edx, xmm0, 2
+        lea               edx, [rdx + r8 - 769849019]
+.Ltmp54:
+# UnsafeParallelHashMap.cs(904, 1)            int bucket = key.GetHashCode() & data->bucketCapacityMask;
+        and               edx, dword ptr [rsi + 36]
+        movsxd            rdx, edx
+# UnsafeParallelHashMap.cs(905, 1)            it.EntryIndex = it.NextEntryIndex = buckets[bucket];
+        mov               r9d, dword ptr [rcx + 4*rdx]
+.Ltmp55:
+        .cv_inline_site_id 29 within 26 inlined_at 2 906 0
+# UnsafeParallelHashMap.cs(915, 1)            if (entryIdx < 0 || entryIdx >= data->keyCapacity)
+        test              r9d, r9d
+        js                .LBB6_9
+        mov               ecx, dword ptr [rsi + 32]
+        cmp               r9d, ecx
+        jge               .LBB6_9
+# UnsafeParallelHashMap.cs(920, 1)            int* nextPtrs = (int*)data->next;
+        mov               rdx, qword ptr [rsi + 8]
+        mov               r8, qword ptr [rsi + 16]
+        .p2align        4, 0x90
+.LBB6_5:
+# UnsafeParallelHashMap.cs(921, 1)            while (!UnsafeUtility.ReadArrayElement<TKey>(data->keys, entryIdx).Equals(it.key))
+        mov               r9d, r9d
+        lea               r10, [r9 + 2*r9]
+        vmovq             xmm0, qword ptr [rdx + 4*r10]
+        vpinsrd           xmm0, xmm0, dword ptr [rdx + 4*r10 + 8], 2
+        vpcmpeqd          xmm0, xmm0, xmm6
+        vpshufd           xmm0, xmm0, 36
+        vmovmskps         r10d, xmm0
+        cmp               r10b, 15
+        je                .LBB6_6
+# UnsafeParallelHashMap.cs(923, 1)                entryIdx = nextPtrs[entryIdx];
+        mov               r9d, dword ptr [r8 + 4*r9]
+# UnsafeParallelHashMap.cs(924, 1)                if (entryIdx < 0 || entryIdx >= data->keyCapacity)
+        test              r9d, r9d
+        js                .LBB6_9
+        cmp               r9d, ecx
+        jl                .LBB6_5
+.Ltmp56:
+.LBB6_9:
+# UnsafeParallelHashMap.cs(705, 1)                if (data->allocatedIndexLength >= data->keyCapacity && data->firstFreeTLS[0] < 0)
+        cmp               eax, dword ptr [rsi + 32]
+        jl                .LBB6_11
+        cmp               dword ptr [rsi + 64], 0
+        jns               .LBB6_11
+.Ltmp57:
+# UnsafeParallelHashMap.cs(712, 1)                    for (int tls = 1; tls < maxThreadCount; ++tls)
+        call              qword ptr [rip + "Unity.Jobs.LowLevel.Unsafe.JobsUtility::get_ThreadIndexCount_Ptr"]
+.Ltmp58:
+        cmp               eax, 2
+        jl                .LBB6_18
+        mov               eax, eax
+        shl               rax, 4
+        mov               ecx, 16
+        .p2align        4, 0x90
+.LBB6_15:
+# UnsafeParallelHashMap.cs(714, 1)                        if (data->firstFreeTLS[tls * UnsafeParallelHashMapData.IntsPerCacheLine] >= 0)
+        movsxd            r8, ecx
+        mov               edx, dword ptr [rsi + 4*r8 + 64]
+        test              edx, edx
+        jns               .LBB6_16
+# UnsafeParallelHashMap.cs(712, 1)                    for (int tls = 1; tls < maxThreadCount; ++tls)
+        add               rcx, 16
+        cmp               rax, rcx
+        jne               .LBB6_15
+.LBB6_18:
+# UnsafeParallelHashMap.cs(725, 1)                    if (data->firstFreeTLS[0] < 0)
+        cmp               dword ptr [rsi + 64], 0
+        jns               .LBB6_11
+# UnsafeParallelHashMap.cs(727, 1)                        int newCap = UnsafeParallelHashMapData.GrowCapacity(data->keyCapacity);
+        movzx             eax, word ptr [rbp + 72]
+        movzx             r9d, word ptr [rbp + 64]
+        mov               ecx, dword ptr [rsi + 32]
+.Ltmp59:
+        .cv_inline_site_id 30 within 25 inlined_at 2 727 0
+# UnsafeParallelHashMap.cs(110, 1)            if (capacity == 0)
+        lea               r8d, [rcx + rcx]
+        test              ecx, ecx
+        mov               edx, 1
+        cmovne            edx, r8d
+.Ltmp60:
+        .cv_inline_site_id 31 within 25 inlined_at 2 728 0
+# UnsafeParallelHashMap.cs(105, 1)            return capacity * 2;
+        lea               r8d, [rdx + rdx]
+.Ltmp61:
+# UnsafeParallelHashMap.cs(728, 1)                        UnsafeParallelHashMapData.ReallocateHashMap<TKey, TValue>(data, newCap, UnsafeParallelHashMapData.GetBucketSize(newCap), allocation);
+        mov               word ptr [rsp + 32], ax
+        mov               rcx, rsi
+        call              "Unity.Collections.LowLevel.Unsafe.UnsafeParallelHashMapData, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.ReallocateHashMap<Unity.Mathematics.int3, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>(Unity.Collections.LowLevel.Unsafe.UnsafeParallelHashMapData*, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null data, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 newCapacity, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 newBucketCapacity, Unity.Collections.AllocatorManager+AllocatorHandle, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null label) -> System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_7435d70d723590c51e89202ae2f9be71 from Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null@@32"
+.LBB6_11:
+# UnsafeParallelHashMap.cs(732, 1)                idx = data->firstFreeTLS[0];
+        mov               eax, dword ptr [rsi + 64]
+# UnsafeParallelHashMap.cs(734, 1)                if (idx >= 0)
+        test              eax, eax
+        js                .LBB6_12
+.LBB6_20:
+# UnsafeParallelHashMap.cs(736, 1)                    data->firstFreeTLS[0] = ((int*)data->next)[idx];
+        mov               rcx, qword ptr [rsi + 16]
+        mov               ecx, dword ptr [rcx + 4*rax]
+        mov               dword ptr [rsi + 64], ecx
+        jmp               .LBB6_21
+.LBB6_6:
+        xor               eax, eax
+        jmp               .LBB6_22
+.LBB6_16:
+# UnsafeParallelHashMap.cs(717, 1)                            nextPtrs = (int*)data->next;
+        mov               rax, qword ptr [rsi + 16]
+# UnsafeParallelHashMap.cs(718, 1)                            data->firstFreeTLS[tls * UnsafeParallelHashMapData.IntsPerCacheLine] = nextPtrs[idx];
+        mov               ecx, dword ptr [rax + 4*rdx]
+        mov               dword ptr [rsi + 4*r8 + 64], ecx
+# UnsafeParallelHashMap.cs(719, 1)                            nextPtrs[idx] = -1;
+        mov               dword ptr [rax + 4*rdx], -1
+# UnsafeParallelHashMap.cs(720, 1)                            data->firstFreeTLS[0] = idx;
+        mov               dword ptr [rsi + 64], edx
+# UnsafeParallelHashMap.cs(732, 1)                idx = data->firstFreeTLS[0];
+        mov               eax, dword ptr [rsi + 64]
+# UnsafeParallelHashMap.cs(734, 1)                if (idx >= 0)
+        test              eax, eax
+        jns               .LBB6_20
+.LBB6_12:
+# UnsafeParallelHashMap.cs(740, 1)                    idx = data->allocatedIndexLength++;
+        mov               eax, dword ptr [rsi + 40]
+        lea               ecx, [rax + 1]
+        mov               dword ptr [rsi + 40], ecx
+.LBB6_21:
+# UnsafeParallelHashMap.cs(746, 1)                UnsafeUtility.WriteArrayElement(data->keys, idx, key);
+        mov               rcx, qword ptr [rsi + 8]
+        cdqe
+        lea               rdx, [rax + 2*rax]
+        vpextrd           dword ptr [rcx + 4*rdx + 8], xmm6, 2
+        vmovq             qword ptr [rcx + 4*rdx], xmm6
+# UnsafeParallelHashMap.cs(747, 1)                UnsafeUtility.WriteArrayElement(data->values, idx, item);
+        mov               rcx, qword ptr [rsi]
+        mov               dword ptr [rcx + 4*rax], edi
+.Ltmp62:
+        .cv_inline_site_id 32 within 25 inlined_at 2 749 0
+        .cv_inline_site_id 33 within 32 inlined_at 5 1697 0
+# int3.gen.cs(1823, 1)            return csum(asuint(v) * uint3(0x4C7F6DD1u, 0x4822A3E9u, 0xAAC3C25Du)) + 0xD21D0945u;
+        vpmulld           xmm0, xmm6, xmmword ptr [rip + __xmm@00000000aac3c25d4822a3e94c7f6dd1]
+        vmovd             ecx, xmm0
+        vpextrd           edx, xmm0, 1
+        add               edx, ecx
+        vpextrd           ecx, xmm0, 2
+        lea               ecx, [rcx + rdx - 769849019]
+.Ltmp63:
+# UnsafeParallelHashMap.cs(749, 1)                int bucket = key.GetHashCode() & data->bucketCapacityMask;
+        and               ecx, dword ptr [rsi + 36]
+        movsxd            rcx, ecx
+# UnsafeParallelHashMap.cs(752, 1)                nextPtrs = (int*)data->next;
+        mov               rdx, qword ptr [rsi + 16]
+# UnsafeParallelHashMap.cs(751, 1)                int* buckets = (int*)data->buckets;
+        mov               r8, qword ptr [rsi + 24]
+# UnsafeParallelHashMap.cs(753, 1)                nextPtrs[idx] = buckets[bucket];
+        mov               r9d, dword ptr [r8 + 4*rcx]
+        mov               dword ptr [rdx + 4*rax], r9d
+# UnsafeParallelHashMap.cs(754, 1)                buckets[bucket] = idx;
+        mov               dword ptr [r8 + 4*rcx], eax
+        mov               al, 1
+.LBB6_22:
+# UnsafeParallelHashMap.cs(759, 1)        }
+        vmovaps           xmm6, xmmword ptr [rbp - 16]
+        add               rsp, 64
+        pop               rdi
+        pop               rsi
+        pop               rbp
+        ret
+.Ltmp64: ...
+"Unity.Collections.LowLevel.Unsafe.UnsafeParallelHashMapData, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.ReallocateHashMap<Unity.Mathematics.int3, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>(Unity.Collections.LowLevel.Unsafe.UnsafeParallelHashMapData*, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null data, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 newCapacity, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 newBucketCapacity, Unity.Collections.AllocatorManager+AllocatorHandle, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null label) -> System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_7435d70d723590c51e89202ae2f9be71 from Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null@@32":
+.Lfunc_begin7:
+        .cv_func_id 34
+# UnsafeParallelHashMap.cs(155, 1)        {
+.seh_proc "Unity.Collections.LowLevel.Unsafe.UnsafeParallelHashMapData, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.ReallocateHashMap<Unity.Mathematics.int3, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>(Unity.Collections.LowLevel.Unsafe.UnsafeParallelHashMapData*, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null data, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 newCapacity, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 newBucketCapacity, Unity.Collections.AllocatorManager+AllocatorHandle, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null label) -> System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_7435d70d723590c51e89202ae2f9be71 from Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null@@32"
+        push              rbp
+        .seh_pushreg rbp
+        push              r15
+        .seh_pushreg r15
+        push              r14
+        .seh_pushreg r14
+        push              r13
+        .seh_pushreg r13
+        push              r12
+        .seh_pushreg r12
+        push              rsi
+        .seh_pushreg rsi
+        push              rdi
+        .seh_pushreg rdi
+        push              rbx
+        .seh_pushreg rbx
+        sub               rsp, 88
+        .seh_stackalloc 88
+        lea               rbp, [rsp + 80]
+        .seh_setframe rbp, 80
+        .seh_endprologue
+        mov               rsi, rcx
+.Ltmp65:
+        .cv_inline_site_id 35 within 34 inlined_at 2 156 0
+# math.cs(5315, 1)            x -= 1;
+        dec               r8d
+# math.cs(5316, 1)            x |= x >> 1;
+        mov               eax, r8d
+        sar               eax
+        or                eax, r8d
+# math.cs(5317, 1)            x |= x >> 2;
+        mov               ecx, eax
+        sar               ecx, 2
+        or                ecx, eax
+# math.cs(5318, 1)            x |= x >> 4;
+        mov               eax, ecx
+        sar               eax, 4
+        or                eax, ecx
+# math.cs(5319, 1)            x |= x >> 8;
+        mov               ecx, eax
+        sar               ecx, 8
+        or                ecx, eax
+# math.cs(5320, 1)            x |= x >> 16;
+        mov               ebx, ecx
+        sar               ebx, 16
+        or                ebx, ecx
+        mov               qword ptr [rbp - 8], rdx
+.Ltmp66:
+# UnsafeParallelHashMap.cs(158, 1)            if (data->keyCapacity == newCapacity && (data->bucketCapacityMask + 1) == newBucketCapacity)
+        cmp               dword ptr [rsi + 32], edx
+        jne               .LBB7_2
+        cmp               dword ptr [rsi + 36], ebx
+        je                .LBB7_27
+.LBB7_2:
+        .cv_inline_site_id 36 within 34 inlined_at 2 166 0
+        .cv_inline_site_id 37 within 36 inlined_at 2 232 0
+# CollectionHelper.cs(90, 1)            if (alignmentPowerOfTwo == 0)
+        movzx             edx, word ptr [rbp + 112]
+        mov               rax, qword ptr [rbp - 8]
+.Ltmp67:
+        lea               r15d, [4*rax + 63]
+        and               r15d, -64
+.Ltmp68:
+# UnsafeParallelHashMap.cs(233, 1)            var keysSize = CollectionHelper.Align(sizeOfTKey * length, JobsUtility.CacheLineSize);
+        lea               eax, [rax + 2*rax]
+.Ltmp69:
+        .cv_inline_site_id 38 within 36 inlined_at 2 233 0
+# CollectionHelper.cs(90, 1)            if (alignmentPowerOfTwo == 0)
+        lea               r12d, [4*rax + 63]
+        and               r12d, -64
+.Ltmp70:
+        .cv_inline_site_id 39 within 36 inlined_at 2 235 0
+# CollectionHelper.cs(90, 1)            if (alignmentPowerOfTwo == 0)
+        lea               eax, [4*rbx + 67]
+        and               eax, -64
+.Ltmp71:
+# UnsafeParallelHashMap.cs(236, 1)            var totalSize = valuesSize + keysSize + nextSize + bucketSize;
+        add               r12d, r15d
+        lea               r13d, [r12 + r15]
+        add               eax, r13d
+.Ltmp72:
+        .cv_inline_site_id 40 within 34 inlined_at 2 168 0
+        .cv_inline_site_id 41 within 40 inlined_at 8 20 0
+        .cv_inline_site_id 42 within 41 inlined_at 8 72 0
+# Memory.cs(49, 1)                    return (int) allocator.Index >= AllocatorManager.FirstUserIndex;
+        cmp               r9w, 63
+        mov               word ptr [rbp + 6], r9w
+.Ltmp73:
+# Memory.cs(72, 1)                    if (IsCustom(allocator))
+        jbe               .LBB7_3
+.Ltmp74:
+        .cv_inline_site_id 43 within 41 inlined_at 8 73 0
+# Memory.cs(54, 1)                    AllocatorManager.Block block = default;
+        mov               qword ptr [rbp - 16], 6
+# Memory.cs(55, 1)                    block.Range.Allocator = allocator;
+        mov               word ptr [rbp - 28], r9w
+        mov               word ptr [rbp - 26], dx
+# Memory.cs(56, 1)                    block.Range.Items = (int)newCount;
+        mov               dword ptr [rbp - 32], 1
+# Memory.cs(57, 1)                    block.Range.Pointer = (IntPtr)oldPointer;
+        mov               qword ptr [rbp - 40], 0
+# Memory.cs(58, 1)                    block.BytesPerItem = (int)size;
+        mov               dword ptr [rbp - 24], eax
+# Memory.cs(60, 1)                    block.AllocatedItems = (int)oldCount;
+        mov               dword ptr [rbp - 20], 0
+.Ltmp75:
+        .cv_inline_site_id 44 within 43 inlined_at 8 61 0
+# AllocatorManager.cs(1136, 1)            if (block.Range.Allocator.Version == 0)
+        test              dx, dx
+        je                .LBB7_6
+.Ltmp76:
+        .cv_inline_site_id 45 within 44 inlined_at 9 1146 0
+        .cv_inline_site_id 46 within 45 inlined_at 9 1065 0
+        .cv_inline_site_id 47 within 46 inlined_at 9 288 0
+# AllocatorManager.cs(1353, 1)                unsafe { fixed(Array4096<T>* p = &f0) { return ref UnsafeUtility.AsRef<T>((T*)p + index); } }
+        movzx             r8d, r9w
+        jmp               .LBB7_7
+.Ltmp77:
+.LBB7_3:
+# UnsafeParallelHashMap.cs(168, 1)            byte* newData = (byte*)Memory.Unmanaged.Allocate(totalSize, JobsUtility.CacheLineSize, label);
+        movsxd            rcx, eax
+.Ltmp78:
+        mov               eax, edx
+        shl               eax, 16
+        movzx             r8d, r9w
+        or                r8d, eax
+.Ltmp79:
+        mov               edx, 64
+        xor               r9d, r9d
+        call              qword ptr [rip + "Unity.Collections.LowLevel.Unsafe.UnsafeUtility::MallocTracked_Ptr"]
+        mov               r14, rax
+        jmp               .LBB7_8
+.Ltmp80:
+.LBB7_6:
+        .cv_inline_site_id 48 within 44 inlined_at 9 1137 0
+        .cv_inline_site_id 49 within 48 inlined_at 9 331 0
+# SharedStatic.cs(32, 1)                return ref Unsafe.AsRef<T>(_buffer);
+        mov               rax, qword ptr [rip + "Unity.Burst.SharedStatic`1<Unity.Collections.AllocatorManager/Array32768`1<System.UInt16>> Unity.Collections.AllocatorManager/SharedStatics/Version::Ref"]
+.Ltmp81:
+        .cv_inline_site_id 50 within 48 inlined_at 9 331 0
+# AllocatorManager.cs(1353, 1)                unsafe { fixed(Array4096<T>* p = &f0) { return ref UnsafeUtility.AsRef<T>((T*)p + index); } }
+        movzx             r8d, r9w
+.Ltmp82:
+# AllocatorManager.cs(1137, 1)                block.Range.Allocator.Version = block.Range.Allocator.OfficialVersion;
+        movzx             eax, word ptr [rax + 2*r8]
+        mov               word ptr [rbp - 26], ax
+.LBB7_7:
+.Ltmp83:
+        .cv_inline_site_id 51 within 46 inlined_at 9 288 0
+# SharedStatic.cs(32, 1)                return ref Unsafe.AsRef<T>(_buffer);
+        mov               rax, qword ptr [rip + "Unity.Burst.SharedStatic`1<Unity.Collections.AllocatorManager/Array32768`1<Unity.Collections.AllocatorManager/TableEntry>> Unity.Collections.AllocatorManager/SharedStatics/TableEntry::Ref"]
+.Ltmp84:
+# AllocatorManager.cs(1353, 1)                unsafe { fixed(Array4096<T>* p = &f0) { return ref UnsafeUtility.AsRef<T>((T*)p + index); } }
+        shl               r8, 4
+.Ltmp85:
+# AllocatorManager.cs(1065, 1)            tableEntry = block.Range.Allocator.TableEntry;
+        mov               rcx, qword ptr [rax + r8 + 8]
+        lea               rdx, [rbp - 40]
+# AllocatorManager.cs(1068, 1)            return function.Invoke(tableEntry.state, ref block);
+        call              qword ptr [rax + r8]
+.Ltmp86:
+# Memory.cs(63, 1)                    return (void*)block.Range.Pointer;
+        mov               r14, qword ptr [rbp - 40]
+.Ltmp87:
+.LBB7_8:
+# UnsafeParallelHashMap.cs(169, 1)            byte* newKeys = newData + keyOffset;
+        movsxd            r15, r15d
+        add               r15, r14
+# UnsafeParallelHashMap.cs(170, 1)            byte* newNext = newData + nextOffset;
+        movsxd            rdi, r12d
+        lea               r12, [r14 + rdi]
+# UnsafeParallelHashMap.cs(171, 1)            byte* newBuckets = newData + bucketOffset;
+        movsxd            r13, r13d
+# UnsafeParallelHashMap.cs(174, 1)            UnsafeUtility.MemCpy(newData, data->values, data->keyCapacity * UnsafeUtility.SizeOf<TValue>());
+        mov               rdx, qword ptr [rsi]
+        mov               eax, dword ptr [rsi + 32]
+        shl               eax, 2
+        movsxd            r8, eax
+        mov               rcx, r14
+        xor               r9d, r9d
+        call              burst.memcpy.inline.AVX2.i64@@32
+# UnsafeParallelHashMap.cs(175, 1)            UnsafeUtility.MemCpy(newKeys, data->keys, data->keyCapacity * UnsafeUtility.SizeOf<TKey>());
+        mov               rdx, qword ptr [rsi + 8]
+        mov               eax, dword ptr [rsi + 32]
+        shl               eax, 2
+        lea               eax, [rax + 2*rax]
+        movsxd            r8, eax
+        mov               rcx, r15
+        xor               r9d, r9d
+        call              burst.memcpy.inline.AVX2.i64@@32
+# UnsafeParallelHashMap.cs(176, 1)            UnsafeUtility.MemCpy(newNext, data->next, data->keyCapacity * UnsafeUtility.SizeOf<int>());
+        mov               rdx, qword ptr [rsi + 16]
+        mov               eax, dword ptr [rsi + 32]
+        shl               eax, 2
+        movsxd            r8, eax
+        mov               rcx, r12
+        xor               r9d, r9d
+        call              burst.memcpy.inline.AVX2.i64@@32
+# UnsafeParallelHashMap.cs(178, 1)            for (int emptyNext = data->keyCapacity; emptyNext < newCapacity; ++emptyNext)
+        movsxd            rax, dword ptr [rsi + 32]
+        cmp               eax, dword ptr [rbp - 8]
+        jl                .LBB7_9
+# UnsafeParallelHashMap.cs(184, 1)            for (int bucket = 0; bucket < newBucketCapacity; ++bucket)
+        add               r13, r14
+        cmp               ebx, 2147483646
+        jbe               .LBB7_11
+.LBB7_12:
+# UnsafeParallelHashMap.cs(189, 1)            for (int bucket = 0; bucket <= data->bucketCapacityMask; ++bucket)
+        mov               r9d, dword ptr [rsi + 36]
+        test              r9d, r9d
+        jns               .LBB7_13
+        jmp               .LBB7_18
+.LBB7_9:
+# UnsafeParallelHashMap.cs(178, 1)            for (int emptyNext = data->keyCapacity; emptyNext < newCapacity; ++emptyNext)
+        lea               rcx, [rdi + 4*rax]
+        add               rcx, r14
+        not               eax
+        add               eax, dword ptr [rbp - 8]
+        lea               r8, [4*rax + 4]
+# UnsafeParallelHashMap.cs(180, 1)                ((int*)newNext)[emptyNext] = -1;
+        mov               dl, -1
+        xor               r9d, r9d
+        call              burst.memset.inline.AVX2.i64@@32
+        add               r13, r14
+# UnsafeParallelHashMap.cs(184, 1)            for (int bucket = 0; bucket < newBucketCapacity; ++bucket)
+        cmp               ebx, 2147483646
+        ja                .LBB7_12
+.LBB7_11:
+        mov               eax, ebx
+        lea               r8, [4*rax + 4]
+# UnsafeParallelHashMap.cs(186, 1)                ((int*)newBuckets)[bucket] = -1;
+        mov               rcx, r13
+        mov               dl, -1
+        xor               r9d, r9d
+        call              burst.memset.inline.AVX2.i64@@32
+# UnsafeParallelHashMap.cs(189, 1)            for (int bucket = 0; bucket <= data->bucketCapacityMask; ++bucket)
+        mov               r9d, dword ptr [rsi + 36]
+        test              r9d, r9d
+        js                .LBB7_18
+.LBB7_13:
+        xor               eax, eax
+        vmovdqa           xmm0, xmmword ptr [rip + __xmm@00000000aac3c25d4822a3e94c7f6dd1]
+        jmp               .LBB7_17
+        .p2align        4, 0x90
+.LBB7_16:
+        inc               eax
+        cmp               eax, r9d
+        jg                .LBB7_18
+.LBB7_17:
+# UnsafeParallelHashMap.cs(191, 1)                int* buckets = (int*)data->buckets;
+        mov               rcx, qword ptr [rsi + 24]
+# UnsafeParallelHashMap.cs(193, 1)                while (buckets[bucket] >= 0)
+        movsxd            rdx, eax
+        mov               r8d, dword ptr [rcx + 4*rdx]
+        test              r8d, r8d
+        js                .LBB7_16
+        .p2align        4, 0x90
+.LBB7_14:
+# UnsafeParallelHashMap.cs(196, 1)                    buckets[bucket] = nextPtrs[curEntry];
+        mov               r9d, r8d
+        mov               r10d, dword ptr [r12 + 4*r9]
+        mov               dword ptr [rcx + 4*rdx], r10d
+# UnsafeParallelHashMap.cs(197, 1)                    int newBucket = UnsafeUtility.ReadArrayElement<TKey>(data->keys, curEntry).GetHashCode() & (newBucketCapacity - 1);
+        mov               r10, qword ptr [rsi + 8]
+        lea               r11, [r9 + 2*r9]
+        vmovq             xmm1, qword ptr [r10 + 4*r11]
+        vpinsrd           xmm1, xmm1, dword ptr [r10 + 4*r11 + 8], 2
+.Ltmp88:
+        .cv_inline_site_id 52 within 34 inlined_at 2 197 0
+        .cv_inline_site_id 53 within 52 inlined_at 5 1697 0
+# int3.gen.cs(1823, 1)            return csum(asuint(v) * uint3(0x4C7F6DD1u, 0x4822A3E9u, 0xAAC3C25Du)) + 0xD21D0945u;
+        vpmulld           xmm1, xmm1, xmm0
+        vmovd             r10d, xmm1
+        vpextrd           r11d, xmm1, 1
+        add               r11d, r10d
+        vpextrd           r10d, xmm1, 2
+        lea               r10d, [r10 + r11 - 769849019]
+.Ltmp89:
+# UnsafeParallelHashMap.cs(197, 1)                    int newBucket = UnsafeUtility.ReadArrayElement<TKey>(data->keys, curEntry).GetHashCode() & (newBucketCapacity - 1);
+        and               r10d, ebx
+# UnsafeParallelHashMap.cs(198, 1)                    nextPtrs[curEntry] = ((int*)newBuckets)[newBucket];
+        movsxd            r10, r10d
+        mov               r11d, dword ptr [r13 + 4*r10]
+        mov               dword ptr [r12 + 4*r9], r11d
+# UnsafeParallelHashMap.cs(199, 1)                    ((int*)newBuckets)[newBucket] = curEntry;
+        mov               dword ptr [r13 + 4*r10], r8d
+# UnsafeParallelHashMap.cs(193, 1)                while (buckets[bucket] >= 0)
+        mov               r8d, dword ptr [rcx + 4*rdx]
+        test              r8d, r8d
+        jns               .LBB7_14
+# UnsafeParallelHashMap.cs(189, 1)            for (int bucket = 0; bucket <= data->bucketCapacityMask; ++bucket)
+        mov               r9d, dword ptr [rsi + 36]
+        jmp               .LBB7_16
+.LBB7_18:
+# UnsafeParallelHashMap.cs(203, 1)            Memory.Unmanaged.Free(data->values, label);
+        mov               rcx, qword ptr [rsi]
+.Ltmp90:
+        .cv_inline_site_id 54 within 34 inlined_at 2 203 0
+# Memory.cs(39, 1)                if (pointer == null)
+        test              rcx, rcx
+        je                .LBB7_25
+.Ltmp91:
+# Memory.cs(49, 1)                    return (int) allocator.Index >= AllocatorManager.FirstUserIndex;
+        movzx             edx, word ptr [rbp + 6]
+.Ltmp92:
+        cmp               dx, 63
+.Ltmp93:
+        .cv_inline_site_id 55 within 54 inlined_at 8 41 0
+        .cv_inline_site_id 56 within 55 inlined_at 8 96 0
+# Memory.cs(72, 1)                    if (IsCustom(allocator))
+        jbe               .LBB7_20
+.Ltmp94:
+        .cv_inline_site_id 57 within 56 inlined_at 8 73 0
+# Memory.cs(54, 1)                    AllocatorManager.Block block = default;
+        mov               qword ptr [rbp - 16], 6
+# Memory.cs(55, 1)                    block.Range.Allocator = allocator;
+        mov               word ptr [rbp - 28], dx
+        movzx             eax, word ptr [rbp + 112]
+        mov               r8d, eax
+        mov               word ptr [rbp - 26], r8w
+# Memory.cs(56, 1)                    block.Range.Items = (int)newCount;
+        mov               dword ptr [rbp - 32], 0
+# Memory.cs(57, 1)                    block.Range.Pointer = (IntPtr)oldPointer;
+        mov               qword ptr [rbp - 40], rcx
+        movabs            rax, 4294967297
+# Memory.cs(58, 1)                    block.BytesPerItem = (int)size;
+        mov               qword ptr [rbp - 24], rax
+.Ltmp95:
+        .cv_inline_site_id 58 within 57 inlined_at 8 61 0
+# AllocatorManager.cs(1136, 1)            if (block.Range.Allocator.Version == 0)
+        test              r8w, r8w
+        je                .LBB7_23
+.Ltmp96:
+        .cv_inline_site_id 59 within 58 inlined_at 9 1146 0
+        .cv_inline_site_id 60 within 59 inlined_at 9 1065 0
+        .cv_inline_site_id 61 within 60 inlined_at 9 288 0
+# AllocatorManager.cs(1353, 1)                unsafe { fixed(Array4096<T>* p = &f0) { return ref UnsafeUtility.AsRef<T>((T*)p + index); } }
+        movzx             r8d, dx
+        jmp               .LBB7_24
+.Ltmp97:
+.LBB7_20:
+        movzx             eax, word ptr [rbp + 112]
+.Ltmp98:
+        shl               eax, 16
+        movzx             edx, dx
+        or                edx, eax
+.Ltmp99:
+        call              qword ptr [rip + "Unity.Collections.LowLevel.Unsafe.UnsafeUtility::FreeTracked_Ptr"]
+.Ltmp100:
+.LBB7_25:
+# UnsafeParallelHashMap.cs(204, 1)            if (data->allocatedIndexLength > data->keyCapacity)
+        mov               eax, dword ptr [rsi + 32]
+        cmp               dword ptr [rsi + 40], eax
+        jle               .LBB7_26
+.LBB7_28:
+# UnsafeParallelHashMap.cs(206, 1)                data->allocatedIndexLength = data->keyCapacity;
+        mov               dword ptr [rsi + 40], eax
+.LBB7_26:
+# UnsafeParallelHashMap.cs(209, 1)            data->values = newData;
+        mov               qword ptr [rsi], r14
+# UnsafeParallelHashMap.cs(210, 1)            data->keys = newKeys;
+        mov               qword ptr [rsi + 8], r15
+# UnsafeParallelHashMap.cs(211, 1)            data->next = newNext;
+        mov               qword ptr [rsi + 16], r12
+# UnsafeParallelHashMap.cs(212, 1)            data->buckets = newBuckets;
+        mov               qword ptr [rsi + 24], r13
+        mov               rax, qword ptr [rbp - 8]
+# UnsafeParallelHashMap.cs(213, 1)            data->keyCapacity = newCapacity;
+        mov               dword ptr [rsi + 32], eax
+# UnsafeParallelHashMap.cs(214, 1)            data->bucketCapacityMask = newBucketCapacity - 1;
+        mov               dword ptr [rsi + 36], ebx
+.LBB7_27:
+# UnsafeParallelHashMap.cs(215, 1)        }
+        add               rsp, 88
+        pop               rbx
+        pop               rdi
+        pop               rsi
+        pop               r12
+        pop               r13
+        pop               r14
+        pop               r15
+        pop               rbp
+        ret
+.LBB7_23:
+.Ltmp101:
+        .cv_inline_site_id 62 within 58 inlined_at 9 1137 0
+        .cv_inline_site_id 63 within 62 inlined_at 9 331 0
+# SharedStatic.cs(32, 1)                return ref Unsafe.AsRef<T>(_buffer);
+        mov               rax, qword ptr [rip + "Unity.Burst.SharedStatic`1<Unity.Collections.AllocatorManager/Array32768`1<System.UInt16>> Unity.Collections.AllocatorManager/SharedStatics/Version::Ref"]
+.Ltmp102:
+        .cv_inline_site_id 64 within 62 inlined_at 9 331 0
+# AllocatorManager.cs(1353, 1)                unsafe { fixed(Array4096<T>* p = &f0) { return ref UnsafeUtility.AsRef<T>((T*)p + index); } }
+        movzx             r8d, dx
+.Ltmp103:
+# AllocatorManager.cs(1137, 1)                block.Range.Allocator.Version = block.Range.Allocator.OfficialVersion;
+        movzx             eax, word ptr [rax + 2*r8]
+        mov               word ptr [rbp - 26], ax
+.LBB7_24:
+.Ltmp104:
+        .cv_inline_site_id 65 within 60 inlined_at 9 288 0
+# SharedStatic.cs(32, 1)                return ref Unsafe.AsRef<T>(_buffer);
+        mov               rax, qword ptr [rip + "Unity.Burst.SharedStatic`1<Unity.Collections.AllocatorManager/Array32768`1<Unity.Collections.AllocatorManager/TableEntry>> Unity.Collections.AllocatorManager/SharedStatics/TableEntry::Ref"]
+.Ltmp105:
+# AllocatorManager.cs(1353, 1)                unsafe { fixed(Array4096<T>* p = &f0) { return ref UnsafeUtility.AsRef<T>((T*)p + index); } }
+        shl               r8, 4
+.Ltmp106:
+# AllocatorManager.cs(1065, 1)            tableEntry = block.Range.Allocator.TableEntry;
+        mov               rcx, qword ptr [rax + r8 + 8]
+        lea               rdx, [rbp - 40]
+# AllocatorManager.cs(1068, 1)            return function.Invoke(tableEntry.state, ref block);
+        call              qword ptr [rax + r8]
+.Ltmp107:
+# UnsafeParallelHashMap.cs(204, 1)            if (data->allocatedIndexLength > data->keyCapacity)
+        mov               eax, dword ptr [rsi + 32]
+        cmp               dword ptr [rsi + 40], eax
+        jg                .LBB7_28
+        jmp               .LBB7_26
+.Ltmp108: ...
+__real@bf000000: ...
+__real@3f000000: ...
+"Unity.Jobs.IJobExtensions.JobStruct`1<SPHSimulation.RunCalculationsJob>.Execute(ref SPHSimulation.RunCalculationsJob data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, ref Unity.Jobs.LowLevel.Unsafe.JobRanges ranges, int jobIndex) -> void_7435d70d723590c51e89202ae2f9be71 from UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null":
+.Lfunc_begin8:
+        .cv_func_id 66
+# unknown
+.seh_proc "Unity.Jobs.IJobExtensions.JobStruct`1<SPHSimulation.RunCalculationsJob>.Execute(ref SPHSimulation.RunCalculationsJob data, System.IntPtr additionalPtr, System.IntPtr bufferRangePatchData, ref Unity.Jobs.LowLevel.Unsafe.JobRanges ranges, int jobIndex) -> void_7435d70d723590c51e89202ae2f9be71 from UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+        push              rbp
+        .seh_pushreg rbp
+        push              r15
+        .seh_pushreg r15
+        push              r14
+        .seh_pushreg r14
+        push              r13
+        .seh_pushreg r13
+        push              r12
+        .seh_pushreg r12
+        push              rsi
+        .seh_pushreg rsi
+        push              rdi
+        .seh_pushreg rdi
+        push              rbx
+        .seh_pushreg rbx
+        sub               rsp, 136
+        .seh_stackalloc 136
+        lea               rbp, [rsp + 128]
+        .seh_setframe rbp, 128
+        vmovaps           xmmword ptr [rbp - 16], xmm10
+        .seh_savexmm xmm10, 112
+        vmovaps           xmmword ptr [rbp - 32], xmm9
+        .seh_savexmm xmm9, 96
+        vmovaps           xmmword ptr [rbp - 48], xmm8
+        .seh_savexmm xmm8, 80
+        vmovaps           xmmword ptr [rbp - 64], xmm7
+        .seh_savexmm xmm7, 64
+        vmovaps           xmmword ptr [rbp - 80], xmm6
+        .seh_savexmm xmm6, 48
+        .seh_endprologue
+        mov               rsi, rcx
+.Ltmp109:
+        .cv_inline_site_id 67 within 66 inlined_at 11 0 0
+        .cv_inline_site_id 68 within 67 inlined_at 1 273 0
+        .cv_inline_site_id 69 within 68 inlined_at 3 144 0
+# UnsafeParallelMultiHashMap.cs(101, 1)            UnsafeParallelHashMapBase<TKey, TValue>.Clear(m_Buffer);
+        mov               rdi, qword ptr [rcx + 96]
+.Ltmp110:
+        .cv_inline_site_id 70 within 69 inlined_at 4 101 0
+# UnsafeParallelHashMap.cs(453, 1)            UnsafeUtility.MemSet(data->buckets, 0xff, (data->bucketCapacityMask + 1) * 4);
+        mov               rcx, qword ptr [rdi + 24]
+        mov               eax, dword ptr [rdi + 36]
+        lea               eax, [4*rax + 4]
+        movsxd            r8, eax
+        mov               dl, -1
+        xor               r9d, r9d
+        call              burst.memset.inline.AVX2.i64@@32
+# UnsafeParallelHashMap.cs(454, 1)            UnsafeUtility.MemSet(data->next, 0xff, (data->keyCapacity) * 4);
+        mov               rcx, qword ptr [rdi + 16]
+        mov               eax, dword ptr [rdi + 32]
+        shl               eax, 2
+        movsxd            r8, eax
+        mov               dl, -1
+        xor               r9d, r9d
+        call              burst.memset.inline.AVX2.i64@@32
+.Ltmp111:
+        call              qword ptr [rip + "Unity.Jobs.LowLevel.Unsafe.JobsUtility::get_ThreadIndexCount_Ptr"]
+.Ltmp112:
+# UnsafeParallelHashMap.cs(461, 1)            for (int tls = 0; tls < maxThreadCount; ++tls)
+        test              eax, eax
+        jle               .LBB8_3
+        mov               eax, eax
+        shl               rax, 4
+        xor               ecx, ecx
+        .p2align        4, 0x90
+.LBB8_2:
+# UnsafeParallelHashMap.cs(463, 1)                data->firstFreeTLS[tls * UnsafeParallelHashMapData.IntsPerCacheLine] = -1;
+        movsxd            rdx, ecx
+        mov               dword ptr [rdi + 4*rdx + 64], -1
+# UnsafeParallelHashMap.cs(461, 1)            for (int tls = 0; tls < maxThreadCount; ++tls)
+        add               rcx, 16
+        cmp               rax, rcx
+        jne               .LBB8_2
+.LBB8_3:
+# UnsafeParallelHashMap.cs(466, 1)            data->allocatedIndexLength = 0;
+        mov               dword ptr [rdi + 40], 0
+.Ltmp113:
+        mov               r14d, dword ptr [rsi + 8]
+        test              r14, r14
+.Ltmp114:
+# SPHSimlation.cs(276, 1)            for (int i = 0; i < particles.Length; i++)
+        je                .LBB8_21
+.Ltmp115:
+        .cv_inline_site_id 71 within 67 inlined_at 1 279 0
+        .cv_inline_site_id 72 within 71 inlined_at 3 158 0
+# UnsafeParallelMultiHashMap.cs(114, 1)            UnsafeParallelHashMapBase<TKey, TValue>.TryAdd(m_Buffer, key, item, true, m_AllocatorLabel);
+        mov               r15, qword ptr [rsi]
+.Ltmp116:
+        movzx             r12d, word ptr [rsi + 104]
+        movzx             r13d, word ptr [rsi + 106]
+.Ltmp117:
+# SPHSimlation.cs(276, 1)            for (int i = 0; i < particles.Length; i++)
+        add               r15, 4
+        xor               ebx, ebx
+        vmovss            xmm6, dword ptr [rip + __real@40800000]
+        vbroadcastss        xmm7, dword ptr [rip + __real@40800000]
+        .p2align        4, 0x90
+.LBB8_5:
+.Ltmp118:
+        .cv_inline_site_id 73 within 67 inlined_at 1 278 0
+# SPHSimlation.cs(304, 1)            int x = (int)math.floor(position.x * inv);
+        vmulss            xmm0, xmm6, dword ptr [r15 - 4]
+        vroundss          xmm0, xmm0, xmm0, 9
+        vcvttss2si        eax, xmm0
+.Ltmp119:
+        vmovsd            xmm0, qword ptr [r15]
+.Ltmp120:
+# SPHSimlation.cs(305, 1)            int y = (int)math.floor(position.y * inv);
+        vmulps            xmm0, xmm0, xmm7
+        vroundps          xmm0, xmm0, 9
+        vcvttps2dq        xmm0, xmm0
+.Ltmp121:
+# UnsafeParallelMultiHashMap.cs(114, 1)            UnsafeParallelHashMapBase<TKey, TValue>.TryAdd(m_Buffer, key, item, true, m_AllocatorLabel);
+        mov               word ptr [rsp + 40], r13w
+        mov               word ptr [rsp + 32], r12w
+        vpshufd           xmm0, xmm0, 80
+        vpinsrd           xmm1, xmm0, eax, 0
+        mov               rcx, rdi
+        mov               r8d, ebx
+        mov               r9b, 1
+        call              "Unity.Collections.LowLevel.Unsafe.UnsafeParallelHashMapBase`2[[Unity.Mathematics.int3, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.TryAdd(Unity.Collections.LowLevel.Unsafe.UnsafeParallelHashMapData*, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null data, Unity.Mathematics.int3, Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null key, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 item, System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 isMultiHashMap, Unity.Collections.AllocatorManager+AllocatorHandle, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null allocation) -> System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_7435d70d723590c51e89202ae2f9be71 from Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null@@48"
+.Ltmp122:
+# SPHSimlation.cs(276, 1)            for (int i = 0; i < particles.Length; i++)
+        inc               rbx
+        add               r15, 44
+        cmp               r14, rbx
+        jne               .LBB8_5
+        xor               edi, edi
+        .p2align        4, 0x90
+.LBB8_7:
+# SPHSimlation.cs(285, 1)                ComputeDensityPressure(i);
+        mov               rcx, rsi
+        mov               edx, edi
+        call              "SPHSimulation+RunCalculationsJob, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.ComputeDensityPressure(SPHSimulation+RunCalculationsJob*, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null this, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 id) -> System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_7435d70d723590c51e89202ae2f9be71 from Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null@@16"
+# SPHSimlation.cs(283, 1)            for (int i = 0; i < particles.Length; i++)
+        inc               edi
+.Ltmp123:
+        mov               eax, dword ptr [rsi + 8]
+.Ltmp124:
+        cmp               edi, eax
+        jb                .LBB8_7
+# SPHSimlation.cs(289, 1)            for (int i = 0; i < particles.Length; i++)
+        test              eax, eax
+        je                .LBB8_21
+        xor               edi, edi
+        .p2align        4, 0x90
+.LBB8_10:
+# SPHSimlation.cs(291, 1)                ComputeForces(i);
+        mov               rcx, rsi
+        mov               edx, edi
+        call              "SPHSimulation+RunCalculationsJob, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.ComputeForces(SPHSimulation+RunCalculationsJob*, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null this, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 id) -> System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_7435d70d723590c51e89202ae2f9be71 from Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null@@16"
+# SPHSimlation.cs(289, 1)            for (int i = 0; i < particles.Length; i++)
+        inc               edi
+.Ltmp125:
+        mov               edx, dword ptr [rsi + 8]
+.Ltmp126:
+        cmp               edi, edx
+        jb                .LBB8_10
+# SPHSimlation.cs(295, 1)            for (int i = 0; i < particles.Length; i++)
+        test              rdx, rdx
+        je                .LBB8_21
+        mov               rax, qword ptr [rsi]
+        mov               rcx, qword ptr [rsi + 48]
+        vbroadcastss        xmm0, dword ptr [rsi + 180]
+        vbroadcastss        xmm1, dword ptr [rsi + 192]
+        vmovsd            xmm2, qword ptr [rsi + 200]
+        vinsertps         xmm3, xmm2, dword ptr [rsi + 208], 32
+        vbroadcastss        xmm2, dword ptr [rip + __real@bf000000]
+        vmulps            xmm2, xmm3, xmm2
+        vbroadcastss        xmm4, dword ptr [rip + __real@3f000000]
+        vmulps            xmm3, xmm3, xmm4
+        imul              rdx, rdx, 44
+        xor               r8d, r8d
+        jmp               .LBB8_13
+        .p2align        4, 0x90
+.LBB8_19:
+.Ltmp127:
+        .cv_inline_site_id 74 within 67 inlined_at 1 297 0
+# SPHSimlation.cs(437, 1)                velocity.z *= boundDamping;
+        vpermilpd         xmm8, xmm6, 1
+        vmulss            xmm8, xmm8, dword ptr [rsi + 196]
+        vinsertps         xmm6, xmm6, xmm8, 32
+.LBB8_20:
+# SPHSimlation.cs(295, 1)            for (int i = 0; i < particles.Length; i++)
+        mov               r9, qword ptr [rax + r8 + 36]
+.Ltmp128:
+        vextractps        dword ptr [rcx + r8 + 8], xmm7, 2
+        vmovlps           qword ptr [rcx + r8], xmm7
+        vextractps        dword ptr [rcx + r8 + 20], xmm6, 2
+        vmovlps           qword ptr [rcx + r8 + 12], xmm6
+        vmovlps           qword ptr [rcx + r8 + 24], xmm4
+        vmovss            dword ptr [rcx + r8 + 32], xmm5
+        mov               qword ptr [rcx + r8 + 36], r9
+.Ltmp129:
+        add               r8, 44
+        cmp               rdx, r8
+        je                .LBB8_21
+.LBB8_13:
+.Ltmp130:
+# SPHSimlation.cs(412, 1)            particle.velocity += (particle.currentForce / particleMass) * timestep;
+        vmovsd            xmm4, qword ptr [rax + r8]
+        vinsertps         xmm7, xmm4, dword ptr [rax + r8 + 8], 32
+        vmovsd            xmm4, qword ptr [rax + r8 + 12]
+        vinsertps         xmm6, xmm4, dword ptr [rax + r8 + 20], 32
+        vmovsd            xmm4, qword ptr [rax + r8 + 24]
+        vmovss            xmm5, dword ptr [rax + r8 + 32]
+.Ltmp131:
+        vinsertps         xmm8, xmm4, xmm5, 32
+        vdivps            xmm8, xmm8, xmm0
+        vmulps            xmm8, xmm8, xmm1
+        vaddps            xmm6, xmm8, xmm6
+# SPHSimlation.cs(413, 1)            particle.position += particle.velocity * timestep;
+        vmulps            xmm8, xmm1, xmm6
+        vaddps            xmm7, xmm8, xmm7
+# SPHSimlation.cs(423, 1)            if (particle.position.x < min.x || particle.position.x > max.x)
+        vucomiss          xmm7, xmm3
+        setbe             r9b
+        vucomiss          xmm2, xmm7
+        ja                .LBB8_22
+        test              r9b, r9b
+        jne               .LBB8_15
+.LBB8_22:
+# SPHSimlation.cs(425, 1)                velocity.x *= boundDamping;
+        vmulss            xmm6, xmm6, dword ptr [rsi + 196]
+.LBB8_15:
+# SPHSimlation.cs(423, 1)            if (particle.position.x < min.x || particle.position.x > max.x)
+        vcmpnltps         xmm8, xmm3, xmm7
+        vcmpnltps         xmm9, xmm7, xmm2
+# SPHSimlation.cs(429, 1)            if (particle.position.y < min.y || particle.position.y > max.y)
+        vpextrb           r9d, xmm9, 4
+        test              r9b, 1
+        je                .LBB8_23
+        vpextrb           r9d, xmm8, 4
+        test              r9b, 1
+        jne               .LBB8_17
+.LBB8_23:
+# SPHSimlation.cs(431, 1)                velocity.y *= boundDamping;
+        vmovshdup         xmm10, xmm6
+        vmulss            xmm10, xmm10, dword ptr [rsi + 196]
+        vinsertps         xmm6, xmm6, xmm10, 16
+.LBB8_17:
+# SPHSimlation.cs(435, 1)            if (particle.position.z < min.z || particle.position.z > max.z)
+        vpextrb           r9d, xmm9, 8
+        test              r9b, 1
+        je                .LBB8_19
+        vpextrb           r9d, xmm8, 8
+        test              r9b, 1
+        jne               .LBB8_20
+        jmp               .LBB8_19
+.Ltmp132:
+.LBB8_21:
+        vmovaps           xmm6, xmmword ptr [rbp - 80]
+        vmovaps           xmm7, xmmword ptr [rbp - 64]
+        vmovaps           xmm8, xmmword ptr [rbp - 48]
+        vmovaps           xmm9, xmmword ptr [rbp - 32]
+        vmovaps           xmm10, xmmword ptr [rbp - 16]
+        add               rsp, 136
+        pop               rbx
+        pop               rdi
+        pop               rsi
+        pop               r12
+        pop               r13
+        pop               r14
+        pop               r15
+        pop               rbp
+        ret
+.Ltmp133: ...
+__real@7fffffff: ...
+__real@4b800000: ...
+__real@00800000: ...
+__real@5f800000: ...
+__real@3faaaaab: ...
+__real@bf800000: ...
+__real@3e76168a: ...
+__real@3e91fa4a: ...
+__real@3ecccdd9: ...
+__real@3f317000: ...
+__real@3f2aaaaa: ...
+__xmm@0000000000000000000000003f317218: ...
+__real@38060000: ...
+__real@b102e308: ...
+__real@317db383: ...
+__real@40000000: ...
+__real@3fb8aa3b: ...
+__real@bf317200: ...
+__real@b5bfbe8e: ...
+__real@3ab2aef6: ...
+__real@3c09116b: ...
+__real@3d2aaf4c: ...
+__real@3e2aaa5e: ...
+__real@3efffffb: ...
+__xmm@0000000000000000000000003f800000: ...
+__real@c2d00000: ...
+__real@7f800000: ...
+__real@7fc00000: ...
+__real@ff800000: ...
+__real@80000000: ...
+burst.Sleef_powf_u10_avx2@@16:
+.Lfunc_begin9:
+        sub               rsp, 280
+        vmovaps           xmmword ptr [rsp + 256], xmm15
+        vmovaps           xmmword ptr [rsp + 240], xmm14
+        vmovaps           xmmword ptr [rsp + 224], xmm13
+        vmovaps           xmmword ptr [rsp + 208], xmm12
+        vmovaps           xmmword ptr [rsp + 192], xmm11
+        vmovaps           xmmword ptr [rsp + 176], xmm10
+        vmovaps           xmmword ptr [rsp + 160], xmm9
+        vmovaps           xmmword ptr [rsp + 144], xmm8
+        vmovaps           xmmword ptr [rsp + 128], xmm7
+        vmovaps           xmmword ptr [rsp + 112], xmm6
+        vcvttss2si        ecx, xmm1
+        vcvttps2dq        xmm2, xmm1
+        vcvtdq2ps         xmm2, xmm2
+        mov               dl, 1
+        vucomiss          xmm2, xmm1
+        jne               .LBB9_1
+        jnp               .LBB9_2
+.LBB9_1:
+        vbroadcastss        xmm2, dword ptr [rip + __real@7fffffff]
+        vandps            xmm2, xmm1, xmm2
+        vucomiss          xmm2, dword ptr [rip + __real@4b800000]
+        setae             dl
+.LBB9_2:
+        xor               eax, eax
+        test              cl, 1
+        vmovd             ecx, xmm1
+        vmovaps           xmmword ptr [rsp + 96], xmm1
+        je                .LBB9_5
+        test              dl, dl
+        je                .LBB9_5
+        mov               eax, ecx
+        and               eax, 2147483647
+        vmovd             xmm1, eax
+        vmovss            xmm2, dword ptr [rip + __real@4b800000]
+        vucomiss          xmm2, xmm1
+        seta              al
+.LBB9_5:
+        vbroadcastss        xmm1, dword ptr [rip + __real@7fffffff]
+        vmovaps           xmmword ptr [rsp + 16], xmm0
+        vandps            xmm1, xmm0, xmm1
+        vmovss            xmm0, dword ptr [rip + __real@00800000]
+        xor               r8d, r8d
+        vucomiss          xmm0, xmm1
+        setbe             r8b
+        vmulss            xmm2, xmm1, dword ptr [rip + __real@5f800000]
+        vcmpltss          xmm0, xmm1, xmm0
+        vmovaps           xmmword ptr [rsp + 32], xmm1
+        vblendvps         xmm0, xmm1, xmm2, xmm0
+        vmulss            xmm2, xmm0, dword ptr [rip + __real@3faaaaab]
+        vmovd             r9d, xmm2
+        shr               r9d, 23
+        movzx             r9d, r9b
+        vmovd             r10d, xmm0
+        shl               r8d, 6
+        lea               r8d, [r8 + r9 - 191]
+        shl               r9d, 23
+        sub               r10d, r9d
+        add               r10d, 1065353216
+        vmovd             xmm2, r10d
+        vmovss            xmm6, dword ptr [rip + __real@bf800000]
+        vaddss            xmm4, xmm2, xmm6
+        vmovss            xmm1, dword ptr [rip + __real@3f800000]
+        vaddss            xmm0, xmm4, xmm1
+        vsubss            xmm3, xmm4, xmm0
+        vsubss            xmm3, xmm6, xmm3
+        vsubss            xmm0, xmm2, xmm0
+        vaddss            xmm0, xmm0, xmm3
+        vaddss            xmm5, xmm2, xmm1
+        vaddss            xmm3, xmm5, xmm6
+        vsubss            xmm6, xmm5, xmm3
+        vsubss            xmm6, xmm1, xmm6
+        vsubss            xmm2, xmm2, xmm3
+        vaddss            xmm3, xmm2, xmm6
+        vdivss            xmm2, xmm1, xmm5
+        vmovd             r9d, xmm5
+        and               r9d, -4096
+        vmovd             xmm6, r9d
+        vsubss            xmm7, xmm5, xmm6
+        vmovd             r9d, xmm2
+        and               r9d, -4096
+        vmovd             xmm8, r9d
+        vsubss            xmm9, xmm2, xmm8
+        vmovd             r9d, xmm4
+        and               r9d, -4096
+        vmovd             xmm10, r9d
+        vsubss            xmm11, xmm4, xmm10
+        vmulss            xmm5, xmm4, xmm2
+        vmulss            xmm4, xmm10, xmm8
+        vsubss            xmm4, xmm4, xmm5
+        vmulss            xmm10, xmm9, xmm10
+        vaddss            xmm4, xmm10, xmm4
+        vmulss            xmm10, xmm11, xmm8
+        vaddss            xmm4, xmm10, xmm4
+        vmulss            xmm10, xmm11, xmm9
+        vaddss            xmm4, xmm10, xmm4
+        vmulss            xmm10, xmm8, xmm6
+        vsubss            xmm10, xmm1, xmm10
+        vmulss            xmm6, xmm9, xmm6
+        vsubss            xmm6, xmm10, xmm6
+        vmulss            xmm8, xmm8, xmm7
+        vsubss            xmm6, xmm6, xmm8
+        vmulss            xmm7, xmm9, xmm7
+        vsubss            xmm6, xmm6, xmm7
+        vmulss            xmm6, xmm5, xmm6
+        vaddss            xmm4, xmm4, xmm6
+        vmulss            xmm3, xmm5, xmm3
+        vsubss            xmm0, xmm0, xmm3
+        vmulss            xmm0, xmm2, xmm0
+        vaddss            xmm1, xmm0, xmm4
+        vmovaps           xmmword ptr [rsp + 48], xmm1
+        vmovd             r9d, xmm5
+        and               r9d, -4096
+        vmovd             xmm2, r9d
+        vsubss            xmm12, xmm5, xmm2
+        vmulss            xmm11, xmm5, xmm5
+        vmulss            xmm0, xmm2, xmm2
+        vsubss            xmm0, xmm0, xmm11
+        vaddss            xmm3, xmm2, xmm2
+        vmulss            xmm3, xmm12, xmm3
+        vaddss            xmm0, xmm0, xmm3
+        vmulss            xmm3, xmm12, xmm12
+        vaddss            xmm0, xmm3, xmm0
+        vaddss            xmm3, xmm1, xmm1
+        vmulss            xmm3, xmm5, xmm3
+        vaddss            xmm0, xmm0, xmm3
+        vmovss            dword ptr [rsp + 12], xmm0
+        vmulss            xmm0, xmm11, dword ptr [rip + __real@3e76168a]
+        vaddss            xmm0, xmm0, dword ptr [rip + __real@3e91fa4a]
+        vmulss            xmm0, xmm11, xmm0
+        vaddss            xmm10, xmm0, dword ptr [rip + __real@3ecccdd9]
+        vmulss            xmm7, xmm11, xmm5
+        vmulss            xmm15, xmm11, xmm10
+        vaddss            xmm8, xmm15, dword ptr [rip + __real@3f2aaaaa]
+        vmovd             r9d, xmm7
+        and               r9d, -4096
+        vmovd             r10d, xmm8
+        and               r10d, -4096
+        vmovd             xmm14, r10d
+        vsubss            xmm1, xmm8, xmm14
+        vmovaps           xmmword ptr [rsp + 80], xmm1
+        vmovaps           xmm0, xmmword ptr [rip + __xmm@0000000000000000000000003f317218]
+        vinsertps         xmm13, xmm0, xmm1, 16
+        vxorps            xmm9, xmm9, xmm9
+        vcvtsi2ss         xmm0, xmm9, r8d
+        vmovd             xmm4, r9d
+        vinsertps         xmm6, xmm0, xmm4, 16
+        vmulps            xmm3, xmm13, xmm6
+        vmovaps           xmmword ptr [rsp + 64], xmm3
+        vmovd             r8d, xmm0
+        and               r8d, -4096
+        vmovd             xmm6, r8d
+        vmovss            xmm1, dword ptr [rip + __real@3f317000]
+        vmulss            xmm9, xmm6, xmm1
+        vsubss            xmm9, xmm9, xmm3
+        vmovss            xmm3, dword ptr [rip + __real@38060000]
+        vmulss            xmm13, xmm6, xmm3
+        vaddss            xmm9, xmm13, xmm9
+        vsubss            xmm6, xmm0, xmm6
+        vmulss            xmm1, xmm6, xmm1
+        vaddss            xmm1, xmm9, xmm1
+        vmulss            xmm3, xmm6, xmm3
+        vaddss            xmm1, xmm3, xmm1
+        vmulss            xmm0, xmm0, dword ptr [rip + __real@b102e308]
+        vaddss            xmm0, xmm1, xmm0
+        vmovd             r8d, xmm11
+        and               r8d, -4096
+        vmovd             xmm1, r8d
+        vmulss            xmm3, xmm2, xmm1
+        vsubss            xmm3, xmm3, xmm7
+        vsubss            xmm6, xmm11, xmm1
+        vmulss            xmm2, xmm6, xmm2
+        vaddss            xmm2, xmm2, xmm3
+        vmulss            xmm3, xmm12, xmm1
+        vaddss            xmm2, xmm3, xmm2
+        vmulss            xmm3, xmm12, xmm6
+        vaddss            xmm2, xmm3, xmm2
+        vmovaps           xmm12, xmmword ptr [rsp + 48]
+        vmulss            xmm3, xmm11, xmm12
+        vaddss            xmm2, xmm2, xmm3
+        vmovss            xmm13, dword ptr [rsp + 12]
+        vmulss            xmm3, xmm13, xmm5
+        vaddss            xmm2, xmm2, xmm3
+        vmovd             r8d, xmm10
+        and               r8d, -4096
+        vmovd             xmm3, r8d
+        vmulss            xmm9, xmm1, xmm3
+        vsubss            xmm9, xmm9, xmm15
+        vmulss            xmm11, xmm6, xmm3
+        vaddss            xmm9, xmm11, xmm9
+        vsubss            xmm3, xmm10, xmm3
+        vmulss            xmm1, xmm3, xmm1
+        vaddss            xmm1, xmm9, xmm1
+        vmulss            xmm3, xmm6, xmm3
+        vaddss            xmm1, xmm3, xmm1
+        vmulss            xmm3, xmm10, xmm13
+        vaddss            xmm1, xmm1, xmm3
+        vsubss            xmm3, xmm8, xmm15
+        vsubss            xmm6, xmm8, xmm3
+        vsubss            xmm6, xmm15, xmm6
+        vmovss            xmm9, dword ptr [rip + __real@3f2aaaaa]
+        vsubss            xmm3, xmm9, xmm3
+        vaddss            xmm3, xmm3, xmm6
+        vaddss            xmm1, xmm1, dword ptr [rip + __real@317db383]
+        vaddss            xmm1, xmm3, xmm1
+        vsubss            xmm3, xmm7, xmm4
+        vmulss            xmm4, xmm14, xmm4
+        vmulss            xmm6, xmm14, xmm3
+        vinsertps         xmm5, xmm5, dword ptr [rsp + 80], 16
+        vmovss            xmm9, dword ptr [rip + __real@40000000]
+        vinsertps         xmm3, xmm9, xmm3, 16
+        vmulps            xmm3, xmm3, xmm5
+        vmulss            xmm5, xmm8, xmm7
+        vsubss            xmm4, xmm4, xmm5
+        vmovaps           xmm10, xmmword ptr [rsp + 64]
+        vinsertps         xmm6, xmm10, xmm6, 16
+        vinsertps         xmm4, xmm3, xmm4, 16
+        vaddps            xmm4, xmm6, xmm4
+        vaddsubps         xmm6, xmm10, xmm4
+        vaddps            xmm3, xmm3, xmm6
+        vmulss            xmm1, xmm7, xmm1
+        vinsertps         xmm0, xmm0, xmm1, 16
+        vaddps            xmm0, xmm3, xmm0
+        vinsertps         xmm1, xmm9, xmm8, 16
+        vinsertps         xmm2, xmm12, xmm2, 16
+        vmulps            xmm1, xmm1, xmm2
+        vaddps            xmm0, xmm0, xmm1
+        vaddss            xmm1, xmm4, xmm5
+        vsubss            xmm2, xmm4, xmm1
+        vaddss            xmm2, xmm5, xmm2
+        vaddss            xmm2, xmm2, xmm0
+        vmovshdup         xmm0, xmm0
+        vaddss            xmm0, xmm2, xmm0
+        vmovd             r8d, xmm1
+        and               r8d, -4096
+        vmovd             xmm2, r8d
+        vsubss            xmm3, xmm1, xmm2
+        mov               r8d, ecx
+        and               r8d, -4096
+        vmovd             xmm4, r8d
+        vmovaps           xmm15, xmmword ptr [rsp + 96]
+        vsubss            xmm6, xmm15, xmm4
+        vmulss            xmm5, xmm15, xmm1
+        vmulss            xmm1, xmm4, xmm2
+        vsubss            xmm1, xmm1, xmm5
+        vmulss            xmm4, xmm3, xmm4
+        vaddss            xmm1, xmm1, xmm4
+        vmulss            xmm2, xmm6, xmm2
+        vaddss            xmm1, xmm2, xmm1
+        vmulss            xmm2, xmm6, xmm3
+        vaddss            xmm1, xmm2, xmm1
+        vmulss            xmm0, xmm15, xmm0
+        vaddss            xmm11, xmm1, xmm0
+        vaddss            xmm0, xmm11, xmm5
+        vmulss            xmm0, xmm0, dword ptr [rip + __real@3fb8aa3b]
+        vxorps            xmm6, xmm6, xmm6
+        vcmpltss          xmm1, xmm0, xmm6
+        vbroadcastss        xmm2, dword ptr [rip + __real@bf000000]
+        vbroadcastss        xmm3, dword ptr [rip + __real@3f000000]
+        vblendvps         xmm1, xmm3, xmm2, xmm1
+        vaddss            xmm0, xmm0, xmm1
+        vmovss            xmm1, dword ptr [rip + __real@bf800000]
+        vcvttps2dq        xmm0, xmm0
+        vcvtdq2ps         xmm0, xmm0
+        vcvttss2si        r8d, xmm0
+        mov               r10d, r8d
+        sar               r10d, 31
+        lea               r9d, [r10 + r8]
+        sar               r9d, 6
+        sub               r9d, r10d
+        mov               r10d, r9d
+        shl               r10d, 4
+        add               r10d, 127
+        mov               r11d, r10d
+        sar               r11d, 31
+        andn              r11d, r11d, r10d
+        cmp               r11d, 255
+        mov               r10d, 255
+        cmovl             r10d, r11d
+        test              al, al
+        vmovaps           xmm8, xmm1
+        jne               .LBB9_7
+        vmovss            xmm8, dword ptr [rip + __real@3f800000]
+.LBB9_7:
+        test              dl, dl
+        jne               .LBB9_9
+        vmovss            xmm8, dword ptr [rip + __real@7fc00000]
+.LBB9_9:
+        vbroadcastss        xmm10, dword ptr [rip + __real@7f800000]
+        vbroadcastss        xmm9, dword ptr [rip + __real@3f800000]
+        vmovss            xmm7, dword ptr [rip + __real@ff800000]
+        vucomiss          xmm7, xmm15
+        jae               .LBB9_12
+        vucomiss          xmm15, dword ptr [rip + __real@7f800000]
+        jae               .LBB9_12
+        vcvttps2dq        xmm0, xmm0
+        vcvtdq2ps         xmm0, xmm0
+        vmulss            xmm1, xmm0, dword ptr [rip + __real@bf317200]
+        vaddss            xmm2, xmm5, xmm1
+        vmulss            xmm0, xmm0, dword ptr [rip + __real@b5bfbe8e]
+        vsubss            xmm3, xmm2, xmm5
+        vaddss            xmm4, xmm0, xmm2
+        vsubss            xmm12, xmm2, xmm3
+        vsubss            xmm13, xmm4, xmm2
+        vsubss            xmm12, xmm5, xmm12
+        vsubss            xmm1, xmm1, xmm3
+        vaddss            xmm1, xmm12, xmm1
+        vsubss            xmm3, xmm4, xmm13
+        vsubss            xmm2, xmm2, xmm3
+        vsubss            xmm0, xmm0, xmm13
+        vaddss            xmm0, xmm0, xmm2
+        vaddss            xmm1, xmm11, xmm1
+        vaddss            xmm1, xmm1, xmm0
+        vaddss            xmm0, xmm4, xmm1
+        vmulss            xmm2, xmm0, dword ptr [rip + __real@3ab2aef6]
+        vaddss            xmm2, xmm2, dword ptr [rip + __real@3c09116b]
+        vmulss            xmm2, xmm0, xmm2
+        vmovd             ecx, xmm0
+        vaddss            xmm2, xmm2, dword ptr [rip + __real@3d2aaf4c]
+        and               ecx, -4096
+        vmulss            xmm2, xmm0, xmm2
+        vmovd             xmm3, ecx
+        vsubss            xmm4, xmm4, xmm0
+        vaddss            xmm11, xmm2, dword ptr [rip + __real@3e2aaa5e]
+        vsubss            xmm12, xmm0, xmm3
+        vmulss            xmm13, xmm0, xmm0
+        vmulss            xmm14, xmm3, xmm3
+        vaddss            xmm3, xmm3, xmm3
+        vaddss            xmm2, xmm1, xmm4
+        vmulss            xmm1, xmm11, xmm0
+        vsubss            xmm4, xmm14, xmm13
+        vmulss            xmm3, xmm12, xmm3
+        vaddss            xmm3, xmm4, xmm3
+        vaddss            xmm1, xmm1, dword ptr [rip + __real@3efffffb]
+        vmulss            xmm4, xmm12, xmm12
+        vaddss            xmm3, xmm4, xmm3
+        vaddss            xmm4, xmm2, xmm2
+        vmulss            xmm4, xmm0, xmm4
+        vmovd             ecx, xmm13
+        vmovd             edx, xmm1
+        vaddss            xmm3, xmm4, xmm3
+        and               ecx, -4096
+        and               edx, -4096
+        vmovd             xmm4, ecx
+        vmovd             xmm11, edx
+        vinsertps         xmm3, xmm13, xmm3, 16
+        vbroadcastss        xmm12, xmm1
+        vmulps            xmm3, xmm12, xmm3
+        vsubss            xmm12, xmm13, xmm4
+        vmulss            xmm13, xmm11, xmm4
+        vsubss            xmm1, xmm1, xmm11
+        vsubss            xmm13, xmm13, xmm3
+        vmulss            xmm11, xmm12, xmm11
+        vaddss            xmm11, xmm11, xmm13
+        vmulss            xmm4, xmm1, xmm4
+        vaddss            xmm4, xmm11, xmm4
+        vmulss            xmm1, xmm12, xmm1
+        vaddss            xmm1, xmm1, xmm4
+        vinsertps         xmm1, xmm0, xmm1, 16
+        vaddps            xmm1, xmm1, xmm3
+        vsubss            xmm0, xmm0, xmm1
+        vaddss            xmm0, xmm3, xmm0
+        vaddss            xmm0, xmm2, xmm0
+        vmovaps           xmm2, xmmword ptr [rip + __xmm@0000000000000000000000003f800000]
+        vinsertps         xmm0, xmm2, xmm0, 16
+        vaddps            xmm0, xmm0, xmm1
+        vmovss            xmm2, dword ptr [rip + __real@3f800000]
+        vsubss            xmm2, xmm2, xmm0
+        vaddss            xmm1, xmm1, xmm2
+        vmovshdup         xmm2, xmm0
+        vaddss            xmm1, xmm1, xmm2
+        shl               r10d, 23
+        vaddss            xmm0, xmm0, xmm1
+        shl               r9d, 6
+        vmovd             xmm1, r10d
+        sub               r8d, r9d
+        vmulss            xmm0, xmm0, xmm1
+        vmulss            xmm0, xmm0, xmm1
+        shl               r8d, 23
+        vmulss            xmm0, xmm0, xmm1
+        add               r8d, 1065353216
+        vmulss            xmm0, xmm0, xmm1
+        vmovd             xmm1, r8d
+        vmulss            xmm0, xmm0, xmm1
+        vcmpltss          xmm1, xmm5, dword ptr [rip + __real@c2d00000]
+        vandnps           xmm0, xmm1, xmm0
+        vcmpordss         xmm1, xmm0, xmm0
+        vblendvps         xmm0, xmm10, xmm0, xmm1
+        vmovaps           xmm4, xmmword ptr [rsp + 16]
+        vcmpnless         xmm1, xmm6, xmm4
+        vblendvps         xmm1, xmm9, xmm8, xmm1
+        vmulss            xmm0, xmm0, xmm1
+        vxorps            xmm1, xmm1, xmm1
+        vucomiss          xmm4, xmm1
+        jne               .LBB9_14
+        jp                .LBB9_14
+        jmp               .LBB9_16
+.LBB9_12:
+        vaddss            xmm0, xmm1, dword ptr [rsp + 32]
+        and               ecx, -2147483648
+        vmovd             xmm1, ecx
+        vxorps            xmm0, xmm0, xmm1
+        vxorps            xmm1, xmm1, xmm1
+        vcmpeqss          xmm2, xmm0, xmm1
+        vblendvps         xmm2, xmm10, xmm9, xmm2
+        vcmpltss          xmm0, xmm0, xmm1
+        vandnps           xmm0, xmm0, xmm2
+        vmovaps           xmm4, xmmword ptr [rsp + 16]
+        vxorps            xmm1, xmm1, xmm1
+        vucomiss          xmm4, xmm1
+        jne               .LBB9_14
+        jnp               .LBB9_16
+.LBB9_14:
+        vucomiss          xmm4, dword ptr [rip + __real@7f800000]
+        jae               .LBB9_16
+        vucomiss          xmm7, xmm4
+        jb                .LBB9_20
+.LBB9_16:
+        test              al, al
+        je                .LBB9_17
+        vmovd             eax, xmm4
+        and               eax, -2147483648
+        or                eax, 1065353216
+        vmovd             xmm0, eax
+        jmp               .LBB9_19
+.LBB9_17:
+        vmovd             xmm0, dword ptr [rip + __real@3f800000]
+.LBB9_19:
+        vbroadcastss        xmm1, dword ptr [rip + __real@80000000]
+        vxorps            xmm1, xmm15, xmm1
+        vxorps            xmm2, xmm2, xmm2
+        vcmpeqss          xmm3, xmm4, xmm2
+        vblendvps         xmm1, xmm15, xmm1, xmm3
+        vcmpltss          xmm1, xmm1, xmm2
+        vmovss            xmm2, dword ptr [rip + __real@7f800000]
+        vandnps           xmm1, xmm1, xmm2
+        vmulss            xmm0, xmm1, xmm0
+.LBB9_20:
+        vcmpordss         xmm1, xmm15, xmm4
+        vbroadcastss        xmm2, dword ptr [rip + __real@7fc00000]
+        vblendvps         xmm0, xmm2, xmm0, xmm1
+        vxorps            xmm1, xmm1, xmm1
+        vcmpeqss          xmm1, xmm15, xmm1
+        vmovss            xmm2, dword ptr [rip + __real@3f800000]
+        vblendvps         xmm0, xmm0, xmm2, xmm1
+        vcmpeqss          xmm1, xmm4, xmm2
+        vblendvps         xmm0, xmm0, xmm2, xmm1
+        vmovaps           xmm6, xmmword ptr [rsp + 112]
+        vmovaps           xmm7, xmmword ptr [rsp + 128]
+        vmovaps           xmm8, xmmword ptr [rsp + 144]
+        vmovaps           xmm9, xmmword ptr [rsp + 160]
+        vmovaps           xmm10, xmmword ptr [rsp + 176]
+        vmovaps           xmm11, xmmword ptr [rsp + 192]
+        vmovaps           xmm12, xmmword ptr [rsp + 208]
+        vmovaps           xmm13, xmmword ptr [rsp + 224]
+        vmovaps           xmm14, xmmword ptr [rsp + 240]
+        vmovaps           xmm15, xmmword ptr [rsp + 256]
+        add               rsp, 280
+        ret
+.Lfunc_end9:
+
+        .def        burst.memcpy.inline.AVX2.i64@@32;
+        .scl        2;
+        .type        32;
+        .endef
+        .section        .text,"xr",discard,burst.memcpy.inline.AVX2.i64@@32
+        .globl        burst.memcpy.inline.AVX2.i64@@32
+        .p2align        4, 0x90
+burst.memcpy.inline.AVX2.i64@@32:
+.Lfunc_begin10:
+        cmp               r8, 32
+        jb                .LBB10_1
+        xor               r9d, r9d
+        .p2align        4, 0x90
+.LBB10_3:
+        lea               rax, [r9 + 32]
+        vmovups           ymm0, ymmword ptr [rdx + r9]
+        vmovups           ymmword ptr [rcx + r9], ymm0
+        add               r9, 64
+        cmp               r8, r9
+        mov               r9, rax
+        jae               .LBB10_3
+        lea               r9, [rax + 1]
+        cmp               r8, r9
+        jb                .LBB10_6
+        .p2align        4, 0x90
+.LBB10_5:
+        lea               r9, [rax + 1]
+        movzx             r10d, byte ptr [rdx + rax]
+        mov               byte ptr [rcx + rax], r10b
+        add               rax, 2
+        cmp               r8, rax
+        mov               rax, r9
+        jae               .LBB10_5
+.LBB10_6:
+        vzeroupper
+        ret
+.LBB10_1:
+        xor               eax, eax
+        lea               r9, [rax + 1]
+        cmp               r8, r9
+        jae               .LBB10_5
+        jmp               .LBB10_6
+.Lfunc_end10:
+
+        .def        burst.memset.inline.AVX2.i64@@32;
+        .scl        2;
+        .type        32;
+        .endef
+        .section        .text,"xr",discard,burst.memset.inline.AVX2.i64@@32
+        .globl        burst.memset.inline.AVX2.i64@@32
+        .p2align        4, 0x90
+burst.memset.inline.AVX2.i64@@32:
+.Lfunc_begin11:
+        cmp               r8, 32
+        jb                .LBB11_1
+        xor               r9d, r9d
+        vmovd             xmm0, edx
+        vpbroadcastb        ymm0, xmm0
+        .p2align        4, 0x90
+.LBB11_3:
+        lea               rax, [r9 + 32]
+        vmovdqu           ymmword ptr [rcx + r9], ymm0
+        add               r9, 64
+        cmp               r8, r9
+        mov               r9, rax
+        jae               .LBB11_3
+        lea               r9, [rax + 1]
+        cmp               r8, r9
+        jb                .LBB11_6
+        .p2align        4, 0x90
+.LBB11_5:
+        lea               r9, [rax + 1]
+        mov               byte ptr [rcx + rax], dl
+        add               rax, 2
+        cmp               r8, rax
+        mov               rax, r9
+        jae               .LBB11_5
+.LBB11_6:
+        vzeroupper
+        ret
+.LBB11_1:
+        xor               eax, eax
+        lea               r9, [rax + 1]
+        cmp               r8, r9
+        jae               .LBB11_5
+        jmp               .LBB11_6
+.Lfunc_end11:
+
+        .section        .drectve,"yni"
+        .ascii        " /EXPORT:\"burst.initialize\""
+        .ascii        " /EXPORT:\"burst.initialize.externals\""
+        .ascii        " /EXPORT:\"burst.initialize.statics\""
+        .ascii        " /EXPORT:f606490cd33d764dab2fd4ae8bd2bfea"
+        .section        .debug$S,"dr"
+        .p2align        2, 0x0
+        .long        4
+        .long        241
+        .long        .Ltmp135-.Ltmp134
+.Ltmp134: ...
+.Ltmp136: ...
+.Ltmp137: ...
+.Ltmp138: ...
+.Ltmp139:
+.Ltmp135: ...
+.Ltmp140: ...
+.Ltmp141: ...
+.Ltmp142: ...
+.Ltmp144: ...
+.Ltmp145: ...
+.Ltmp146: ...
+.Ltmp147: ...
+.Ltmp148: ...
+.Ltmp149: ...
+.Ltmp150: ...
+.Ltmp151: ...
+.Ltmp152: ...
+.Ltmp153: ...
+.Ltmp154: ...
+.Ltmp155: ...
+.Ltmp156: ...
+.Ltmp157: ...
+.Ltmp158: ...
+.Ltmp159: ...
+.Ltmp160: ...
+.Ltmp161: ...
+.Ltmp162: ...
+.Ltmp163: ...
+.Ltmp164: ...
+.Ltmp165: ...
+.Ltmp166: ...
+.Ltmp167: ...
+.Ltmp168: ...
+.Ltmp169: ...
+.Ltmp143: ...
+.Ltmp170: ...
+.Ltmp172: ...
+.Ltmp173: ...
+.Ltmp174: ...
+.Ltmp175: ...
+.Ltmp176: ...
+.Ltmp177: ...
+.Ltmp178: ...
+.Ltmp179: ...
+.Ltmp180: ...
+.Ltmp181: ...
+.Ltmp182: ...
+.Ltmp183: ...
+.Ltmp184: ...
+.Ltmp185: ...
+.Ltmp186: ...
+.Ltmp187: ...
+.Ltmp188: ...
+.Ltmp189: ...
+.Ltmp190: ...
+.Ltmp191: ...
+.Ltmp192: ...
+.Ltmp193: ...
+.Ltmp194: ...
+.Ltmp195: ...
+.Ltmp196: ...
+.Ltmp197: ...
+.Ltmp198: ...
+.Ltmp199: ...
+.Ltmp171: ...
+.Ltmp200: ...
+.Ltmp202: ...
+.Ltmp203: ...
+.Ltmp204: ...
+.Ltmp205: ...
+.Ltmp206: ...
+.Ltmp207: ...
+.Ltmp208: ...
+.Ltmp209: ...
+.Ltmp210: ...
+.Ltmp211: ...
+.Ltmp212: ...
+.Ltmp213: ...
+.Ltmp214: ...
+.Ltmp215: ...
+.Ltmp216: ...
+.Ltmp217: ...
+.Ltmp218: ...
+.Ltmp219: ...
+.Ltmp220: ...
+.Ltmp221: ...
+.Ltmp201: ...
+.Ltmp222: ...
+.Ltmp224: ...
+.Ltmp225: ...
+.Ltmp226: ...
+.Ltmp227: ...
+.Ltmp228: ...
+.Ltmp229: ...
+.Ltmp230: ...
+.Ltmp231: ...
+.Ltmp232: ...
+.Ltmp233: ...
+.Ltmp234: ...
+.Ltmp235: ...
+.Ltmp236: ...
+.Ltmp237: ...
+.Ltmp238: ...
+.Ltmp239: ...
+.Ltmp240: ...
+.Ltmp241: ...
+.Ltmp242: ...
+.Ltmp243: ...
+.Ltmp244: ...
+.Ltmp245: ...
+.Ltmp246: ...
+.Ltmp247: ...
+.Ltmp248: ...
+.Ltmp249: ...
+.Ltmp250: ...
+.Ltmp251: ...
+.Ltmp252: ...
+.Ltmp253: ...
+.Ltmp254: ...
+.Ltmp255: ...
+.Ltmp256: ...
+.Ltmp257: ...
+.Ltmp258: ...
+.Ltmp259: ...
+.Ltmp260: ...
+.Ltmp261: ...
+.Ltmp262: ...
+.Ltmp263: ...
+.Ltmp264: ...
+.Ltmp265: ...
+.Ltmp266: ...
+.Ltmp267: ...
+.Ltmp268: ...
+.Ltmp269: ...
+.Ltmp270: ...
+.Ltmp271: ...
+.Ltmp272: ...
+.Ltmp273: ...
+.Ltmp274: ...
+.Ltmp275: ...
+.Ltmp276: ...
+.Ltmp277: ...
+.Ltmp278: ...
+.Ltmp279: ...
+.Ltmp280: ...
+.Ltmp281: ...
+.Ltmp282: ...
+.Ltmp283: ...
+.Ltmp284: ...
+.Ltmp285: ...
+.Ltmp286: ...
+.Ltmp287: ...
+.Ltmp288: ...
+.Ltmp289: ...
+.Ltmp223: ...
+.Ltmp290: ...
+.Ltmp292: ...
+.Ltmp293: ...
+.Ltmp294: ...
+.Ltmp295: ...
+.Ltmp296: ...
+.Ltmp297: ...
+.Ltmp298: ...
+.Ltmp299: ...
+.Ltmp300: ...
+.Ltmp301: ...
+.Ltmp302: ...
+.Ltmp303: ...
+.Ltmp304: ...
+.Ltmp305: ...
+.Ltmp306: ...
+.Ltmp307: ...
+.Ltmp308: ...
+.Ltmp309: ...
+.Ltmp310: ...
+.Ltmp311: ...
+.Ltmp291: ...
+.Ltmp312: ...
+.Ltmp314: ...
+.Ltmp315:
+.Ltmp313: ...

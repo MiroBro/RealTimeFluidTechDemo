@@ -1054,7 +1054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resultsCompletedText: {fileID: 108618729}
   averagesText: {fileID: 1318835548}
-  numberOfParticlesDesired: 500
+  numberOfParticlesDesired: 8000
 --- !u!1 &1232598846
 GameObject:
   m_ObjectHideFlags: 0

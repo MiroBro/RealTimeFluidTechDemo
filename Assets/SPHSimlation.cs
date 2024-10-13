@@ -10,7 +10,6 @@ using System;
 using TMPro;
 
 // Ensure the script is attached to a GameObject in your Unity scene
-[BurstCompile]
 public class SPHSimulation : MonoBehaviour
 {
     private NativeArray<Particle> particles;
@@ -34,18 +33,27 @@ public class SPHSimulation : MonoBehaviour
     private long remaining1000TotalTime = 0;
     private List<long> iterationTimes; // To store individual iteration times
 
+    // UI Elements to display results
     public TextMeshProUGUI resultsCompletedText;
     public TextMeshProUGUI averagesText;
 
-    public int numberOfParticlesDesired;
-
-    [BurstCompile]
-    public void BurstedStuff(int a, int b)
-    {
-        var x = a+b;
-    }
+    // Number of particles, set via Inspector or default
+    [SerializeField]
+    public int numberOfParticlesDesired = 8000;
 
     private void Start()
+    {
+        InitializeSimulation();
+        RunSimulation();
+        ExportResults();
+    }
+
+    private void OnDestroy()
+    {
+        DisposeNativeCollections();
+    }
+
+    private void InitializeSimulation()
     {
         int numberOfParticles = numberOfParticlesDesired;
         particles = new NativeArray<Particle>(numberOfParticles, Allocator.Persistent);
@@ -66,13 +74,33 @@ public class SPHSimulation : MonoBehaviour
 
         // Initialize stopwatch for performance measurement
         stopwatch = new Stopwatch();
+    }
 
-        // Run the simulation with timing
+    private void RunSimulation()
+    {
         for (int i = 0; i < 1100; i++)
         {
             stopwatch.Restart();
 
-            RunCalculations();
+            // Create and schedule the RunCalculationsJob
+            RunCalculationsJob runCalculationsJob = new RunCalculationsJob
+            {
+                particles = particles,
+                newParticles = newParticles,
+                particleGridMap = particleGridMap,
+                neighborOffsets = neighborOffsets,
+                radius2 = radius2,
+                particleMass = particleMass,
+                gasConstant = gasConstant,
+                restingDensity = restingDensity,
+                timestep = timestep,
+                boundDamping = boundDamping,
+                boxSize = boxSize,
+                viscosity = viscosity
+            };
+
+            JobHandle jobHandle = runCalculationsJob.Schedule();
+            jobHandle.Complete();
 
             stopwatch.Stop();
 
@@ -88,15 +116,31 @@ public class SPHSimulation : MonoBehaviour
             {
                 remaining1000TotalTime += elapsedTime;
             }
-        }
 
+            // Swap particle buffers for the next iteration
+            NativeArray<Particle> temp = particles;
+            particles = newParticles;
+            newParticles = temp;
+        }
+    }
+
+    private void ExportResults()
+    {
         // Compute average times
         float first100Average = first100TotalTime / 100.0f;
         float remaining1000Average = remaining1000TotalTime / 1000.0f;
 
-        // Print the average times to the Unity Console
+        // Log the average times to the Unity Console
         UnityEngine.Debug.Log($"Burst SPH, {numberOfParticlesDesired} particles: Average time for the first 100 iterations: {first100Average} ms");
-        UnityEngine.Debug.Log($"Burst SPH {numberOfParticlesDesired} particles:: Average time for remaining 1000 iterations: {remaining1000Average} ms");
+        UnityEngine.Debug.Log($"Burst SPH, {numberOfParticlesDesired} particles: Average time for remaining 1000 iterations: {remaining1000Average} ms");
+
+        // Update UI Texts
+        if (averagesText != null)
+        {
+            averagesText.text = $"Burst SPH, {numberOfParticlesDesired} particles:\n" +
+                                $"Average time for first 100 iterations: {first100Average} ms\n" +
+                                $"Average time for remaining 1000 iterations: {remaining1000Average} ms";
+        }
 
         // Create a data object to hold the results
         SimulationResults results = new SimulationResults
@@ -117,19 +161,25 @@ public class SPHSimulation : MonoBehaviour
         {
             File.WriteAllText(filePath, json);
             UnityEngine.Debug.Log($"Simulation results successfully written to: {filePath}");
-            resultsCompletedText.text = $"Simulation results successfully written to: {filePath}";
-            averagesText.text = $"Burst SPH, {numberOfParticlesDesired} particles:: Average time for the first 100 iterations: {first100Average} ms" + $", \n Burst SPH, {numberOfParticlesDesired} particles:: Average time for remaining 1000 iterations: {remaining1000Average} ms";
 
+            if (resultsCompletedText != null)
+            {
+                resultsCompletedText.text = $"Simulation results successfully written to:\n{filePath}";
+            }
         }
         catch (Exception ex)
         {
             UnityEngine.Debug.LogError($"Failed to write simulation results to JSON. Exception: {ex.Message}");
+            if (resultsCompletedText != null)
+            {
+                resultsCompletedText.text = $"Failed to write simulation results to JSON.\nException: {ex.Message}";
+            }
         }
 
         UnityEngine.Debug.Log("Simulation complete!");
     }
 
-    private void OnDestroy()
+    private void DisposeNativeCollections()
     {
         if (particles.IsCreated)
             particles.Dispose();
@@ -179,179 +229,224 @@ public class SPHSimulation : MonoBehaviour
         }
     }
 
+    // Job Struct to perform all calculations sequentially with Burst compilation
     [BurstCompile]
-    private void RunCalculations()
+    private struct RunCalculationsJob : IJob
     {
-        particleGridMap.Clear();
+        [ReadOnly]
+        public NativeArray<Particle> particles;
 
-        // Populate the particle grid map with current particle positions
-        for (int i = 0; i < particles.Length; i++)
+        public NativeArray<Particle> newParticles;
+
+        public NativeParallelMultiHashMap<int3, int> particleGridMap;
+
+        [ReadOnly]
+        public NativeArray<int3> neighborOffsets;
+
+        [ReadOnly]
+        public float radius2;
+
+        [ReadOnly]
+        public float particleMass;
+
+        [ReadOnly]
+        public float gasConstant;
+
+        [ReadOnly]
+        public float restingDensity;
+
+        [ReadOnly]
+        public float timestep;
+
+        [ReadOnly]
+        public float boundDamping;
+
+        [ReadOnly]
+        public float3 boxSize;
+
+        [ReadOnly]
+        public float viscosity;
+
+        public void Execute()
         {
-            int3 gridPos = HashPosition(particles[i].position);
-            particleGridMap.Add(gridPos, i);
-        }
+            // Clear the particle grid map
+            particleGridMap.Clear();
 
-        // Execute density and pressure computation
-        for (int i = 0; i < particles.Length; i++)
-        {
-            ComputeDensityPressure(i);
-        }
-
-        // Execute force computation
-        for (int i = 0; i < particles.Length; i++)
-        {
-            ComputeForces(i);
-        }
-
-        // Execute integration step
-        for (int i = 0; i < particles.Length; i++)
-        {
-            Integrate(i);
-        }
-
-        // Swap particle buffers for the next frame
-        NativeArray<Particle> temp = particles;
-        particles = newParticles;
-        newParticles = temp;
-    }
-
-    private int3 HashPosition(float3 position)
-    {
-        int x = (int)math.floor(position.x / (radius * 2.5f));
-        int y = (int)math.floor(position.y / (radius * 2.5f));
-        int z = (int)math.floor(position.z / (radius * 2.5f));
-        return new int3(x, y, z);
-    }
-
-    private void ComputeDensityPressure(int id)
-    {
-        Particle particle = particles[id];
-        float3 origin = particle.position;
-        float densitySum = 0;
-
-        int3 gridPos = HashPosition(origin);
-
-        for (int i = 0; i < neighborOffsets.Length; i++)
-        {
-            int3 neighborPos = gridPos + neighborOffsets[i];
-            if (particleGridMap.TryGetFirstValue(neighborPos, out int neighborIndex, out var iterator))
+            // Populate the particle grid map with current particle positions
+            for (int i = 0; i < particles.Length; i++)
             {
-                do
-                {
-                    Particle neighbor = particles[neighborIndex];
-                    float3 diff = origin - neighbor.position;
-                    float distanceSquared = math.lengthsq(diff);
+                int3 gridPos = HashPosition(particles[i].position);
+                particleGridMap.Add(gridPos, i);
+            }
 
-                    if (distanceSquared < radius2)
-                    {
-                        densitySum += StandardKernel(distanceSquared);
-                    }
-                }
-                while (particleGridMap.TryGetNextValue(out neighborIndex, ref iterator));
+            // Execute density and pressure computation
+            for (int i = 0; i < particles.Length; i++)
+            {
+                ComputeDensityPressure(i);
+            }
+
+            // Execute force computation
+            for (int i = 0; i < particles.Length; i++)
+            {
+                ComputeForces(i);
+            }
+
+            // Execute integration step
+            for (int i = 0; i < particles.Length; i++)
+            {
+                Integrate(i);
             }
         }
 
-        particle.density = densitySum * particleMass;
-        particle.pressure = gasConstant * (particle.density - restingDensity);
-        newParticles[id] = particle;
-    }
-
-    private float StandardKernel(float distanceSquared)
-    {
-        float x = 1.0f - distanceSquared / radius2;
-        return 315f / (64f * math.PI * math.pow(radius2, 1.5f)) * x * x * x;
-    }
-
-    private void ComputeForces(int id)
-    {
-        Particle particle = particles[id];
-        float3 origin = particle.position;
-        float3 pressureForce = float3.zero;
-        float3 viscousForce = float3.zero;
-
-        int3 gridPos = HashPosition(origin);
-
-        for (int i = 0; i < neighborOffsets.Length; i++)
+        private static int3 HashPosition(float3 position)
         {
-            int3 neighborPos = gridPos + neighborOffsets[i];
-            if (particleGridMap.TryGetFirstValue(neighborPos, out int neighborIndex, out var iterator))
+            float inv = 1.0f / (radius * 2.5f);
+            int x = (int)math.floor(position.x * inv);
+            int y = (int)math.floor(position.y * inv);
+            int z = (int)math.floor(position.z * inv);
+            return new int3(x, y, z);
+        }
+
+        private float StandardKernel(float distanceSquared)
+        {
+            float x = 1.0f - distanceSquared / radius2;
+            return 315f / (64f * math.PI * math.pow(radius2, 1.5f)) * x * x * x;
+        }
+
+        private float3 PressureKernelGradient(Particle particle, Particle neighbor, float distance, float3 direction)
+        {
+            float gradValue = -45.0f / (math.PI * math.pow(radius, 4)) * math.pow(1.0f - distance / radius, 2);
+            return gradValue * direction * (particle.pressure + neighbor.pressure) / (2 * neighbor.density);
+        }
+
+        private float3 ViscosityKernel(Particle particle, Particle neighbor, float distance)
+        {
+            float secondDerivative = 90f / (math.PI * math.pow(radius, 5)) * (1.0f - distance / radius);
+            return viscosity * secondDerivative * (neighbor.velocity - particle.velocity) / neighbor.density;
+        }
+
+        private void ComputeDensityPressure(int id)
+        {
+            Particle particle = particles[id];
+            float3 origin = particle.position;
+            float densitySum = 0f;
+
+            int3 gridPos = HashPosition(origin);
+
+            for (int i = 0; i < neighborOffsets.Length; i++)
             {
-                do
+                int3 neighborPos = gridPos + neighborOffsets[i];
+                NativeParallelMultiHashMapIterator<int3> iterator;
+                if (particleGridMap.TryGetFirstValue(neighborPos, out int neighborIndex, out iterator))
                 {
-                    if (neighborIndex == id) continue;
-
-                    Particle neighbor = particles[neighborIndex];
-                    float3 diff = origin - neighbor.position;
-                    float distanceSquared = math.lengthsq(diff);
-
-                    if (distanceSquared < radius2)
+                    do
                     {
-                        float distance = math.sqrt(distanceSquared);
-                        pressureForce += PressureKernelGradient(particle, neighbor, distance, diff);
-                        viscousForce += ViscosityKernel(particle, neighbor, distance);
+                        Particle neighbor = particles[neighborIndex];
+                        float3 diff = origin - neighbor.position;
+                        float distanceSquared = math.lengthsq(diff);
+
+                        if (distanceSquared < radius2)
+                        {
+                            densitySum += StandardKernel(distanceSquared);
+                        }
                     }
+                    while (particleGridMap.TryGetNextValue(out neighborIndex, ref iterator));
                 }
-                while (particleGridMap.TryGetNextValue(out neighborIndex, ref iterator));
             }
+
+            particle.density = densitySum * particleMass;
+            particle.pressure = gasConstant * (particle.density - restingDensity);
+            newParticles[id] = particle;
         }
 
-        // External force (gravity)
-        float3 externalForce = new float3(0, -9.81f * particleMass, 0);
-        particle.currentForce = externalForce - pressureForce + viscousForce;
-        newParticles[id] = particle;
-    }
-
-    private float3 PressureKernelGradient(Particle particle, Particle neighbor, float distance, float3 direction)
-    {
-        float gradValue = -45.0f / (math.PI * math.pow(radius, 4)) * math.pow(1.0f - distance / radius, 2);
-        return gradValue * direction * (particle.pressure + neighbor.pressure) / (2 * neighbor.density);
-    }
-
-    private float3 ViscosityKernel(Particle particle, Particle neighbor, float distance)
-    {
-        float secondDerivative = 90f / (math.PI * math.pow(radius, 5)) * (1.0f - distance / radius);
-        return viscosity * secondDerivative * (neighbor.velocity - particle.velocity) / neighbor.density;
-    }
-
-    private void Integrate(int id)
-    {
-        Particle particle = particles[id];
-        particle.velocity += (particle.currentForce / particleMass) * timestep;
-        particle.position += particle.velocity * timestep;
-
-        // Handle bounding box collisions
-        float3 min = -boxSize / 2;
-        float3 max = boxSize / 2;
-
-        // Get the current velocity of the particle
-        float3 velocity = particle.velocity;
-
-        // Check and modify the X component of the velocity
-        if (particle.position.x < min.x || particle.position.x > max.x)
+        private void ComputeForces(int id)
         {
-            velocity.x *= boundDamping;
+            Particle particle = particles[id];
+            float3 origin = particle.position;
+            float3 pressureForce = float3.zero;
+            float3 viscousForce = float3.zero;
+
+            int3 gridPos = HashPosition(origin);
+
+            for (int i = 0; i < neighborOffsets.Length; i++)
+            {
+                int3 neighborPos = gridPos + neighborOffsets[i];
+                NativeParallelMultiHashMapIterator<int3> iterator;
+                if (particleGridMap.TryGetFirstValue(neighborPos, out int neighborIndex, out iterator))
+                {
+                    do
+                    {
+                        if (neighborIndex == id) continue;
+
+                        Particle neighbor = particles[neighborIndex];
+                        float3 diff = origin - neighbor.position;
+                        float distanceSquared = math.lengthsq(diff);
+
+                        if (distanceSquared < radius2)
+                        {
+                            float distance = math.sqrt(distanceSquared);
+                            if (distance > 0f)
+                            {
+                                float3 pressureGrad = PressureKernelGradient(particle, neighbor, distance, diff);
+                                pressureForce += pressureGrad;
+
+                                float3 viscousGrad = ViscosityKernel(particle, neighbor, distance);
+                                viscousForce += viscousGrad;
+                            }
+                        }
+                    }
+                    while (particleGridMap.TryGetNextValue(out neighborIndex, ref iterator));
+                }
+            }
+
+            // External force (gravity)
+            float3 externalForce = new float3(0, -9.81f * particleMass, 0);
+            particle.currentForce = externalForce - pressureForce + viscousForce;
+
+            newParticles[id] = particle;
         }
 
-        // Check and modify the Y component of the velocity
-        if (particle.position.y < min.y || particle.position.y > max.y)
+        private void Integrate(int id)
         {
-            velocity.y *= boundDamping;
+            Particle particle = particles[id];
+            particle.velocity += (particle.currentForce / particleMass) * timestep;
+            particle.position += particle.velocity * timestep;
+
+            // Handle bounding box collisions
+            float3 min = -boxSize / 2;
+            float3 max = boxSize / 2;
+
+            // Get the current velocity of the particle
+            float3 velocity = particle.velocity;
+
+            // Check and modify the X component of the velocity
+            if (particle.position.x < min.x || particle.position.x > max.x)
+            {
+                velocity.x *= boundDamping;
+            }
+
+            // Check and modify the Y component of the velocity
+            if (particle.position.y < min.y || particle.position.y > max.y)
+            {
+                velocity.y *= boundDamping;
+            }
+
+            // Check and modify the Z component of the velocity
+            if (particle.position.z < min.z || particle.position.z > max.z)
+            {
+                velocity.z *= boundDamping;
+            }
+
+            // Update the particle's velocity
+            particle.velocity = velocity;
+
+            newParticles[id] = particle;
         }
-
-        // Check and modify the Z component of the velocity
-        if (particle.position.z < min.z || particle.position.z > max.z)
-        {
-            velocity.z *= boundDamping;
-        }
-
-        // Update the particle's velocity
-        particle.velocity = velocity;
-
-        newParticles[id] = particle;
     }
 
     // Struct representing a particle
-    private struct Particle
+    [Serializable]
+    public struct Particle
     {
         public float3 position;
         public float3 velocity;
@@ -368,7 +463,4 @@ public class SPHSimulation : MonoBehaviour
         public float Remaining1000Average;
         public long[] IndividualIterationTimes;
     }
-
-    // Method to write results to JSON (included within Start for simplicity)
-    // Alternatively, you could separate this logic if desired
 }
