@@ -9,7 +9,7 @@ using System.IO;
 using System;
 using TMPro;
 
-public class SPHSimulation : MonoBehaviour
+public class SPH_Simulation_Pure_Burst_No_Visuals : MonoBehaviour //Was previously called SPHSimulation
 {
     private NativeArray<Particle> particles;
     private NativeArray<Particle> newParticles;
